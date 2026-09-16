@@ -1,25 +1,30 @@
 function showSection(id){
   document.querySelectorAll('.page-section').forEach(s=>s.classList.add('hidden'));
-  const target=document.getElementById(id);
+  const reportIds=['pending-invoice','upload-invoice-report','ai-report'];
+  const targetId=reportIds.includes(id)?'reports':id;
+  const target=document.getElementById(targetId);
   if(target) target.classList.remove('hidden');
 
-  const titles={
-    dashboard:'Dashboard',
-    invoices:'All Invoices',
-    upload:'Upload Invoice',
-    parties:'Party List',
-    reports:'Report',
-    settings:'Settings'
-  };
-
-  document.getElementById('pageTitle').textContent=titles[id]||'Dashboard';
+  const titles={dashboard:'Dashboard',upload:'Upload Invoice',reports:'Report',parties:'Party List',settings:'Settings'};
+  const reportTitles={'pending-invoice':'Pending Invoice','upload-invoice-report':'Upload Invoice','ai-report':'AI Report'};
+  const title=reportTitles[id]||titles[targetId]||'Dashboard';
+  document.getElementById('pageTitle').textContent=title;
   const crumb=document.getElementById('crumbTitle');
-  if(crumb) crumb.textContent=titles[id]||'Dashboard';
+  if(crumb) crumb.textContent=title;
 
   document.querySelectorAll('.sidebar-nav > a').forEach(a=>a.classList.remove('active'));
-  const link=document.querySelector('.sidebar-nav > a[href="#'+id+'"]');
+  document.querySelectorAll('.nav-parent').forEach(a=>a.classList.remove('active'));
+  const link=document.querySelector('.sidebar-nav > a[href="#'+targetId+'"]');
   if(link) link.classList.add('active');
-
+  if(reportIds.includes(id)){
+    const reportParent=document.querySelector('.nav-parent');
+    if(reportParent) reportParent.classList.add('active');
+    const submenu=document.getElementById('reportSubmenu');
+    if(submenu) submenu.classList.add('open');
+    const subLink=document.querySelector('.submenu a[href="#'+id+'"]');
+    if(subLink) subLink.classList.add('active');
+    showReportSubpage(id,subLink);
+  }
   window.location.hash=id;
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -29,24 +34,26 @@ function toggleSubmenu(id){
   if(submenu) submenu.classList.toggle('open');
 }
 
+function showReportSubpage(id,button){
+  document.querySelectorAll('.report-subpage').forEach(x=>x.classList.remove('active'));
+  const target=document.getElementById(id);
+  if(target) target.classList.add('active');
+  document.querySelectorAll('.report-tab').forEach(x=>x.classList.remove('active'));
+  if(button) button.classList.add('active');
+}
+
 function logout(){
   const confirmed=window.confirm('Are you sure you want to logout?');
-  if(confirmed){
-    window.location.href='index.html';
-  }
+  if(confirmed) window.location.href='index.html';
 }
 
 window.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.sidebar-nav > a').forEach(a=>a.addEventListener('click',e=>{
-    e.preventDefault();
-    showSection(a.getAttribute('href').slice(1));
+    e.preventDefault(); showSection(a.getAttribute('href').slice(1));
   }));
-
   document.querySelectorAll('.submenu a').forEach(a=>a.addEventListener('click',e=>{
-    e.preventDefault();
-    showSection(a.getAttribute('href').slice(1));
+    e.preventDefault(); showSection(a.getAttribute('href').slice(1));
   }));
-
   const id=location.hash.replace('#','')||'dashboard';
   showSection(document.getElementById(id)?id:'dashboard');
 });
