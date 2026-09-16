@@ -2,3 +2,56 @@
 
 /* FLOATING DOCK / LIQUID CURVED DOCK — navigation style only */
 .sidebar{width:76px!important;inset:50% auto auto 16px!important;transform:translateY(-50%)!important;height:auto!important;max-height:calc(100vh - 34px)!important;padding:12px 9px!important;border-radius:28px!important;background:linear-gradient(180deg,rgba(15,54,83,.97),rgba(10,91,94,.97))!important;border:1px solid rgba(125,211,252,.32)!important;box-shadow:14px 20px 38px rgba(2,25,42,.28),inset 1px 1px 1px rgba(255,255,255,.16),0 0 28px rgba(13,148,136,.13)!important;backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;transition:width .34s cubic-bezier(.2,.8,.2,1),border-radius .34s ease,box-shadow .34s ease!important}.sidebar:hover{width:250px!important;border-radius:30px!important;box-shadow:18px 24px 44px rgba(2,25,42,.34),inset 1px 1px 1px rgba(255,255,255,.18),0 0 34px rgba(37,99,235,.16)!important}.sidebar:after{content:"";position:absolute;inset:1px;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.1),transparent 28%,rgba(56,189,248,.06) 72%,rgba(52,211,153,.08));z-index:0}.sidebar-top,.sidebar-nav,.sidebar-bottom{position:relative;z-index:2}.brand-3d{justify-content:center;gap:12px;padding:2px 0 14px;min-height:49px;overflow:hidden;white-space:nowrap}.brand-copy,.workspace-chip,.nav-label,.sidebar-bottom{opacity:0;visibility:hidden;max-width:0;overflow:hidden;transition:opacity .18s ease,visibility .18s ease,max-width .3s ease}.sidebar:hover .brand-3d{justify-content:flex-start;padding-left:3px}.sidebar:hover .brand-copy,.sidebar:hover .workspace-chip,.sidebar:hover .nav-label,.sidebar:hover .sidebar-bottom{opacity:1;visibility:visible;max-width:220px}.workspace-chip{margin:0 0 12px}.sidebar-nav{gap:5px}.sidebar-nav>a,.nav-parent{justify-content:center;gap:10px;padding:7px;border-radius:16px;margin:2px 0;min-height:48px;white-space:nowrap;overflow:hidden}.sidebar:hover .sidebar-nav>a,.sidebar:hover .nav-parent{justify-content:flex-start;padding:8px 10px}.nav-icon{width:38px;height:38px;min-width:38px;border-radius:13px;font-size:16px;box-shadow:5px 7px 12px rgba(2,25,42,.3),inset 1px 1px 3px rgba(255,255,255,.12)!important}.sidebar-nav>a em,.nav-parent em,.nav-parent b{opacity:0;visibility:hidden;width:0;overflow:hidden}.sidebar:hover .sidebar-nav>a em,.sidebar:hover .nav-parent em,.sidebar:hover .nav-parent b{opacity:1;visibility:visible;width:auto}.sidebar-nav>a span:not(.nav-icon),.nav-parent span:not(.nav-icon){opacity:0;visibility:hidden;width:0;max-width:0;overflow:hidden;transition:opacity .18s ease,max-width .3s ease}.sidebar:hover .sidebar-nav>a span:not(.nav-icon),.sidebar:hover .nav-parent span:not(.nav-icon){opacity:1;visibility:visible;width:auto;max-width:170px}.submenu{margin:4px 0 8px 8px!important;max-height:0;overflow:hidden;opacity:0;transition:max-height .3s ease,opacity .2s ease}.sidebar:hover .submenu.open{max-height:190px;opacity:1}.submenu a{padding:9px 10px!important;min-height:35px!important}.submenu a span{opacity:1!important;visibility:visible!important;width:auto!important;max-width:none!important}.sidebar:hover .nav-group:has(.submenu.open) .nav-parent{background:linear-gradient(135deg,rgba(37,99,235,.46),rgba(13,148,136,.34))!important}.sidebar:hover .nav-group:has(.submenu.open) .nav-parent .nav-icon{box-shadow:0 0 18px rgba(56,189,248,.22),5px 7px 12px rgba(2,25,42,.3)!important}.sidebar:hover .brand-logo{box-shadow:0 0 18px rgba(56,189,248,.22),7px 8px 15px rgba(0,0,0,.28),inset 2px 2px 4px rgba(255,255,255,.3)!important}.sidebar-nav>a:hover,.sidebar-nav>a.active,.nav-parent:hover,.nav-parent.active{transform:translate3d(2px,-2px,0)!important}.sidebar:hover .sidebar-nav>a:hover,.sidebar:hover .sidebar-nav>a.active,.sidebar:hover .nav-parent:hover,.sidebar:hover .nav-parent.active{transform:translate3d(4px,-2px,0)!important}.live-dot{flex:0 0 7px}.sidebar .logout-btn{min-width:0}.sidebar .mini-company{white-space:nowrap}.sidebar .logout-btn{white-space:nowrap}.sidebar:hover .sidebar-bottom{max-width:220px}.sidebar:hover:before{animation:dockGlow 3s ease-in-out infinite alternate}@keyframes dockGlow{from{transform:translate(0,0) scale(1);opacity:.75}to{transform:translate(-12px,10px) scale(1.08);opacity:1}}@media(max-width:760px){.sidebar{position:fixed!important;inset:auto 12px 12px 12px!important;width:calc(100% - 24px)!important;max-height:none!important;height:70px!important;transform:none!important;flex-direction:row!important;padding:8px!important;border-radius:22px!important;overflow:hidden!important}.sidebar:hover{width:calc(100% - 24px)!important;height:70px!important}.sidebar-top{display:flex;align-items:center}.brand-3d{padding:0!important;min-height:0}.brand-copy,.workspace-chip,.nav-label,.sidebar-bottom{display:none!important}.sidebar-nav{display:flex;flex-direction:row;align-items:center;gap:4px;overflow-x:auto;width:100%}.sidebar-nav>a,.nav-parent{min-height:52px!important;padding:5px!important;justify-content:center!important}.sidebar-nav>a span:not(.nav-icon),.nav-parent span:not(.nav-icon),.sidebar-nav>a em,.nav-parent em,.nav-parent b{display:none!important}.submenu{display:none!important}.main{margin-left:0!important;padding-bottom:100px!important}}
+
+/* UPLOAD WORKFLOW + LIQUID DOCK WIDTH REFINEMENT */
+#upload .upload-workspace{grid-template-columns:minmax(285px,.98fr) minmax(330px,1.02fr)!important;gap:12px!important}
+#upload .workflow-card{margin:0!important;padding:12px 13px!important;min-height:225px!important}
+#upload .workflow-head{gap:7px!important;margin-bottom:6px!important}
+#upload .workflow-title{font-size:17px!important;letter-spacing:1px!important}
+#upload .workflow-subtitle{font-size:9px!important;line-height:1.25!important}
+#upload .workflow-list{gap:3px!important}
+#upload .workflow-step{grid-template-columns:25px minmax(0,1fr) auto!important;gap:7px!important;padding:5px 6px!important;min-height:34px!important}
+#upload .workflow-step:after{left:18px!important;top:29px!important;height:8px!important}
+#upload .step-number{width:25px!important;height:25px!important;border-radius:8px!important;font-size:8px!important}
+#upload .step-copy strong{font-size:11px!important;font-weight:950!important}
+#upload .step-copy small{font-size:8px!important;margin-top:2px!important}
+#upload .step-status{font-size:7px!important}
+#upload .workflow-step.active{transform:translateX(2px) scale(1.003)!important}
+#upload .workflow-step:nth-child(1) .step-number{background:linear-gradient(145deg,#60A5FA,#2563EB)!important;color:#fff!important}
+#upload .workflow-step:nth-child(2) .step-number{background:linear-gradient(145deg,#A78BFA,#7C3AED)!important;color:#fff!important}
+#upload .workflow-step:nth-child(3) .step-number{background:linear-gradient(145deg,#FBBF24,#F59E0B)!important;color:#fff!important}
+#upload .workflow-step:nth-child(4) .step-number{background:linear-gradient(145deg,#FB7185,#E11D48)!important;color:#fff!important}
+#upload .workflow-step:nth-child(5) .step-number{background:linear-gradient(145deg,#2DD4BF,#0D9488)!important;color:#fff!important}
+#upload .workflow-step:nth-child(6) .step-number{background:linear-gradient(145deg,#34D399,#059669)!important;color:#fff!important}
+#upload .workflow-step:nth-child(7) .step-number{background:linear-gradient(145deg,#38BDF8,#0284C7)!important;color:#fff!important}
+#upload .workflow-step:nth-child(8) .step-number{background:linear-gradient(145deg,#C084FC,#9333EA)!important;color:#fff!important}
+#upload .workflow-step:nth-child(1) .step-status{color:#2563EB!important}
+#upload .workflow-step:nth-child(2) .step-status{color:#7C3AED!important}
+#upload .workflow-step:nth-child(3) .step-status{color:#D97706!important}
+#upload .workflow-step:nth-child(4) .step-status{color:#E11D48!important}
+#upload .workflow-step:nth-child(5) .step-status{color:#0D9488!important}
+#upload .workflow-step:nth-child(6) .step-status{color:#059669!important}
+#upload .workflow-step:nth-child(7) .step-status{color:#0284C7!important}
+#upload .workflow-step:nth-child(8) .step-status{color:#9333EA!important}
+#upload .workflow-step.done:nth-child(1){background:linear-gradient(90deg,#EFF6FF,#F8FAFC)!important}
+#upload .workflow-step.done:nth-child(2){background:linear-gradient(90deg,#F5F3FF,#F8FAFC)!important}
+#upload .workflow-step.done:nth-child(3){background:linear-gradient(90deg,#FFFBEB,#F8FAFC)!important}
+#upload .workflow-step.done:nth-child(4){background:linear-gradient(90deg,#FFF1F2,#F8FAFC)!important}
+#upload .workflow-step.done:nth-child(5){background:linear-gradient(90deg,#F0FDFA,#F8FAFC)!important}
+#upload .workflow-step.done:nth-child(6){background:linear-gradient(90deg,#F0FDF4,#F8FAFC)!important}
+#upload .workflow-step.done:nth-child(7){background:linear-gradient(90deg,#F0F9FF,#F8FAFC)!important}
+#upload .workflow-step.done:nth-child(8){background:linear-gradient(90deg,#FAF5FF,#F8FAFC)!important}
+
+/* Collapsed dock uses its freed width; expanded dock gives content room back */
+.main{margin-left:108px!important;padding-left:26px!important;padding-right:26px!important;transition:margin-left .34s cubic-bezier(.2,.8,.2,1),padding-left .34s ease,padding-right .34s ease!important}
+.sidebar:hover~.main,.sidebar:hover + .main{margin-left:282px!important;padding-left:26px!important;padding-right:26px!important}
+@media(max-width:1050px) and (min-width:761px){
+ .main{margin-left:104px!important;padding-left:20px!important;padding-right:20px!important}
+ .sidebar:hover~.main,.sidebar:hover + .main{margin-left:246px!important}
+}
+@media(max-width:760px){
+ .main{margin-left:0!important;padding-left:14px!important;padding-right:14px!important;padding-bottom:100px!important}
+ .sidebar:hover~.main,.sidebar:hover + .main{margin-left:0!important}
+ #upload .upload-workspace{grid-template-columns:1fr!important}
+ #upload .workflow-card{margin:0!important}
+}
