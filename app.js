@@ -7,28 +7,18 @@ function showSection(id){
     dashboard:'Dashboard',
     invoices:'All Invoices',
     upload:'Upload Invoice',
-    parties:'Customers & Suppliers',
-    reports:'Invoice Report',
+    parties:'Party List',
+    reports:'Report',
     settings:'Settings'
   };
 
   document.getElementById('pageTitle').textContent=titles[id]||'Dashboard';
+  const crumb=document.getElementById('crumbTitle');
+  if(crumb) crumb.textContent=titles[id]||'Dashboard';
+
   document.querySelectorAll('.sidebar-nav > a').forEach(a=>a.classList.remove('active'));
-  document.querySelectorAll('.submenu a').forEach(a=>a.classList.remove('active'));
-
-  if(id==='dashboard' || id==='parties' || id==='reports' || id==='settings'){
-    const link=document.querySelector('.sidebar-nav > a[href="#'+id+'"]');
-    if(link) link.classList.add('active');
-  }
-
-  if(id==='invoices' || id==='upload'){
-    const parent=document.querySelector('.nav-parent');
-    if(parent) parent.classList.add('active');
-    const subLink=document.querySelector('.submenu a[href="#'+id+'"]');
-    if(subLink) subLink.classList.add('active');
-    const submenu=document.getElementById('invoiceSubmenu');
-    if(submenu) submenu.classList.add('open');
-  }
+  const link=document.querySelector('.sidebar-nav > a[href="#'+id+'"]');
+  if(link) link.classList.add('active');
 
   window.location.hash=id;
   window.scrollTo({top:0,behavior:'smooth'});
