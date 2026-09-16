@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,15 +11,24 @@
   <div class="app-shell">
     <aside class="sidebar">
       <div class="brand"><div class="brand-mark">₹</div><div><strong>GST INVOICE</strong><span>MANAGER</span></div></div>
-      <nav>
+      <nav class="sidebar-nav">
         <a class="active" href="#dashboard">⌂ <span>Dashboard</span></a>
-        <a href="#invoices">▣ <span>Invoices</span></a>
-        <a href="#upload">↥ <span>Upload Invoice</span></a>
+        <div class="nav-group">
+          <button class="nav-parent" type="button" onclick="toggleSubmenu('invoiceSubmenu')">▣ <span>Invoices</span><b>⌄</b></button>
+          <div id="invoiceSubmenu" class="submenu">
+            <a href="#invoices">All Invoices</a>
+            <a href="#upload">Upload Invoice</a>
+          </div>
+        </div>
         <a href="#parties">♙ <span>Customers & Suppliers</span></a>
         <a href="#reports">▤ <span>Invoice Report</span></a>
         <a href="#settings">⚙ <span>Settings</span></a>
       </nav>
-      <div class="sidebar-foot">Easy Recharge Solution<br><small>GST Accounting Workspace</small></div>
+      <div class="sidebar-foot">
+        <div>Easy Recharge Solution</div>
+        <small>GST Accounting Workspace</small>
+        <button class="logout-btn" type="button" onclick="logout()">↪ <span>Logout</span></button>
+      </div>
     </aside>
 
     <main class="main">
@@ -29,28 +38,28 @@
       </header>
 
       <section id="dashboard" class="page-section">
-        <div class="welcome"><div><span class="pill">● SYSTEM READY</span><h2>नमस्ते, Easy Recharge Solution 👋</h2><p>अपने GST invoices, purchases और sales को एक जगह आसानी से manage करें।</p></div><button class="primary" onclick="showSection('upload')">＋ Upload Invoice</button></div>
+        <div class="welcome"><div><span class="pill">● SYSTEM READY</span><h2>Hello, Easy Recharge Solution 👋</h2><p>Manage your GST invoices, purchases and sales in one place.</p></div><button class="primary" onclick="showSection('upload')">＋ Upload Invoice</button></div>
         <div class="stats">
-          <div class="stat-card"><div class="stat-icon blue">▣</div><span>Total Invoices</span><strong>1,248</strong><small>↑ 12.8% इस महीने</small></div>
-          <div class="stat-card"><div class="stat-icon green">↙</div><span>Purchase</span><strong>₹ 8,42,560</strong><small>इस वित्त वर्ष</small></div>
-          <div class="stat-card"><div class="stat-icon orange">↗</div><span>Sales</span><strong>₹ 11,26,840</strong><small>इस वित्त वर्ष</small></div>
+          <div class="stat-card"><div class="stat-icon blue">▣</div><span>Total Invoices</span><strong>1,248</strong><small>↑ 12.8% this month</small></div>
+          <div class="stat-card"><div class="stat-icon green">↙</div><span>Purchase</span><strong>₹ 8,42,560</strong><small>This financial year</small></div>
+          <div class="stat-card"><div class="stat-icon orange">↗</div><span>Sales</span><strong>₹ 11,26,840</strong><small>This financial year</small></div>
           <div class="stat-card"><div class="stat-icon purple">♙</div><span>Parties</span><strong>186</strong><small>Customers + Suppliers</small></div>
         </div>
         <div class="grid-2">
-          <div class="panel"><div class="panel-head"><div><h3>Invoice Activity</h3><p>मासिक invoice overview</p></div><select><option>FY 2026-27</option></select></div><div class="chart"><i style="height:35%"></i><i style="height:50%"></i><i style="height:42%"></i><i style="height:68%"></i><i style="height:58%"></i><i style="height:78%"></i><i style="height:64%"></i><i style="height:88%"></i><i style="height:73%"></i><i style="height:94%"></i><i style="height:82%"></i><i style="height:100%"></i></div><div class="months"><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span></div></div>
-          <div class="panel"><div class="panel-head"><div><h3>Quick Actions</h3><p>अक्सर उपयोग होने वाले विकल्प</p></div></div><div class="quick"><button onclick="showSection('upload')"><b>↥</b><span><strong>Upload Invoice</strong><small>PDF invoices process करें</small></span>›</button><button onclick="showSection('invoices')"><b>▣</b><span><strong>All Invoices</strong><small>Invoice history देखें</small></span>›</button><button onclick="showSection('parties')"><b>♙</b><span><strong>Party Directory</strong><small>Customers & suppliers</small></span>›</button><button onclick="showSection('reports')"><b>▤</b><span><strong>Reports</strong><small>CSV / GST reports</small></span>›</button></div></div>
+          <div class="panel"><div class="panel-head"><div><h3>Invoice Activity</h3><p>Monthly invoice overview</p></div><select><option>FY 2026-27</option></select></div><div class="chart"><i style="height:35%"></i><i style="height:50%"></i><i style="height:42%"></i><i style="height:68%"></i><i style="height:58%"></i><i style="height:78%"></i><i style="height:64%"></i><i style="height:88%"></i><i style="height:73%"></i><i style="height:94%"></i><i style="height:82%"></i><i style="height:100%"></i></div><div class="months"><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span></div></div>
+          <div class="panel"><div class="panel-head"><div><h3>Quick Actions</h3><p>Frequently used options</p></div></div><div class="quick"><button onclick="showSection('upload')"><b>↥</b><span><strong>Upload Invoice</strong><small>Process PDF invoices</small></span>›</button><button onclick="showSection('invoices')"><b>▣</b><span><strong>All Invoices</strong><small>View invoice history</small></span>›</button><button onclick="showSection('parties')"><b>♙</b><span><strong>Party Directory</strong><small>Customers & suppliers</small></span>›</button><button onclick="showSection('reports')"><b>▤</b><span><strong>Reports</strong><small>CSV / GST reports</small></span>›</button></div></div>
         </div>
       </section>
 
-      <section id="invoices" class="page-section hidden"><div class="section-head"><div><span class="eyebrow">INVOICE MANAGEMENT</span><h2>All Invoices</h2><p>सभी खरीद और बिक्री invoices का overview</p></div><button class="primary" onclick="showSection('upload')">＋ Upload</button></div><div class="filters"><input placeholder="Invoice no. / party search"><select><option>All Types</option><option>Purchase</option><option>Sales</option></select><select><option>FY 2026-27</option></select><button class="primary">Filter</button></div><div class="table-wrap"><table><thead><tr><th>Invoice No.</th><th>Date</th><th>Party</th><th>Type</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead><tbody><tr><td><b>INV-10248</b></td><td>15 Sep 2026</td><td>ABC Traders</td><td><span class="badge buy">PURCHASE</span></td><td>₹ 42,560</td><td><span class="badge done">Completed</span></td><td><button class="round">◉</button> <button class="round">↓</button></td></tr><tr><td><b>INV-10247</b></td><td>14 Sep 2026</td><td>XYZ Enterprises</td><td><span class="badge sell">SALES</span></td><td>₹ 28,900</td><td><span class="badge done">Completed</span></td><td><button class="round">◉</button> <button class="round">↓</button></td></tr><tr><td><b>INV-10246</b></td><td>13 Sep 2026</td><td>Shree Suppliers</td><td><span class="badge buy">PURCHASE</span></td><td>₹ 17,450</td><td><span class="badge pending">Pending</span></td><td><button class="round">◉</button> <button class="round">↓</button></td></tr></tbody></table></div></section>
+      <section id="invoices" class="page-section hidden"><div class="section-head"><div><span class="eyebrow">INVOICE MANAGEMENT</span><h2>All Invoices</h2><p>Overview of all purchase and sales invoices</p></div><button class="primary" onclick="showSection('upload')">＋ Upload</button></div><div class="filters"><input placeholder="Invoice no. / party search"><select><option>All Types</option><option>Purchase</option><option>Sales</option></select><select><option>FY 2026-27</option></select><button class="primary">Filter</button></div><div class="table-wrap"><table><thead><tr><th>Invoice No.</th><th>Date</th><th>Party</th><th>Type</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead><tbody><tr><td><b>INV-10248</b></td><td>15 Sep 2026</td><td>ABC Traders</td><td><span class="badge buy">PURCHASE</span></td><td>₹ 42,560</td><td><span class="badge done">Completed</span></td><td><button class="round">◉</button> <button class="round">↓</button></td></tr><tr><td><b>INV-10247</b></td><td>14 Sep 2026</td><td>XYZ Enterprises</td><td><span class="badge sell">SALES</span></td><td>₹ 28,900</td><td><span class="badge done">Completed</span></td><td><button class="round">◉</button> <button class="round">↓</button></td></tr><tr><td><b>INV-10246</b></td><td>13 Sep 2026</td><td>Shree Suppliers</td><td><span class="badge buy">PURCHASE</span></td><td>₹ 17,450</td><td><span class="badge pending">Pending</span></td><td><button class="round">◉</button> <button class="round">↓</button></td></tr></tbody></table></div></section>
 
-      <section id="upload" class="page-section hidden"><div class="section-head"><div><span class="eyebrow">AI INVOICE PROCESSING</span><h2>Upload Invoice</h2><p>PDF invoice upload करें और AI से details extract करें।</p></div></div><div class="upload-card"><div class="dropzone"><div class="upload-icon">↥</div><h3>Invoice PDF यहाँ drop करें</h3><p>या नीचे button से files select करें</p><button class="primary">Choose PDF Files</button><small>Maximum 50 files • 25 MB per file</small></div><div class="process-info"><div>✓ Gemini AI extraction</div><div>✓ Buyer / Seller classification</div><div>✓ Duplicate invoice detection</div><div>✓ Google Drive storage</div><div>✓ Automatic email workflow</div></div></div></section>
+      <section id="upload" class="page-section hidden"><div class="section-head"><div><span class="eyebrow">AI INVOICE PROCESSING</span><h2>Upload Invoice</h2><p>Upload PDF invoices and extract details with AI.</p></div></div><div class="upload-card"><div class="dropzone"><div class="upload-icon">↥</div><h3>Drop invoice PDF here</h3><p>Or select files using the button below</p><button class="primary">Choose PDF Files</button><small>Maximum 50 files • 25 MB per file</small></div><div class="process-info"><div>✓ Gemini AI extraction</div><div>✓ Buyer / Seller classification</div><div>✓ Duplicate invoice detection</div><div>✓ Google Drive storage</div><div>✓ Automatic email workflow</div></div></div></section>
 
-      <section id="parties" class="page-section hidden"><div class="section-head"><div><span class="eyebrow">PARTY DIRECTORY</span><h2>Customers & Suppliers</h2><p>GSTIN, email और contact details manage करें।</p></div><button class="primary">＋ Add Party</button></div><div class="party-grid"><div class="party-card"><span class="party-avatar">AT</span><div><strong>ABC Traders</strong><small>GSTIN: 09ABCDE1234F1Z5</small><small>abc@example.com</small></div><button>✎</button></div><div class="party-card"><span class="party-avatar">XE</span><div><strong>XYZ Enterprises</strong><small>GSTIN: 09XYZDE5678K1Z2</small><small>xyz@example.com</small></div><button>✎</button></div><div class="party-card"><span class="party-avatar">SS</span><div><strong>Shree Suppliers</strong><small>GSTIN: 09SHREE1234P1Z8</small><small>Email not added</small></div><button>✎</button></div></div></section>
+      <section id="parties" class="page-section hidden"><div class="section-head"><div><span class="eyebrow">PARTY DIRECTORY</span><h2>Customers & Suppliers</h2><p>Manage GSTIN, email and contact details.</p></div><button class="primary">＋ Add Party</button></div><div class="party-grid"><div class="party-card"><span class="party-avatar">AT</span><div><strong>ABC Traders</strong><small>GSTIN: 09ABCDE1234F1Z5</small><small>abc@example.com</small></div><button>✎</button></div><div class="party-card"><span class="party-avatar">XE</span><div><strong>XYZ Enterprises</strong><small>GSTIN: 09XYZDE5678K1Z2</small><small>xyz@example.com</small></div><button>✎</button></div><div class="party-card"><span class="party-avatar">SS</span><div><strong>Shree Suppliers</strong><small>GSTIN: 09SHREE1234P1Z8</small><small>Email not added</small></div><button>✎</button></div></div></section>
 
-      <section id="reports" class="page-section hidden"><div class="section-head"><div><span class="eyebrow">ANALYTICS & EXPORT</span><h2>Invoice Report</h2><p>Financial year और party के अनुसार report देखें।</p></div><button class="primary">↓ Export CSV</button></div><div class="report-cards"><div><span>Purchase</span><strong>₹ 8,42,560</strong></div><div><span>Sales</span><strong>₹ 11,26,840</strong></div><div><span>Total Invoices</span><strong>1,248</strong></div></div></section>
+      <section id="reports" class="page-section hidden"><div class="section-head"><div><span class="eyebrow">ANALYTICS & EXPORT</span><h2>Invoice Report</h2><p>View reports by financial year and party.</p></div><button class="primary">↓ Export CSV</button></div><div class="report-cards"><div><span>Purchase</span><strong>₹ 8,42,560</strong></div><div><span>Sales</span><strong>₹ 11,26,840</strong></div><div><span>Total Invoices</span><strong>1,248</strong></div></div></section>
 
-      <section id="settings" class="page-section hidden"><div class="section-head"><div><span class="eyebrow">WORKSPACE SETTINGS</span><h2>Settings</h2><p>Company, Google, Gemini और email configuration।</p></div></div><div class="settings-grid"><div>🏢 <strong>Company Settings</strong><small>Firm name और business details</small></div><div>☁ <strong>Google Drive / Gmail</strong><small>Storage और email connection</small></div><div>✦ <strong>Gemini AI Keys</strong><small>AI processing configuration</small></div><div>✉ <strong>Email Template</strong><small>Invoice email template</small></div></div></section>
+      <section id="settings" class="page-section hidden"><div class="section-head"><div><span class="eyebrow">WORKSPACE SETTINGS</span><h2>Settings</h2><p>Company, Google, Gemini and email configuration.</p></div></div><div class="settings-grid"><div>🏢 <strong>Company Settings</strong><small>Firm name and business details</small></div><div>☁ <strong>Google Drive / Gmail</strong><small>Storage and email connection</small></div><div>✦ <strong>Gemini AI Keys</strong><small>AI processing configuration</small></div><div>✉ <strong>Email Template</strong><small>Invoice email template</small></div></div></section>
     </main>
   </div>
   <nav class="mobile-nav"><button onclick="showSection('dashboard')">⌂<span>Home</span></button><button onclick="showSection('invoices')">▣<span>Invoices</span></button><button onclick="showSection('upload')" class="mobile-add">＋</button><button onclick="showSection('parties')">♙<span>Parties</span></button><button onclick="showSection('settings')">⚙<span>Settings</span></button></nav>
