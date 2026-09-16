@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101827">
+  <meta name="theme-color" content="#1E293B">
   <title>GST Invoice Manager</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -36,17 +36,24 @@
         <div class="nav-label settings-label">SYSTEM</div>
         <a href="#settings"><span class="nav-icon">⚙</span><span>Settings</span><em>05</em></a>
       </nav>
-
-      <div class="sidebar-bottom">
-        <div class="mini-company"><div class="company-orb">ER</div><div><strong>Easy Recharge</strong><small>GST Workspace</small></div><span>•••</span></div>
-        <button class="logout-btn" type="button" onclick="logout()"><span>↪</span><b>Logout</b><small>Exit workspace</small></button>
-      </div>
     </aside>
 
     <main class="main">
       <header class="topbar">
         <div class="heading-block"><div class="breadcrumb"><span>GST MANAGER</span><b>/</b><span id="crumbTitle">Dashboard</span></div><h1 id="pageTitle">Dashboard</h1></div>
-        <div class="top-actions"><button class="icon-btn" aria-label="Search">⌕</button><button class="notify-btn">◌<i></i></button><div class="avatar">ER</div></div>
+        <div class="top-actions">
+          <button class="icon-btn" aria-label="Search">⌕</button>
+          <button class="notify-btn" aria-label="Notifications">◌<i></i></button>
+          <div class="profile-menu-wrap">
+            <button class="avatar profile-trigger" type="button" aria-label="Profile menu">ER</button>
+            <div class="profile-menu">
+              <div class="profile-menu-head"><div class="profile-avatar-large">ER</div><div><strong>Easy Recharge Solution</strong><small>GST Workspace</small></div></div>
+              <div class="profile-divider"></div>
+              <button type="button" onclick="showSection('settings'); closeProfileMenu()"><span>👤</span> Profile</button>
+              <button type="button" onclick="logout()"><span>↪</span> Logout</button>
+            </div>
+          </div>
+        </div>
       </header>
 
       <section id="dashboard" class="page-section">
@@ -83,5 +90,19 @@
 
   <nav class="mobile-nav"><button onclick="showSection('dashboard')">⌂<span>Home</span></button><button onclick="showSection('invoices')">▣<span>Invoices</span></button><button onclick="showSection('upload')" class="mobile-add">＋</button><button onclick="showSection('parties')">♙<span>Parties</span></button><button onclick="showSection('settings')">⚙<span>Settings</span></button></nav>
   <script src="app.js"></script>
+  <script>
+    function closeProfileMenu(){
+      document.querySelector('.profile-menu-wrap')?.classList.remove('open');
+    }
+    document.addEventListener('DOMContentLoaded',()=>{
+      const wrap=document.querySelector('.profile-menu-wrap');
+      const trigger=document.querySelector('.profile-trigger');
+      if(trigger && wrap){
+        trigger.addEventListener('click',e=>{e.stopPropagation();wrap.classList.toggle('open');});
+        document.addEventListener('click',()=>wrap.classList.remove('open'));
+        wrap.querySelector('.profile-menu')?.addEventListener('click',e=>e.stopPropagation());
+      }
+    });
+  </script>
 </body>
 </html>
