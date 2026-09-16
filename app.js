@@ -122,11 +122,8 @@ function buildUploadWorkspace(){
   style.id='upload-workspace-style';
   style.textContent=`
     /* Upload page only: compact above-the-fold layout */
-    #upload .section-head{margin:0 0 9px;padding:0;min-height:0}
-    #upload .section-head .breadcrumb{margin-bottom:2px}
-    #upload .section-head h2{margin:2px 0 2px;font-size:22px;line-height:1.05}
-    #upload .section-head p{margin:0;font-size:9px;line-height:1.35}
-    #upload .upload-workspace{display:grid;grid-template-columns:minmax(285px,.9fr) minmax(390px,1.1fr);grid-template-rows:auto auto;gap:12px;margin-top:0;align-items:stretch}
+    #upload .section-head{display:none}
+    #upload .upload-workspace{display:grid;grid-template-columns:minmax(285px,.92fr) minmax(360px,1.08fr);grid-template-rows:auto auto;gap:12px;margin-top:0;align-items:stretch}
     #upload .upload-hero-card,#upload .workflow-card,#upload .uploaded-card{background:rgba(255,255,255,.97);border:1px solid #E2E8F0;border-radius:21px;box-shadow:12px 15px 28px rgba(15,23,42,.1),-5px -5px 14px rgba(255,255,255,.92),inset 1px 1px 2px rgba(255,255,255,.95);position:relative;overflow:hidden}
     #upload .upload-hero-card{padding:15px;min-height:225px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,#fff,#F4F8FC)}
     #upload .upload-hero-card:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-135px;top:-135px;background:radial-gradient(circle,rgba(37,99,235,.14),transparent 68%);pointer-events:none}
@@ -142,28 +139,34 @@ function buildUploadWorkspace(){
     #upload .upload-limit{font-size:7px;color:#94A3B8;margin-top:7px;position:relative;z-index:1}
     #upload .upload-progress-wrap{width:100%;margin-top:9px;position:relative;z-index:1}
     #upload .upload-progress-track{height:6px;border-radius:99px;background:#E2E8F0;overflow:hidden;box-shadow:inset 2px 2px 4px rgba(15,23,42,.08)}
-    #upload .upload-progress-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#2563EB,#0D9488,#10B981);box-shadow:0 0 12px rgba(37,99,235,.3);transition:width .35s ease}
+    #upload .upload-progress-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#2563EB,#0D9488,#10B981);background-size:220% 100%;box-shadow:0 0 12px rgba(37,99,235,.3);transition:width .35s ease;animation:progressGlow 2.2s linear infinite}
     #upload .upload-progress-label{display:flex;justify-content:space-between;font-size:7px;font-weight:800;color:#64748B;margin-top:4px}
     #upload .process-main-btn{width:100%;margin-top:7px;border:1px solid rgba(16,185,129,.3);border-radius:11px;padding:9px 12px;color:#fff;background:linear-gradient(145deg,#10B981,#047857);font-size:9px;font-weight:950;letter-spacing:.3px;cursor:pointer;box-shadow:7px 8px 14px rgba(5,150,105,.2),inset 1px 1px 2px rgba(255,255,255,.3);position:relative;overflow:hidden;transition:.2s}
     #upload .process-main-btn:before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-110%);animation:buttonShine 2.8s ease-in-out infinite}
     #upload .process-main-btn:hover{transform:translateY(-3px);box-shadow:10px 12px 20px rgba(5,150,105,.25)}
     #upload .process-main-btn span{position:relative;z-index:1}
-    #upload .workflow-card{padding:14px 16px;min-height:225px;background:linear-gradient(145deg,#FFFFFF,#F8FAFC)}
+    #upload .workflow-card{padding:14px 16px;min-height:225px;margin:0 18px;background:linear-gradient(145deg,#FFFFFF,#F8FAFC);border:1px solid rgba(59,130,246,.25);box-shadow:12px 15px 28px rgba(15,23,42,.1),-5px -5px 14px rgba(255,255,255,.92),inset 1px 1px 2px rgba(255,255,255,.95),0 0 0 1px rgba(16,185,129,.06);animation:workflowCardFloat 3.8s ease-in-out infinite,workflowBorder 3.2s linear infinite}
+    #upload .workflow-card:before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,rgba(37,99,235,.0),rgba(37,99,235,.13),rgba(16,185,129,.16),rgba(245,158,11,.10),rgba(37,99,235,.0));animation:workflowAura 7s linear infinite;pointer-events:none}
+    #upload .workflow-card:after{content:"";position:absolute;inset:1px;border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(248,250,252,.88));z-index:0;pointer-events:none}
+    #upload .workflow-card>*{position:relative;z-index:1}
     #upload .workflow-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px}
-    #upload .workflow-title{font-family:"Trebuchet MS","Segoe UI",sans-serif;font-size:16px;font-weight:950;letter-spacing:1.1px;background:linear-gradient(90deg,#1E3A8A,#2563EB,#0D9488,#1E3A8A);background-size:240% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:workflowGradient 3.8s linear infinite,workflowFloat 2.2s ease-in-out infinite;margin:0}
-    #upload .workflow-subtitle{font-size:8px;color:#64748B;margin-top:3px;line-height:1.3}
-    #upload .workflow-live{padding:5px 8px;border-radius:9px;background:#ECFDF5;color:#047857;font-size:7px;font-weight:900;white-space:nowrap;box-shadow:inset 1px 1px 2px #fff,3px 4px 8px rgba(5,150,105,.08)}
-    #upload .workflow-list{display:flex;flex-direction:column;gap:3px}
-    #upload .workflow-step{display:grid;grid-template-columns:27px 1fr auto;align-items:center;gap:8px;padding:5px 8px;border-radius:10px;border:1px solid transparent;transition:.25s;position:relative}
-    #upload .workflow-step:after{content:"";position:absolute;left:21px;top:32px;width:2px;height:10px;background:#E2E8F0}
+    #upload .workflow-title{font-family:"Trebuchet MS","Segoe UI",sans-serif;font-size:17px;font-weight:950;letter-spacing:1.2px;background:linear-gradient(90deg,#1E3A8A,#2563EB,#0D9488,#F59E0B,#1E3A8A);background-size:320% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:workflowGradient 3s linear infinite,workflowFloat 2.2s ease-in-out infinite;margin:0}
+    #upload .workflow-subtitle{font-size:9px;font-weight:700;color:#64748B;margin-top:4px;line-height:1.35}
+    #upload .workflow-live{padding:6px 9px;border-radius:9px;background:linear-gradient(135deg,#ECFDF5,#EFF6FF);color:#047857;font-size:8px;font-weight:950;white-space:nowrap;box-shadow:inset 1px 1px 2px #fff,3px 4px 8px rgba(5,150,105,.08);animation:livePulse 1.8s ease-in-out infinite}
+    #upload .workflow-list{display:flex;flex-direction:column;gap:4px}
+    #upload .workflow-step{display:grid;grid-template-columns:29px 1fr auto;align-items:center;gap:9px;padding:6px 8px;border-radius:11px;border:1px solid rgba(148,163,184,.18);background:linear-gradient(90deg,rgba(248,250,252,.88),rgba(255,255,255,.72));transition:.3s;position:relative;overflow:hidden}
+    #upload .workflow-step:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,.62) 50%,transparent 80%);transform:translateX(-120%);animation:stepShine 4.5s ease-in-out infinite;pointer-events:none}
+    #upload .workflow-step:after{content:"";position:absolute;left:22px;top:33px;width:2px;height:11px;background:linear-gradient(#93C5FD,#6EE7B7);opacity:.65}
     #upload .workflow-step:last-child:after{display:none}
-    #upload .workflow-step.active{background:linear-gradient(90deg,#EFF6FF,#ECFDF5);border-color:#BFDBFE;box-shadow:5px 7px 13px rgba(37,99,235,.08);transform:translateX(3px)}
-    #upload .workflow-step.done{background:#F8FAFC}
-    #upload .step-number{width:27px;height:27px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(145deg,#E2E8F0,#CBD5E1);color:#64748B;font-size:8px;font-weight:950;box-shadow:3px 4px 7px rgba(15,23,42,.08),inset 1px 1px 2px #fff}
-    #upload .workflow-step.active .step-number{background:linear-gradient(145deg,#60A5FA,#2563EB);color:#fff;box-shadow:4px 5px 9px rgba(37,99,235,.22);animation:stepPulse 1.5s ease-in-out infinite}
+    #upload .workflow-step.active{background:linear-gradient(90deg,#EFF6FF,#ECFDF5,#FFFBEB);border-color:#93C5FD;box-shadow:6px 8px 15px rgba(37,99,235,.11),0 0 0 2px rgba(37,99,235,.04);transform:translateX(3px) scale(1.005)}
+    #upload .workflow-step.done{background:linear-gradient(90deg,#F0FDF4,#ECFDF5);border-color:rgba(16,185,129,.16)}
+    #upload .step-number{width:29px;height:29px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(145deg,#E2E8F0,#CBD5E1);color:#64748B;font-size:9px;font-weight:950;box-shadow:3px 4px 7px rgba(15,23,42,.08),inset 1px 1px 2px #fff;position:relative;z-index:1}
+    #upload .workflow-step.active .step-number{background:linear-gradient(145deg,#60A5FA,#2563EB);color:#fff;box-shadow:4px 5px 10px rgba(37,99,235,.24);animation:stepPulse 1.35s ease-in-out infinite}
     #upload .workflow-step.done .step-number{background:linear-gradient(145deg,#34D399,#059669);color:#fff}
-    #upload .step-copy strong{display:block;font-size:11px;font-weight:850;color:#0F172A;line-height:1.1}.step-copy small{display:block;font-size:7px;color:#64748B;margin-top:2px;line-height:1.1}
-    #upload .step-status{font-size:7px;font-weight:950;color:#94A3B8}.workflow-step.active .step-status{color:#2563EB}.workflow-step.done .step-status{color:#059669}
+    #upload .step-copy{position:relative;z-index:1}
+    #upload .step-copy strong{display:block;font-size:12px;font-weight:950;color:#0F172A;line-height:1.15}
+    #upload .step-copy small{display:block;font-size:9px;font-weight:650;color:#64748B;margin-top:3px;line-height:1.15}
+    #upload .step-status{font-size:8px;font-weight:950;color:#94A3B8;position:relative;z-index:1}.workflow-step.active .step-status{color:#2563EB}.workflow-step.done .step-status{color:#059669}
     #upload .uploaded-card{grid-column:1/-1;padding:12px 14px;min-height:150px}
     #upload .uploaded-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}.uploaded-head h3{margin:0;font-size:13px;font-weight:950;letter-spacing:.5px}.uploaded-count{font-size:7px;color:#64748B;background:#F1F5F9;padding:5px 8px;border-radius:8px;font-weight:900}
     #upload .invoice-list{display:flex;flex-direction:column;gap:5px;max-height:142px;overflow:auto}
@@ -175,18 +178,23 @@ function buildUploadWorkspace(){
     @keyframes uploadFloat{0%,100%{transform:translateY(0) rotate(-7deg)}50%{transform:translateY(-7px) rotate(-4deg)}}
     @keyframes uploadSweep{0%,55%{transform:translateX(-55%)}80%,100%{transform:translateX(55%)}}
     @keyframes buttonShine{0%,55%{transform:translateX(-110%)}80%,100%{transform:translateX(110%)}}
+    @keyframes progressGlow{0%{background-position:0% 50%}100%{background-position:220% 50%}}
+    @keyframes workflowGradient{0%{background-position:0% center}100%{background-position:320% center}}
+    @keyframes workflowFloat{0%,100%{transform:translateY(0);filter:drop-shadow(0 2px 3px rgba(37,99,235,.08))}50%{transform:translateY(-2px);filter:drop-shadow(0 5px 8px rgba(37,99,235,.18))}}
+    @keyframes workflowCardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+    @keyframes workflowBorder{0%,100%{border-color:rgba(59,130,246,.25)}50%{border-color:rgba(16,185,129,.5)}}
+    @keyframes workflowAura{to{transform:rotate(360deg)}}
+    @keyframes stepShine{0%,62%{transform:translateX(-120%)}82%,100%{transform:translateX(120%)}}
+    @keyframes livePulse{0%,100%{box-shadow:inset 1px 1px 2px #fff,0 0 0 0 rgba(16,185,129,.18)}50%{box-shadow:inset 1px 1px 2px #fff,0 0 0 5px rgba(16,185,129,0)}}
     @keyframes stepPulse{0%,100%{box-shadow:4px 5px 9px rgba(37,99,235,.22),0 0 0 0 rgba(37,99,235,.16)}50%{box-shadow:4px 5px 9px rgba(37,99,235,.22),0 0 0 6px rgba(37,99,235,0)}}
     @keyframes rowIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
     @keyframes toastIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
-    @media(max-width:900px){#upload .upload-workspace{grid-template-columns:1fr}.invoice-row{grid-template-columns:30px 1fr 70px}.invoice-row>:nth-child(3),.invoice-row>:nth-child(5){display:none}}
-    @media(max-width:560px){#upload .section-head h2{font-size:20px}#upload .upload-hero-card,#upload .workflow-card,#upload .uploaded-card{padding:11px}.invoice-row{grid-template-columns:30px 1fr 65px}.email-toast{right:14px!important;left:14px;width:auto!important;bottom:18px!important}}
+    @media(max-width:900px){#upload .upload-workspace{grid-template-columns:1fr}.workflow-card{margin:0!important}.invoice-row{grid-template-columns:30px 1fr 70px}.invoice-row>:nth-child(3),.invoice-row>:nth-child(5){display:none}}
+    @media(max-width:560px){#upload .upload-hero-card,#upload .workflow-card,#upload .uploaded-card{padding:11px}.invoice-row{grid-template-columns:30px 1fr 65px}.email-toast{right:14px!important;left:14px;width:auto!important;bottom:18px!important}}
   `;
   document.head.appendChild(style);
 
   section.innerHTML=`
-    <div class="section-head">
-      <div><div class="breadcrumb">AI INVOICE PROCESSING</div><h2>Upload Invoice</h2><p>Upload, process and automatically organize your GST invoices with AI.</p></div>
-    </div>
     <div class="upload-workspace">
       <div class="upload-hero-card">
         <div class="dropzone-3d" id="invoiceDropzone">
