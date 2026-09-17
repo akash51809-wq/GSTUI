@@ -1,0 +1,50 @@
+name: Fix GSTUI Module Events
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Make report initialization wait for modules
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          old = "document.addEventListener('DOMContentLoaded',()=>{"
+          new = "document.addEventListener('gstui:modules-ready',()=>{"
+          if old not in s:
+              raise SystemExit('Expected report initialization hook was not found')
+          s = s.replace(old, new, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Validate
+        run: |
+          grep -q 'pages/module-loader.js' index.html
+          grep -q "gstui:modules-ready" index.html
+          test -s pages/dashboard/dashboard.html
+          test -s pages/report/report.html
+          test -s pages/module-loader.js
+      - name: Commit and remove one-time workflow
+        run: |
+          rm -f .github/workflows/fix-module-events.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/fix-module-events.yml
+          if git diff --cached --quiet; then
+            echo "No changes needed."
+          else
+            git commit -m "Fix GSTUI report module initialization"
+            git push
+          fi
