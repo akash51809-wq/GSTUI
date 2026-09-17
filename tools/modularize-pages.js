@@ -28,8 +28,9 @@ function findElement(html, id) {
   let token;
   while ((token = tokenRe.exec(html))) {
     const text = token[0];
-    if (/^<\\//.test(text)) depth--;
-    else if (!/\\/\\s*>$/.test(text)) depth++;
+    if (text.startsWith('</')) depth--;
+    else if (!/\/\\s*>$/.test(text)) depth++;
+
     if (depth === 0) {
       return {
         start,
@@ -57,7 +58,7 @@ for (const [id] of Object.entries(pageMap)) {
 
   extracted[id] = found.content;
   working = working.slice(0, found.start)
-    + `<!-- GSTUI page module: ${id}; loaded by pages/module-loader.js -->\\n<div id="${id}" class="page-section page-module-host" data-page-module="${id}"></div>\\n`
+    + `<!-- GSTUI page module: ${id}; loaded by pages/module-loader.js -->\n<div id="${id}" class="page-section page-module-host" data-page-module="${id}"></div>\n`
     + working.slice(found.end);
 }
 
@@ -72,11 +73,11 @@ for (const [id, meta] of Object.entries(pageMap)) {
 
   writeIfMissing(
     path.join(dir, meta.css),
-    `/* ${id} page-specific styles. Shared theme/layout remains in ../../style.css. */\\n`
+    `/* ${id} page-specific styles. Shared theme/layout remains in ../../style.css. */\n`
   );
   writeIfMissing(
     path.join(dir, meta.js),
-    `/* ${id} page-specific behavior. Common navigation remains in ../../app.js. */\\n`
+    `/* ${id} page-specific behavior. Common navigation remains in ../../app.js. */\n`
   );
 }
 
@@ -91,20 +92,20 @@ for (const id of ['pending-invoice', 'upload-invoice-report', 'ai-report']) {
     fs.writeFileSync(htmlFile, found.content, 'utf8');
   }
 
-  writeIfMissing(path.join(dir, `${id}.css`), `/* Report > ${id} page-specific styles. */\\n`);
-  writeIfMissing(path.join(dir, `${id}.js`), `/* Report > ${id} page-specific behavior. */\\n`);
+  writeIfMissing(path.join(dir, `${id}.css`), `/* Report > ${id} page-specific styles. */\n`);
+  writeIfMissing(path.join(dir, `${id}.js`), `/* Report > ${id} page-specific behavior. */\n`);
 }
 
 // Ensure module-loader.js is included once.
-if (!/pages\\/module-loader\\.js/.test(working)) {
-  const script = '<script src="pages/module-loader.js"></script>\\n';
-  const appScript = working.search(/<script[^>]+src=["'][^"']*app\\.js[^"']*["'][^>]*><\\/script>/i);
+if (!/pages\/module-loader\.js/.test(working)) {
+  const script = '<script src="pages/module-loader.js"></script>\n';
+  const appScript = working.search(/<script[^>]+src=["'][^"']*app\.js[^"']*["'][^>]*><\/script>/i);
 
   if (appScript >= 0) {
     const end = working.indexOf('>', appScript) + 1;
-    working = working.slice(0, end) + '\\n' + script + working.slice(end);
+    working = working.slice(0, end) + '\n' + script + working.slice(end);
   } else {
-    working = working.replace(/<\\/body>/i, script + '</body>');
+    working = working.replace(/<\/body>/i, script + '</body>');
   }
 }
 
