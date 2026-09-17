@@ -1,0 +1,50 @@
+name: Activate GSTUI Module Loader
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Ensure module loader is loaded
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          tag = '<script src="pages/module-loader.js"></script>'
+          if tag not in s:
+              marker = '</body>'
+              if marker not in s:
+                  raise SystemExit('index.html has no </body> marker')
+              s = s.replace(marker, f'  {tag}\n{marker}', 1)
+              p.write_text(s, encoding='utf-8')
+          PY
+      - name: Validate
+        run: |
+          grep -q 'pages/module-loader.js' index.html
+          test -s pages/module-loader.js
+          test -s pages/dashboard/dashboard.html
+          test -s pages/report/report.html
+      - name: Commit and remove one-time workflow
+        run: |
+          rm -f .github/workflows/activate-module-loader.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/activate-module-loader.yml
+          if git diff --cached --quiet; then
+            echo "No changes needed."
+          else
+            git commit -m "Activate modular GSTUI pages"
+            git push
+          fi
