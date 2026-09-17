@@ -13,14 +13,16 @@ const pageMap = {
   settings: { dir: 'settings', html: 'settings.html', css: 'settings.css', js: 'settings.js' }
 };
 
+const reportSubpages = ['pending-invoice', 'upload-invoice-report', 'ai-report'];
+
 function findElement(html, id) {
   const openRe = new RegExp(`<([a-zA-Z][\\w:-]*)\\b[^>]*\\bid=["']${id}["'][^>]*>`, 'i');
-  const m = openRe.exec(html);
-  if (!m) return null;
+  const match = openRe.exec(html);
+  if (!match) return null;
 
-  const tag = m[1];
-  const start = m.index;
-  const openEnd = start + m[0].length;
+  const tag = match[1];
+  const start = match.index;
+  const openEnd = start + match[0].length;
   const tokenRe = new RegExp(`<\\/?${tag}\\b[^>]*>`, 'gi');
   tokenRe.lastIndex = openEnd;
 
@@ -32,11 +34,14 @@ function findElement(html, id) {
     else if (!/\/\\s*>$/.test(text)) depth++;
 
     if (depth === 0) {
+      const end = tokenRe.lastIndex;
       return {
         start,
-        end: tokenRe.lastIndex,
+        end,
         tag,
-        content: html.slice(start, tokenRe.lastIndex)
+        openEnd,
+        content: html.slice(start, end),
+        inner: html.slice(openEnd, end - (`</${tag}>`).length)
       };
     }
   }
@@ -44,8 +49,18 @@ function findElement(html, id) {
   throw new Error(`Unclosed <${tag}> for #${id}`);
 }
 
+function isHostPresent(html, id) {
+  return new RegExp(`class=["'][^"']*\\bpage-module-host\\b[^"']*["'][^>]*data-page-module=["']${id}["']`, 'i').test(html)
+    || new RegExp(`data-page-module=["']${id}["'][^>]*class=["'][^"']*\\bpage-module-host\\b`, 'i').test(html);
+}
+
+function writeText(file, content) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, content, 'utf8');
+}
+
 function writeIfMissing(file, content) {
-  if (!fs.existsSync(file)) fs.writeFileSync(file, content, 'utf8');
+  if (!fs.existsSync(file)) writeText(file, content);
 }
 
 const original = fs.readFileSync(indexPath, 'utf8');
@@ -53,10 +68,12 @@ let working = original;
 const extracted = {};
 
 for (const [id] of Object.entries(pageMap)) {
+  if (isHostPresent(working, id)) continue;
+
   const found = findElement(working, id);
   if (!found) throw new Error(`Required page section #${id} was not found in index.html`);
 
-  extracted[id] = found.content;
+  extracted[id] = found.inner;
   working = working.slice(0, found.start)
     + `<!-- GSTUI page module: ${id}; loaded by pages/module-loader.js -->\n<div id="${id}" class="page-section page-module-host" data-page-module="${id}"></div>\n`
     + working.slice(found.end);
@@ -66,9 +83,10 @@ for (const [id, meta] of Object.entries(pageMap)) {
   const dir = path.join(pagesRoot, meta.dir);
   fs.mkdirSync(dir, { recursive: true });
 
-  const htmlFile = path.join(dir, meta.html);
-  if (!fs.existsSync(htmlFile) || fs.readFileSync(htmlFile, 'utf8').includes('module placeholder')) {
-    fs.writeFileSync(htmlFile, extracted[id], 'utf8');
+  if (extracted[id] !== undefined) {
+    writeText(path.join(dir, meta.html), extracted[id]);
+  } else {
+    writeIfMissing(path.join(dir, meta.html), `<!-- ${id} page module -->\n`);
   }
 
   writeIfMissing(
@@ -81,19 +99,17 @@ for (const [id, meta] of Object.entries(pageMap)) {
   );
 }
 
-// Keep Report subpages as independent modules too.
-for (const id of ['pending-invoice', 'upload-invoice-report', 'ai-report']) {
-  const found = findElement(extracted.reports, id);
-  if (!found) continue;
+// Keep Report subpages as independent modules.
+if (extracted.reports !== undefined) {
+  for (const id of reportSubpages) {
+    const found = findElement(extracted.reports, id);
+    if (!found) continue;
 
-  const dir = path.join(pagesRoot, 'report');
-  const htmlFile = path.join(dir, `${id}.html`);
-  if (!fs.existsSync(htmlFile) || fs.readFileSync(htmlFile, 'utf8').includes('module placeholder')) {
-    fs.writeFileSync(htmlFile, found.content, 'utf8');
+    const dir = path.join(pagesRoot, 'report');
+    writeText(path.join(dir, `${id}.html`), found.inner);
+    writeIfMissing(path.join(dir, `${id}.css`), `/* Report > ${id} page-specific styles. */\n`);
+    writeIfMissing(path.join(dir, `${id}.js`), `/* Report > ${id} page-specific behavior. */\n`);
   }
-
-  writeIfMissing(path.join(dir, `${id}.css`), `/* Report > ${id} page-specific styles. */\n`);
-  writeIfMissing(path.join(dir, `${id}.js`), `/* Report > ${id} page-specific behavior. */\n`);
 }
 
 // Ensure module-loader.js is included once.
@@ -109,5 +125,5 @@ if (!/pages\/module-loader\.js/.test(working)) {
   }
 }
 
-fs.writeFileSync(indexPath, working, 'utf8');
+if (working !== original) writeText(indexPath, working);
 console.log('GSTUI modular page extraction completed successfully.');
