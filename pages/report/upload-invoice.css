@@ -1,0 +1,5 @@
+/* Report > Upload Invoice page-only styles.
+ * Keep future changes here instead of adding more rules to index.html.
+ */
+.upload-invoice-report-module{width:100%;margin:0;padding:0}
+.upload-invoice-report-mount{width:100%}
