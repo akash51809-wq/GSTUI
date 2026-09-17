@@ -1,5 +1,5 @@
 /* GSTUI modular page loader.
- * Common shell/navigation remains shared. Each page's HTML/CSS/JS is loaded from pages/<page>/.
+ * Loads each page module into the shared shell without changing the existing UI markup/design.
  */
 (function(){
   'use strict';
@@ -54,7 +54,10 @@
       try{ await mount(name); }
       catch(error){ console.error('[GSTUI module-loader]',error); }
     }
+
     document.documentElement.dataset.gstuiModulesReady='1';
+    document.dispatchEvent(new CustomEvent('gstui:modules-ready'));
+
     if(typeof window.showSection==='function'){
       const hash=window.location.hash.replace(/^#/,'') || 'dashboard';
       window.showSection(hash);
