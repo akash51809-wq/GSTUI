@@ -122,5 +122,6 @@
       document.getElementById('deleteCancelBtn')?.addEventListener('click',closeDelete);document.getElementById('reportDeleteModal')?.addEventListener('click',e=>{if(e.target.id==='reportDeleteModal')closeDelete()});document.getElementById('deleteConfirmBtn')?.addEventListener('click',()=>{const pin=document.getElementById('deleteInvoicePin').value.trim();if(!/^\d{4,8}$/.test(pin)){document.getElementById('deletePinError').textContent='कृपया 4 से 8 digit Security PIN enter करें।';return}document.getElementById('deletePinError').textContent='';closeDelete();alert('PIN accepted. Actual invoice deletion को backend security PIN से connect करना बाकी है।')});document.getElementById('deleteInvoicePin')?.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('deleteConfirmBtn').click();if(e.key==='Escape')closeDelete()});renderReport(rows);
     });
   </script>
+  <script src="pages/module-loader.js"></script>
 </body>
 </html>
