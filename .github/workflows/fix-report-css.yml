@@ -1,0 +1,103 @@
+name: Fix Report Upload Invoice CSS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Move Upload Invoice CSS into module
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          index = Path('index.html')
+          css_file = Path('pages/report/upload-invoice.css')
+          s = index.read_text(encoding='utf-8')
+          start_marker = '    #upload-invoice-report.report-subpage'
+          style_end = '  </style>'
+
+          start = s.find(start_marker)
+          end = s.find(style_end, start)
+          if start == -1 or end == -1:
+              raise SystemExit('Upload Invoice CSS block not found')
+
+          moved = s[start:end].strip() + '\n'
+          css_file.write_text(
+              '/* Report > Upload Invoice page-only styles. */\n' + moved,
+              encoding='utf-8'
+          )
+          s = s[:start] + s[end:]
+          index.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Restore report subpage wrappers
+        run: |
+          cat > pages/report/pending-invoice.html <<'EOF'
+          <div id="pending-invoice" class="report-subpage active">
+            <div class="report-cards">
+              <div><span>Pending Invoices</span><strong>24</strong></div>
+              <div><span>Pending Amount</span><strong>₹ 1,84,500</strong></div>
+              <div><span>Older Than 7 Days</span><strong>8</strong></div>
+            </div>
+          </div>
+          EOF
+
+          cat > pages/report/upload-invoice-report.html <<'EOF'
+          <div id="upload-invoice-report" class="report-subpage">
+            <div class="report-upload-shell">
+              <div class="report-filter-bar">
+                <div class="report-filter-field"><label for="reportFinYear">Fin Year</label><select id="reportFinYear"><option value="all">All Financial Years</option><option value="2026-27">2026-27</option><option value="2025-26">2025-26</option></select></div>
+                <div class="report-filter-field"><label for="reportMonth">Month</label><select id="reportMonth"><option value="all">All Months</option><option value="April">April</option><option value="May">May</option><option value="June">June</option><option value="July">July</option><option value="August">August</option><option value="September">September</option><option value="October">October</option><option value="November">November</option><option value="December">December</option><option value="January">January</option><option value="February">February</option><option value="March">March</option></select></div>
+                <div class="report-filter-field"><label for="reportType">Buy / Sell</label><select id="reportType"><option value="all">All</option><option value="Buy">Buy</option><option value="Sell">Sell</option></select></div>
+                <div class="report-filter-field"><label for="reportParty">Party Name</label><input id="reportParty" type="search" placeholder="Search party name..." autocomplete="off"></div>
+                <button id="reportSearchBtn" class="report-search-btn" type="button"><span>⌕</span> Search</button>
+                <button id="reportResetBtn" class="report-reset-btn" type="button"><span>↺</span> Reset</button>
+                <div id="reportFilterCount" class="report-filter-count">Showing all invoice records</div>
+              </div>
+              <div class="report-table-card">
+                <div class="report-table-head"><h3>Invoice Report</h3><span id="reportRowCount">0 records</span></div>
+                <div class="report-table-wrap"><table><thead><tr><th>Sl No</th><th>Fin Year</th><th>Month</th><th>Inv No</th><th>Party Name</th><th>Invoice Type</th><th>Amount</th><th>Actions</th></tr></thead><tbody id="reportTableBody"></tbody></table></div>
+              </div>
+            </div>
+          </div>
+          EOF
+
+          cat > pages/report/ai-report.html <<'EOF'
+          <div id="ai-report" class="report-subpage">
+            <div class="settings-placeholder"><strong>AI Report</strong>यहाँ Gemini AI processing और extraction report दिखाई जाएगी।</div>
+          </div>
+          EOF
+
+      - name: Validate
+        run: |
+          test -s pages/report/upload-invoice.css
+          grep -q 'id="upload-invoice-report" class="report-subpage"' pages/report/upload-invoice-report.html
+          grep -q 'id="pending-invoice" class="report-subpage active"' pages/report/pending-invoice.html
+          grep -q 'id="ai-report" class="report-subpage"' pages/report/ai-report.html
+          ! grep -q '#upload-invoice-report.report-subpage' index.html
+          grep -q 'pages/module-loader.js' index.html
+
+      - name: Commit and remove one-time workflow
+        run: |
+          rm -f .github/workflows/fix-report-css.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html pages/report/upload-invoice.css pages/report/pending-invoice.html pages/report/upload-invoice-report.html pages/report/ai-report.html .github/workflows/fix-report-css.yml
+          if git diff --cached --quiet; then
+            echo "No changes needed."
+          else
+            git commit -m "Restore modular Report Upload Invoice CSS"
+            git push
+          fi
