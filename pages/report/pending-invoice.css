@@ -1,0 +1,4 @@
+/* Pending Invoice module styles.
+   Keep page-specific styles here so future Pending Invoice changes do not require editing index.html. */
+.pending-invoice-module{width:100%;margin:0;padding:0}
+.pending-invoice-mount{width:100%}
