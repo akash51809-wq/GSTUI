@@ -1,5 +1,8 @@
-/* Report-wide shared styles only.
- * Pending Invoice, Upload Invoice and AI Report keep their own page CSS.
- */
+/* Report parent page-only styles. Subpages have their own CSS files. */
 .report-module{width:100%;margin:0;padding:0}
-.report-module[hidden]{display:none!important}
+.report-module .report-subpage{display:none}
+.report-module .report-subpage.active{display:block}
+.report-module .report-tabs{display:flex;gap:10px;margin:4px 0 22px}
+.report-module .report-tab{border:1px solid #E2E8F0;background:#fff;color:#475569;border-radius:12px;padding:10px 16px;cursor:pointer;font-size:10px;font-weight:800;box-shadow:3px 5px 12px rgba(15,23,42,.06)}
+.report-module .report-tab.active,.report-module .report-tab:hover{background:#EFF6FF;color:#2563EB;border-color:#BFDBFE}
+@media(max-width:760px){.report-module .report-tabs{overflow-x:auto}}
