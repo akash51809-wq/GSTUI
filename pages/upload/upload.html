@@ -4,7 +4,32 @@
       <div class="dropzone" id="invoiceDropzone">
         <div class="upload-box-title"><h2>Upload Invoice</h2></div>
         <div class="dropzone-center">
-          <div class="dropzone-icon"><span>↥</span></div>
+          <div class="dropzone-icon" aria-hidden="true">
+  <svg class="upload-cloud-art" viewBox="0 0 180 130" role="img">
+    <defs>
+      <linearGradient id="uploadCloudGrad" x1="20" y1="15" x2="150" y2="115" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#38BDF8"/>
+        <stop offset="1" stop-color="#2563EB"/>
+      </linearGradient>
+      <filter id="uploadCloudShadow" x="-30%" y="-30%" width="160%" height="170%">
+        <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#2563EB" flood-opacity=".24"/>
+      </filter>
+    </defs>
+    <path d="M43 102h83c20 0 34-13 34-30 0-16-12-29-28-31-5-18-21-30-40-30-21 0-38 15-42 35C32 47 18 61 18 77c0 15 11 25 25 25Z"
+      fill="url(#uploadCloudGrad)" filter="url(#uploadCloudShadow)"/>
+    <path d="M88 79V43m0 0-14 14m14-14 14 14" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <g transform="rotate(9 133 83)">
+      <rect x="112" y="62" width="42" height="51" rx="7" fill="#fff" stroke="#D7E5F4" stroke-width="2"/>
+      <path d="M143 62v12h11" fill="#E8F3FF"/>
+      <rect x="117" y="82" width="32" height="18" rx="5" fill="#FF4D55"/>
+      <text x="133" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="900" fill="#fff">PDF</text>
+    </g>
+    <circle cx="25" cy="31" r="3" fill="#38BDF8"/>
+    <circle cx="157" cy="28" r="3" fill="#2563EB"/>
+    <path d="M48 18l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7Z" fill="#38BDF8"/>
+    <path d="M164 55l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5 2.5-6Z" fill="#10B981"/>
+  </svg>
+</div>
           <h3>Drop invoice PDF here</h3>
           <p>Drag & drop your invoice files here, or select them from your computer.</p>
           <input id="invoiceFileInput" type="file" accept=".pdf,application/pdf" multiple hidden>
@@ -19,15 +44,7 @@
           </div>
         </div>
 
-        <section class="upload-process-card">
-          <div class="process-head">
-            <div>
-              <span class="process-kicker">LIVE PROCESSING</span>
-              <h3>Invoice Processing Pipeline</h3>
-              <p>Every uploaded invoice moves through the workflow automatically.</p>
-            </div>
-            <div class="process-count"><strong id="processInvoiceCount">0</strong><small>Invoices</small></div>
-          </div>
+        <section class="upload-process-card" aria-label="Invoice processing steps">
           <div class="process-track">
             <div class="process-line"><i id="processLineFill"></i></div>
             <div class="process-step active"><b>01</b><span>Upload</span></div>
