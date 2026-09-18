@@ -1,7 +1,7 @@
 /* GSTUI modular page loader - stable, cache-safe asset loading. */
 (function(){
 'use strict';
-const V='20260918-7';
+const V='20260918-8';
 const modules={dashboard:{html:'pages/dashboard/dashboard.html',css:'pages/dashboard/dashboard.css',js:'pages/dashboard/dashboard.js'},upload:{html:'pages/upload/upload.html',css:'pages/upload/upload.css',js:'pages/upload/upload.js'},reports:{html:'pages/report/report.html',css:'pages/report/report.css',js:'pages/report/report.js'},parties:{html:'pages/parties/parties.html',css:'pages/parties/parties.css',js:'pages/parties/parties.js'},settings:{html:'pages/settings/settings.html',css:'pages/settings/settings.css',js:'pages/settings/settings.js'}};
 const reportSubpages={'pending-invoice':{html:'pages/report/pending-invoice.html',css:'pages/report/pending-invoice.css',js:'pages/report/pending-invoice.js'},'upload-invoice-report':{html:'pages/report/upload-invoice-report.html',css:'pages/report/upload-invoice.css',js:'pages/report/upload-invoice-report.js'},'ai-report':{html:'pages/report/ai-report.html',css:'pages/report/ai-report.css',js:'pages/report/ai-report.js'}};
 const loaded=new Set();
@@ -11,7 +11,6 @@ function loadCss(u){
   const v=asset(u);
   const existing=document.querySelector('link[data-gstui-module-css][href="'+v+'"]');
   if(existing) return Promise.resolve();
-  document.querySelectorAll('link[data-gstui-module-css]').forEach(x=>x.remove());
   return new Promise((resolve,reject)=>{
     const l=document.createElement('link');
     l.rel='stylesheet';
