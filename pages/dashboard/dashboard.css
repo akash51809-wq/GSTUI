@@ -1,6 +1,3 @@
-.dashboard-page{width:100%;margin:0;padding:0}
-@media(max-width:1050px){.dashboard-page .stats{grid-template-columns:repeat(2,1fr)}.dashboard-page .grid-2{grid-template-columns:1fr}}
-@media(max-width:760px){.dashboard-page .hero-3d{min-height:190px;padding:24px}.dashboard-page .hero-action{display:none}.dashboard-page .stats{grid-template-columns:1fr}.dashboard-page .donut-wrap{grid-template-columns:1fr}.dashboard-page .donut{margin:auto}}
-.dashboard-page .hero-3d{min-height:0;height:auto;padding:18px 24px;border-radius:22px;align-items:center}.dashboard-page .hero-kicker,.dashboard-page .hero-content p,.dashboard-page .hero-meta,.dashboard-page .hero-action{display:none}.dashboard-page .hero-content h2{font-size:22px;line-height:1.2;margin:0}.dashboard-page .hero-3d .shape-a{width:260px;height:260px;right:60px;top:-180px}.dashboard-page .hero-3d .shape-b{width:180px;height:180px;right:-70px;bottom:-110px}.dashboard-page .stats{margin-top:14px}
-/* Chart bars are dashboard-only; no inline HTML styling. */
-.dashboard-page .chart i:nth-child(1){height:35%}.dashboard-page .chart i:nth-child(2){height:50%}.dashboard-page .chart i:nth-child(3){height:42%}.dashboard-page .chart i:nth-child(4){height:68%}.dashboard-page .chart i:nth-child(5){height:58%}.dashboard-page .chart i:nth-child(6){height:78%}.dashboard-page .chart i:nth-child(7){height:64%}.dashboard-page .chart i:nth-child(8){height:88%}.dashboard-page .chart i:nth-child(9){height:73%}.dashboard-page .chart i:nth-child(10){height:94%}.dashboard-page .chart i:nth-child(11){height:82%}.dashboard-page .chart i:nth-child(12){height:100%}
+/* Dashboard page-only styles. */
+.dashboard-module{width:100%;margin:0;padding:0}
+.dashboard-mount{width:100%}

@@ -30,16 +30,12 @@ function showSection(id){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function toggleSubmenu(id){const submenu=document.getElementById(id);if(submenu) submenu.classList.toggle('open')}
-function closeProfileMenu(){document.querySelector('.profile-menu-wrap')?.classList.remove('open')}
 function showReportSubpage(id,button){document.querySelectorAll('.report-subpage').forEach(x=>x.classList.remove('active'));const target=document.getElementById(id);if(target) target.classList.add('active');document.querySelectorAll('.report-tab').forEach(x=>x.classList.remove('active'));if(button) button.classList.add('active')}
 function showSettingsPanel(id,button){document.querySelectorAll('.settings-panel').forEach(x=>x.classList.remove('active'));const target=document.getElementById(id+'-panel');if(target) target.classList.add('active');document.querySelectorAll('.settings-shortcut').forEach(x=>x.classList.remove('active'));if(button) button.classList.add('active')}
 function logout(){if(window.confirm('Are you sure you want to logout?')) window.location.href='index.html'}
 window.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.sidebar-nav > a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();showSection(a.getAttribute('href').slice(1))}));
   document.querySelectorAll('.submenu a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();showSection(a.getAttribute('href').slice(1))}));
-  const profileWrap=document.querySelector('.profile-menu-wrap');
-  const profileTrigger=document.querySelector('.profile-trigger');
-  if(profileTrigger&&profileWrap){profileTrigger.addEventListener('click',e=>{e.stopPropagation();profileWrap.classList.toggle('open')});document.addEventListener('click',closeProfileMenu);profileWrap.querySelector('.profile-menu')?.addEventListener('click',e=>e.stopPropagation())}
   const id=location.hash.replace('#','')||'dashboard';
   showSection(document.getElementById(id)?id:'dashboard');
 });
