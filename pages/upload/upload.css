@@ -4,17 +4,20 @@ body.upload-active .main{padding-top:28px!important}
 #upload .upload-layout{display:grid;grid-template-columns:minmax(0,1fr) 410px;gap:18px;align-items:stretch}
 #upload .upload-main-card{min-width:0;display:flex;flex-direction:column}
 #upload .upload-title{display:none}
-#upload .dropzone{min-height:430px;border:1.5px dashed #7DB7F3;border-radius:24px;background:linear-gradient(145deg,#F8FBFF 0%,#EDF6FF 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;position:relative;overflow:hidden;transition:.25s;box-shadow:0 18px 38px rgba(37,99,235,.09),inset 2px 2px 7px rgba(255,255,255,.9);flex:1}
+#upload .dropzone{min-height:430px;border:1.5px dashed #7DB7F3;border-radius:24px;background:linear-gradient(145deg,#F8FBFF 0%,#EDF6FF 100%);display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:24px 26px 0;position:relative;overflow:hidden;transition:.25s;box-shadow:0 18px 38px rgba(37,99,235,.09),inset 2px 2px 7px rgba(255,255,255,.9);flex:1}
 #upload .dropzone:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-190px;top:-190px;background:radial-gradient(circle,rgba(56,189,248,.16),transparent 68%);pointer-events:none}
 #upload .dropzone:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;left:-200px;bottom:-210px;background:radial-gradient(circle,rgba(37,99,235,.09),transparent 68%);pointer-events:none}
 #upload .dropzone.dragover{border-color:#10B981;background:#F0FDF9;transform:translateY(-2px)}
+#upload .upload-box-title{position:relative;z-index:3;width:100%;text-align:left}
+#upload .upload-box-title h2{margin:0;color:#0F172A;font-size:25px;line-height:1.1;letter-spacing:-.7px}
+#upload .dropzone-center{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;width:100%;padding:4px 0 12px}
 #upload .dropzone-icon{width:82px;height:82px;border-radius:25px;padding:6px;background:linear-gradient(145deg,#FFFFFF,#DCEEFF);box-shadow:9px 12px 22px rgba(37,99,235,.15),inset 2px 2px 4px #fff;display:grid;place-items:center;position:relative;z-index:1}
 #upload .dropzone-icon span{width:70px;height:70px;border-radius:20px;display:grid;place-items:center;background:linear-gradient(145deg,#38BDF8,#2563EB);color:#fff;font-size:34px;font-weight:900;box-shadow:inset 2px 2px 4px rgba(255,255,255,.35),7px 9px 16px rgba(37,99,235,.22);animation:uploadFloat 2.5s ease-in-out infinite}
 #upload .dropzone h3{position:relative;z-index:1;margin:20px 0 6px;color:#0F172A;font-size:19px}
 #upload .dropzone p{position:relative;z-index:1;margin:0 0 19px;max-width:450px;color:#64748B;font-size:10px;line-height:1.65}
 #upload .upload-actions{position:relative;z-index:1;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
 #upload .upload-actions button{font-size:10px}
-#upload .dropzone>small{position:relative;z-index:1;margin-top:14px;color:#94A3B8;font-size:8px}
+#upload .dropzone-center>small{position:relative;z-index:1;margin-top:14px;color:#94A3B8;font-size:8px}
 #upload .upload-progress{position:relative;z-index:1;width:min(450px,100%);margin-top:18px;text-align:left}
 #upload .upload-progress-top{display:flex;justify-content:space-between;color:#64748B;font-size:8px;font-weight:800;margin-bottom:6px}
 #upload .upload-progress-top strong{color:#2563EB}
@@ -39,15 +42,20 @@ body.upload-active .main{padding-top:28px!important}
 #upload .workflow-item em{font-style:normal;color:#059669;background:#E9FBF2;border:1px solid #C7F2DA;border-radius:7px;padding:4px 3px;font-size:8px;font-weight:900;width:42px;min-width:42px;box-sizing:border-box;text-align:center;white-space:nowrap;justify-self:end;box-shadow:2px 3px 6px rgba(5,150,105,.07)}
 #upload .workflow-foot{position:relative;z-index:1;margin:17px 5px 0;padding:10px 11px;border-radius:11px;background:rgba(236,253,245,.8);border:1px solid #CFF5DD;color:#047857;font-size:11px;font-weight:800;white-space:nowrap}
 #upload .pulse{display:inline-block;width:6px;height:6px;border-radius:50%;background:#10B981;margin-right:6px;box-shadow:0 0 0 4px rgba(16,185,129,.1);animation:statusPulse 1.7s ease-in-out infinite}
-#upload .upload-process-card{position:relative!important;margin-top:-92px!important;margin-left:24px!important;margin-right:24px!important;z-index:5!important;transform:translateY(0)!important;box-shadow:0 14px 30px rgba(15,23,42,.14)!important}
-#upload .process-kicker{font-size:9px!important;letter-spacing:1.6px!important;font-weight:900!important;color:#2563EB!important}
-#upload .process-head h3{font-size:17px!important}
-#upload .process-head p{font-size:9px!important}
-#upload .process-step b{font-size:10px!important}
-#upload .process-step span{font-size:9px!important}
+#upload .upload-process-card{position:relative!important;width:100%!important;box-sizing:border-box!important;margin:0!important;padding:12px 14px 10px!important;z-index:3!important;border-radius:16px 16px 0 0!important;box-shadow:0 -6px 18px rgba(37,99,235,.07)!important;background:rgba(255,255,255,.92)!important;border:1px solid rgba(215,229,244,.9)!important;border-bottom:0!important;backdrop-filter:blur(8px)!important}
+#upload .process-head{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;margin:0 0 8px!important}
+#upload .process-kicker{font-size:8px!important;letter-spacing:1.5px!important;font-weight:900!important;color:#2563EB!important;display:inline-block!important}
+#upload .process-head h3{font-size:14px!important;line-height:1.2!important;margin:2px 0!important;color:#173B73!important}
+#upload .process-head p{font-size:8px!important;line-height:1.3!important;margin:0!important;color:#94A3B8!important}
+#upload .process-count{min-width:44px!important;padding:5px 8px!important;border-radius:10px!important;background:#F0F7FF!important;border:1px solid #DCEBFA!important;text-align:center!important}
+#upload .process-count strong{font-size:16px!important;color:#2563EB!important;display:block!important;line-height:1!important}
+#upload .process-count small{font-size:6px!important;color:#64748B!important}
+#upload .process-track{min-height:38px!important}
+#upload .process-step b{font-size:9px!important}
+#upload .process-step span{font-size:8px!important}
 #upload .upload-table-card{margin-top:18px!important}
 @keyframes uploadFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @keyframes numberPulse{0%,100%{transform:translateY(0) scale(1);box-shadow:4px 5px 9px rgba(15,23,42,.07),inset 1px 1px 2px #fff}50%{transform:translateY(-2px) scale(1.06);box-shadow:0 8px 16px rgba(37,99,235,.16),inset 1px 1px 2px #fff}}
 @keyframes statusPulse{0%,100%{transform:scale(1);opacity:.75}50%{transform:scale(1.35);opacity:1}}
-@media(max-width:900px){#upload .upload-layout{grid-template-columns:1fr}#upload .workflow-card{min-height:auto}#upload .upload-process-card{margin-top:18px!important;margin-left:0!important;margin-right:0!important}}
-@media(max-width:600px){#upload .upload-page{padding-top:0}#upload .dropzone{min-height:350px;padding:22px}#upload .upload-actions{flex-direction:column;width:100%}#upload .upload-actions button{width:100%}#upload .upload-process-card{margin-top:18px!important}}
+@media(max-width:900px){#upload .upload-layout{grid-template-columns:1fr}#upload .workflow-card{min-height:auto}}
+@media(max-width:600px){#upload .upload-page{padding-top:0}#upload .dropzone{min-height:350px;padding:18px 16px 0}#upload .upload-box-title h2{font-size:22px}#upload .dropzone-center{padding-bottom:8px}#upload .upload-actions{flex-direction:column;width:100%}#upload .upload-actions button{width:100%}#upload .upload-process-card{padding:10px 10px 8px!important}.process-head p{display:none!important}}
