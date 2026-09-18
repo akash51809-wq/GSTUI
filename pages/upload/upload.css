@@ -310,3 +310,35 @@ body.upload-active .main{padding-top:28px!important}
 #upload .workflow-item:nth-child(3) b:after{color:#22C55E!important}
 #upload .workflow-item:nth-child(4) b:after{color:#F59E0B!important}
 #upload .workflow-item:nth-child(5) b:after{color:#D946EF!important}
+
+/* Upload Invoice — full-width page and report-style invoice activity table */
+body.upload-active .sidebar{display:none!important}
+body.upload-active .main{margin-left:0!important;padding-top:28px!important}
+#upload .upload-table-card{margin-top:18px!important;border:1px solid #E2E8F0!important;border-radius:20px!important;background:#fff!important;box-shadow:11px 14px 28px rgba(15,23,42,.09),inset 1px 1px 2px rgba(255,255,255,.95)!important;overflow:hidden!important}
+#upload .table-head{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding:14px 16px!important;border-bottom:1px solid #E2E8F0!important;background:linear-gradient(90deg,#F8FAFC,#fff)!important}
+#upload .table-head h3{margin:0!important;font-size:15px!important;font-weight:950!important;color:#0F172A!important;letter-spacing:.2px!important}
+#upload .table-summary{display:flex!important;align-items:center!important;gap:9px!important}
+#upload .table-live{display:inline-flex!important;align-items:center!important;gap:5px!important;font-size:9px!important;font-weight:850!important;color:#059669!important;padding:5px 9px!important;border:1px solid #C7F2DA!important;border-radius:9px!important;background:#ECFDF5!important}
+#upload .table-live i{width:6px!important;height:6px!important;border-radius:50%!important;background:#10B981!important;box-shadow:0 0 0 4px rgba(16,185,129,.1)!important;animation:statusPulse 1.7s ease-in-out infinite!important}
+#upload .invoice-total{font-size:9px!important;font-weight:850!important;color:#64748B!important;padding:5px 9px!important;border:1px solid #E2E8F0!important;border-radius:9px!important;background:#F8FAFC!important}
+#upload .invoice-table-wrap{overflow:auto!important}
+#upload .invoice-table{width:100%!important;border-collapse:separate!important;border-spacing:0!important;min-width:900px!important}
+#upload .invoice-table th{height:42px!important;padding:0 12px!important;text-align:left!important;background:#F1F5F9!important;color:#475569!important;font-size:9px!important;font-weight:950!important;letter-spacing:.45px!important;white-space:nowrap!important;border-bottom:1px solid #E2E8F0!important}
+#upload .invoice-table td{height:55px!important;padding:7px 12px!important;color:#334155!important;font-size:10px!important;font-weight:700!important;border-bottom:1px solid #EEF2F7!important;white-space:nowrap!important;background:#fff!important}
+#upload .invoice-table tbody tr{transition:.2s!important}
+#upload .invoice-table tbody tr:hover td{background:linear-gradient(90deg,#F8FBFF,#F8FFFC)!important}
+#upload .invoice-table tbody tr:last-child td{border-bottom:0!important}
+#upload .invoice-table .sl-cell{color:#94A3B8!important;font-weight:900!important;width:55px!important}
+#upload .invoice-table .file-cell strong{display:block!important;color:#0F172A!important;font-size:10px!important;font-weight:900!important}
+#upload .invoice-table .file-cell small{display:block!important;margin-top:3px!important;color:#94A3B8!important;font-size:8px!important;font-weight:700!important}
+#upload .invoice-table .size-cell{font-size:10px!important;font-weight:900!important;color:#475569!important}
+#upload .upload-status-pill{display:inline-flex!important;align-items:center!important;padding:6px 9px!important;border-radius:9px!important;font-size:8px!important;font-weight:950!important;background:#ECFDF5!important;color:#047857!important;box-shadow:inset 1px 1px 2px #fff,3px 4px 8px rgba(15,23,42,.06)!important}
+#upload .row-progress{width:150px!important;height:7px!important;border-radius:99px!important;background:#E2E8F0!important;overflow:hidden!important;box-shadow:inset 2px 2px 4px rgba(15,23,42,.06)!important}
+#upload .row-progress i{display:block!important;width:0!important;height:100%!important;border-radius:99px!important;background:linear-gradient(90deg,#2563EB,#38BDF8,#10B981)!important;transition:width .3s!important}
+#upload .upload-action-group{display:flex!important;align-items:center!important;gap:7px!important}
+#upload .upload-action{width:32px!important;height:32px!important;border:1px solid transparent!important;border-radius:11px!important;display:grid!important;place-items:center!important;font-size:14px!important;cursor:pointer!important;transition:.22s!important;box-shadow:5px 6px 10px rgba(15,23,42,.09),inset 1px 1px 2px rgba(255,255,255,.7)!important}
+#upload .upload-action:hover{transform:translateY(-3px) rotate(-2deg)!important}
+#upload .upload-action.view{background:linear-gradient(145deg,#60A5FA,#2563EB)!important;color:#fff!important}
+#upload .upload-action.delete{background:linear-gradient(145deg,#FB7185,#EF4444)!important;color:#fff!important}
+#upload .empty-row td{height:90px!important;text-align:center!important;color:#94A3B8!important;font-size:11px!important;font-weight:800!important}
+@media(max-width:600px){body.upload-active .main{padding-top:14px!important}#upload .table-head{padding:12px!important}#upload .table-head h3{font-size:13px!important}#upload .table-summary{gap:5px!important}#upload .invoice-total{display:none!important}#upload .upload-table-card{border-radius:16px!important}}
