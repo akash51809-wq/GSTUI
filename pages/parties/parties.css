@@ -1,3 +1,17 @@
-/* Party List page-only styles. */
-.parties-module{width:100%;margin:0;padding:0}
-.parties-mount{width:100%}
+/* Party List page-only styles. All selectors are scoped to .parties-page. */
+.parties-page{width:100%;margin:0;padding:0}
+.parties-page .section-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 18px}
+.parties-page .section-head .breadcrumb{display:block;margin-bottom:5px}
+.parties-page .section-head h2{margin:0;color:#0F172A;font-size:24px;letter-spacing:-.5px}
+.parties-page .section-head p{margin:5px 0 0;color:#64748B;font-size:10px}
+.parties-page .party-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.parties-page .party-card{background:rgba(255,255,255,.96);border:1px solid #E2E8F0;border-radius:20px;padding:16px;display:grid;grid-template-columns:44px minmax(0,1fr) 34px;align-items:center;gap:12px;box-shadow:10px 12px 22px rgba(15,23,42,.08),inset 1px 1px 2px rgba(255,255,255,.95);transition:.22s}
+.parties-page .party-card:hover{transform:translateY(-4px);box-shadow:13px 17px 28px rgba(15,23,42,.12)}
+.parties-page .party-avatar{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#38BDF8,#2563EB);color:#fff;font-size:11px;font-weight:900;box-shadow:5px 7px 13px rgba(37,99,235,.18),inset 1px 1px 3px rgba(255,255,255,.3)}
+.parties-page .party-card strong,.parties-page .party-card small{display:block}
+.parties-page .party-card strong{font-size:12px;color:#0F172A}
+.parties-page .party-card small{font-size:8px;color:#64748B;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.parties-page .party-card>button{width:34px;height:34px;border:1px solid #DCE3EC;border-radius:11px;background:linear-gradient(145deg,#fff,#EEF2F6);color:#2563EB;cursor:pointer;box-shadow:4px 5px 9px rgba(15,23,42,.07)}
+.parties-page .party-card>button:hover{transform:translateY(-2px);background:#EFF6FF}
+@media(max-width:900px){.parties-page .party-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.parties-page .section-head{align-items:flex-start;flex-direction:column}.parties-page .party-grid{grid-template-columns:1fr}}
