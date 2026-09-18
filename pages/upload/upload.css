@@ -98,3 +98,9 @@ body.upload-active .topbar{display:none!important} body.upload-active .main{padd
 #upload .workflow-item em{font-size:9px!important;font-weight:900!important;padding:6px 8px!important}
 #upload .workflow-foot{font-size:11px!important;font-weight:800!important;padding:12px 13px!important}
 #upload .workflow-foot .pulse{width:8px!important;height:8px!important}
+
+/* Workflow typography — requested preview sizes */
+#upload .workflow-item b{font-size:18px!important}
+#upload .workflow-item span{font-size:26px!important}
+#upload .workflow-item em{font-size:15px!important}
+#upload .workflow-foot{font-size:18px!important}
