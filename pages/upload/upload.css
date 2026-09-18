@@ -116,3 +116,8 @@ body.upload-active .topbar{display:none!important} body.upload-active .main{padd
 #upload .dropzone-icon span{width:60px!important;height:60px!important;font-size:30px!important}
 #upload .dropzone h3{font-size:17px!important;margin:16px 0 5px!important}
 #upload .dropzone p{font-size:10px!important;margin-bottom:16px!important}
+
+
+/* Workflow — final requested typography + READY alignment */
+#upload .workflow-item span{font-size:18px!important;white-space:nowrap!important;overflow:visible!important}
+#upload .workflow-item em{font-size:14px!important;width:52px!important;min-width:52px!important;box-sizing:border-box!important;text-align:center!important;white-space:nowrap!important;justify-self:end!important}
