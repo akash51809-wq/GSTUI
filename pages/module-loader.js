@@ -1,7 +1,7 @@
 /* GSTUI modular page loader - stable, cache-safe asset loading. */
 (function(){
   'use strict';
-  const V='20260918-4';
+  const V='20260918-5';
   const modules={
     dashboard:{html:'pages/dashboard/dashboard.html',css:'pages/dashboard/dashboard.css',js:'pages/dashboard/dashboard.js'},
     upload:{html:'pages/upload/upload.html',css:'pages/upload/upload.css',js:'pages/upload/upload.js'},
