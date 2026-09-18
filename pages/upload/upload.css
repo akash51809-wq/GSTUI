@@ -345,3 +345,10 @@ body.upload-active .sidebar:hover~.main{margin-left:286px!important}
 #upload .upload-action.delete{background:linear-gradient(145deg,#FB7185,#EF4444)!important;color:#fff!important}
 #upload .empty-row td{height:90px!important;text-align:center!important;color:#94A3B8!important;font-size:11px!important;font-weight:800!important}
 @media(max-width:600px){body.upload-active .main{padding-top:14px!important}#upload .table-head{padding:12px!important}#upload .table-head h3{font-size:13px!important}#upload .table-summary{gap:5px!important}#upload .invoice-total{display:none!important}#upload .upload-table-card{border-radius:16px!important}}
+
+
+/* Upload Invoice — keep the global left menu visible even when the module loader does not add body.upload-active. */
+body:has(#upload) .sidebar{display:flex!important;visibility:visible!important;opacity:1!important;transform:none!important}
+body:has(#upload) .main{margin-left:110px!important;padding-top:28px!important;transition:margin-left .34s cubic-bezier(.2,.8,1),padding .25s ease!important}
+body:has(#upload) .sidebar:hover~.main{margin-left:286px!important}
+@media(max-width:760px){body:has(#upload) .main{margin-left:0!important}}
