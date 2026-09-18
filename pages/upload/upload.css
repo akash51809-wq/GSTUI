@@ -348,7 +348,7 @@ body.upload-active .sidebar:hover~.main{margin-left:286px!important}
 
 
 /* Upload Invoice — keep the global left menu visible even when the module loader does not add body.upload-active. */
-body:has(#upload) .sidebar{display:flex!important;visibility:visible!important;opacity:1!important;transform:none!important}
+body:has(#upload) .sidebar{display:flex!important;visibility:visible!important;opacity:1!important;transform:translateY(-50%)!important}
 body:has(#upload) .main{margin-left:110px!important;padding-top:28px!important;transition:margin-left .34s cubic-bezier(.2,.8,1),padding .25s ease!important}
 body:has(#upload) .sidebar:hover~.main{margin-left:286px!important}
 @media(max-width:760px){body:has(#upload) .main{margin-left:0!important}}
