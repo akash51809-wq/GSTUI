@@ -312,8 +312,11 @@ body.upload-active .main{padding-top:28px!important}
 #upload .workflow-item:nth-child(5) b:after{color:#D946EF!important}
 
 /* Upload Invoice — full-width page and report-style invoice activity table */
-body.upload-active .sidebar{display:none!important}
-body.upload-active .main{margin-left:0!important;padding-top:28px!important}
+/* Keep the global floating sidebar visible on Upload Invoice. */
+body.upload-active .sidebar{display:flex!important}
+body.upload-active .main{margin-left:110px!important;padding-top:28px!important;transition:margin-left .34s cubic-bezier(.2,.8,1),padding .25s ease!important}
+body.upload-active .sidebar:hover~.main{margin-left:286px!important}
+@media(max-width:760px){body.upload-active .main{margin-left:0!important}}
 #upload .upload-table-card{margin-top:18px!important;border:1px solid #E2E8F0!important;border-radius:20px!important;background:#fff!important;box-shadow:11px 14px 28px rgba(15,23,42,.09),inset 1px 1px 2px rgba(255,255,255,.95)!important;overflow:hidden!important}
 #upload .table-head{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding:14px 16px!important;border-bottom:1px solid #E2E8F0!important;background:linear-gradient(90deg,#F8FAFC,#fff)!important}
 #upload .table-head h3{margin:0!important;font-size:15px!important;font-weight:950!important;color:#0F172A!important;letter-spacing:.2px!important}
