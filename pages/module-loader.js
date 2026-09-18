@@ -1,7 +1,7 @@
 /* GSTUI modular page loader - stable, cache-safe asset loading. */
 (function(){
   'use strict';
-  const V='20260918-3';
+  const V='20260918-4';
   const modules={
     dashboard:{html:'pages/dashboard/dashboard.html',css:'pages/dashboard/dashboard.css',js:'pages/dashboard/dashboard.js'},
     upload:{html:'pages/upload/upload.html',css:'pages/upload/upload.css',js:'pages/upload/upload.js'},
@@ -18,9 +18,15 @@
   const asset=u=>u+'?v='+V;
   function loadCss(u){
     const v=asset(u);
-    if(document.querySelector('link[data-gstui-module-css="'+v+'"]'))return;
+    const existing=document.querySelector('link[data-gstui-module-css="'+v+'"]');
+    if(existing) return Promise.resolve();
     document.querySelectorAll('link[data-gstui-module-css^="'+u+'?v="]').forEach(x=>x.remove());
-    const l=document.createElement('link');l.rel='stylesheet';l.href=v;l.dataset.gstuiModuleCss=v;document.head.appendChild(l);
+    return new Promise((resolve,reject)=>{
+      const l=document.createElement('link');
+      l.rel='stylesheet'; l.href=v; l.dataset.gstuiModuleCss=v;
+      l.onload=()=>resolve(); l.onerror=()=>reject(new Error('Failed to load '+u));
+      document.head.appendChild(l);
+    });
   }
   function loadJs(u){
     return new Promise((resolve,reject)=>{
@@ -35,11 +41,8 @@
     host.style.visibility='hidden';
     const r=await fetch(asset(meta.html),{cache:'no-store'});
     if(!r.ok)throw new Error('GSTUI module '+key+' failed to load ('+r.status+')');
-    host.innerHTML=await r.text();loadCss(meta.css);await loadJs(meta.js);loaded.add(key);
+    host.innerHTML=await r.text();await loadCss(meta.css);await loadJs(meta.js);loaded.add(key);
     host.dispatchEvent(new CustomEvent('gstui:module-mounted',{detail:{name:key},bubbles:true}));
-    // app.js is loaded before module HTML; initialize the Upload Invoice workspace only after its HTML exists.
-    if(key==='upload' && typeof window.enhanceUploadPage==='function') window.enhanceUploadPage();
-    if(key==='upload' && typeof window.buildUploadWorkspace==='function') window.buildUploadWorkspace();
     // Reveal only after module HTML and page-specific enhancement have finished.
     requestAnimationFrame(()=>{host.style.visibility='visible'});
   }
