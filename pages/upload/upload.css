@@ -50,3 +50,35 @@ body.upload-active .topbar{display:none!important} body.upload-active .main{padd
 @media(max-width:900px){#upload .upload-layout{grid-template-columns:1fr}#upload .workflow-card{min-height:auto}}
 @media(max-width:600px){#upload .upload-page{padding-top:0}#upload .upload-title h2{font-size:22px}#upload .dropzone{min-height:350px;padding:22px}#upload .upload-actions{flex-direction:column;width:100%}#upload .upload-actions button{width:100%}}
 #upload .workflow-card{animation:workflowFloat 4s ease-in-out infinite}.upload-page .workflow-item:hover{transform:translateX(5px);background:rgba(255,255,255,.65);border-radius:12px}.upload-process-card,.upload-table-card{margin-top:18px;background:#fff;border:1px solid #DCE7F3;border-radius:20px;padding:20px 22px;box-shadow:10px 14px 30px rgba(15,23,42,.07)}.process-head,.table-head{display:flex;justify-content:space-between;align-items:center;gap:15px}.process-kicker{font-size:8px;font-weight:900;letter-spacing:1.5px;color:#2563EB}.process-head h3,.table-head h3{margin:4px 0 3px;color:#0F172A;font-size:16px}.process-head p{margin:0;color:#94A3B8;font-size:9px}.process-count{min-width:72px;text-align:center;padding:9px 12px;border-radius:14px;background:linear-gradient(145deg,#EFF6FF,#DBEAFE);box-shadow:inset 1px 1px 2px #fff,5px 7px 14px rgba(37,99,235,.1)}.process-count strong{display:block;color:#2563EB;font-size:20px}.process-count small{font-size:7px;color:#64748B;font-weight:800}.process-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);margin-top:25px;min-height:62px}.process-line{position:absolute;left:9%;right:9%;top:15px;height:5px;background:#E2E8F0;border-radius:99px;overflow:hidden}.process-line i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2563EB,#38BDF8,#10B981);transition:width .8s}.process-step{position:relative;z-index:1;text-align:center}.process-step b{margin:auto;width:31px;height:31px;display:grid;place-items:center;border-radius:50%;background:#F1F5F9;border:3px solid #fff;box-shadow:0 4px 10px rgba(15,23,42,.1);font-size:7px;color:#64748B;transition:.5s}.process-step span{display:block;margin-top:7px;font-size:8px;font-weight:800;color:#64748B}.process-step.active b,.process-step.done b{background:linear-gradient(145deg,#38BDF8,#2563EB);color:#fff;transform:scale(1.12)}.process-step.done span,.process-step.active span{color:#2563EB}.table-live{font-size:8px;font-weight:900;color:#059669;background:#ECFDF5;padding:7px 10px;border-radius:9px}.table-live i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#10B981;margin-right:5px;animation:pulseDot 1.2s infinite}.invoice-table-wrap{overflow:auto;margin-top:15px}.invoice-table{width:100%;border-collapse:separate;border-spacing:0;font-size:9px}.invoice-table th{padding:10px;text-align:left;color:#64748B;background:#F8FAFC;font-size:8px}.invoice-table td{padding:11px 10px;border-top:1px solid #EEF2F7;color:#334155}.invoice-table tbody tr{animation:rowIn .45s ease both}.invoice-table .status{font-weight:900;color:#059669}.empty-row td{text-align:center;color:#94A3B8;padding:25px}.row-progress{width:90px;height:6px;background:#E2E8F0;border-radius:99px;overflow:hidden}.row-progress i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#2563EB,#10B981)}@keyframes workflowFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}@keyframes pulseDot{50%{opacity:.35;transform:scale(.7)}}@keyframes rowIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@media(max-width:900px){#upload .upload-layout{grid-template-columns:1fr}}#upload .upload-success-popup{position:fixed;right:28px;bottom:28px;z-index:9999;display:flex;align-items:center;gap:11px;padding:13px 17px;border-radius:15px;background:rgba(255,255,255,.96);border:1px solid #C7F2DA;box-shadow:0 18px 45px rgba(15,23,42,.18);transform:translateY(20px) scale(.96);opacity:0;transition:.35s}.upload-success-popup.show{transform:none;opacity:1}.success-icon{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;background:#10B981;color:#fff;font-weight:900}
+
+/* Upload Invoice — final visual polish for live pipeline + activity sections */
+#upload .upload-page{width:100%!important;max-width:none!important;padding:2px 0 34px!important}
+#upload .upload-layout{width:100%!important}
+#upload .workflow-head strong{font-size:24px!important;line-height:1.15!important;letter-spacing:1.2px!important;font-weight:950!important}
+#upload .workflow-head small{font-size:9px!important}
+#upload .upload-process-card,
+#upload .upload-table-card{width:100%!important;box-sizing:border-box!important;margin-top:22px!important;padding:24px 26px!important;border:1px solid #D5E3F1!important;border-radius:22px!important;background:linear-gradient(145deg,#FFFFFF,#F8FBFF)!important;box-shadow:10px 16px 34px rgba(15,23,42,.08)!important}
+#upload .process-kicker{display:block!important;font-size:10px!important;line-height:1!important;letter-spacing:2px!important;font-weight:950!important}
+#upload .process-head h3,
+#upload .table-head h3{font-size:22px!important;line-height:1.2!important;font-weight:900!important;margin:7px 0 5px!important}
+#upload .process-head p{font-size:11px!important;line-height:1.5!important}
+#upload .process-count{min-width:88px!important;padding:11px 15px!important}
+#upload .process-count strong{font-size:25px!important}
+#upload .process-count small{font-size:8px!important}
+#upload .process-track{margin-top:30px!important;min-height:78px!important}
+#upload .process-line{top:18px!important;height:6px!important}
+#upload .process-step b{width:36px!important;height:36px!important;font-size:8px!important}
+#upload .process-step span{font-size:10px!important;margin-top:9px!important}
+#upload .table-live{font-size:9px!important;padding:8px 12px!important}
+#upload .invoice-table{font-size:10px!important}
+#upload .invoice-table th{padding:12px!important;font-size:9px!important;font-weight:900!important}
+#upload .invoice-table td{padding:13px 12px!important;font-size:10px!important}
+#upload .empty-row td{padding:32px!important;font-size:11px!important}
+@media(max-width:600px){
+  #upload .workflow-head strong{font-size:20px!important}
+  #upload .upload-process-card,#upload .upload-table-card{padding:18px 14px!important}
+  #upload .process-head{align-items:flex-start}
+  #upload .process-head h3,#upload .table-head h3{font-size:18px!important}
+  #upload .process-track{min-width:520px}
+  #upload .invoice-table-wrap{overflow-x:auto}
+}
