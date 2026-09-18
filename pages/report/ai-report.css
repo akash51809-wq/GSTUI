@@ -1,3 +1,5 @@
 /* Report > AI Report page-only styles. */
 .ai-report-module{width:100%;margin:0;padding:0}
 .ai-report-mount{width:100%}
+
+.ai-report-placeholder{padding:28px;border:1px dashed #CBD5E1;border-radius:16px;background:#F8FAFC;color:#64748B;text-align:center}.ai-report-placeholder strong{display:block;color:#0F172A;font-size:15px;margin-bottom:6px}
