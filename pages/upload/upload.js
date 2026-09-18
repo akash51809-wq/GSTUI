@@ -1,6 +1,9 @@
 (function(){
   const init=()=>{
     const root=document.getElementById('upload'); if(!root||root.dataset.uploadReady==='1')return;
+    document.body.classList.add('upload-active');
+    const sidebar=document.querySelector('.sidebar');
+    if(sidebar){sidebar.style.display='flex';sidebar.style.visibility='visible';sidebar.style.opacity='1';sidebar.style.position='fixed';sidebar.style.inset='50% auto auto 16px';sidebar.style.transform='translateY(-50%)';sidebar.style.zIndex='50';}
     root.dataset.uploadReady='1';
     const input=root.querySelector('#invoiceFileInput'),drop=root.querySelector('#invoiceDropzone'),choose=root.querySelector('#chooseInvoiceBtn'),process=root.querySelector('#processInvoiceBtn'),card=root.querySelector('#uploadFilesCard'),list=root.querySelector('#uploadFilesList'),summary=root.querySelector('#uploadFileSummary'),clear=root.querySelector('#clearInvoiceBtn'),progress=root.querySelector('#uploadProgress'),fill=root.querySelector('#uploadProgressFill'),status=root.querySelector('#uploadStatus'),percent=root.querySelector('#uploadPercent');
     let files=[]; const syncTable=()=>{const body=root.querySelector('#invoiceTableBody'),count=root.querySelector('#processInvoiceCount');if(count)count.textContent=files.length;if(!body)return;body.innerHTML=files.length?files.map((f,i)=>'<tr><td>'+String(i+1).padStart(2,'0')+'</td><td><strong>'+f.name.replace(/</g,'&lt;')+'</strong></td><td>'+size(f.size)+'</td><td class="status">READY</td><td><div class="row-progress"><i></i></div></td></tr>').join(''):'<tr class="empty-row"><td colspan="5">No invoices uploaded yet</td></tr>';};
