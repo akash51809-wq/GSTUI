@@ -104,3 +104,15 @@ body.upload-active .topbar{display:none!important} body.upload-active .main{padd
 #upload .workflow-item span{font-size:26px!important}
 #upload .workflow-item em{font-size:15px!important}
 #upload .workflow-foot{font-size:18px!important}
+
+/* Final Upload Invoice sizing adjustment */
+#upload .workflow-item{grid-template-columns:38px minmax(0,1fr) auto!important;gap:10px!important}
+#upload .workflow-item span{font-size:20px!important;white-space:nowrap!important;overflow:visible!important}
+#upload .workflow-item b{font-size:18px!important;flex-shrink:0!important}
+#upload .workflow-item em{font-size:15px!important;white-space:nowrap!important}
+#upload .workflow-foot{font-size:18px!important;white-space:nowrap!important}
+#upload .dropzone{min-height:390px!important;padding:26px!important}
+#upload .dropzone-icon{width:72px!important;height:72px!important}
+#upload .dropzone-icon span{width:60px!important;height:60px!important;font-size:30px!important}
+#upload .dropzone h3{font-size:17px!important;margin:16px 0 5px!important}
+#upload .dropzone p{font-size:10px!important;margin-bottom:16px!important}
