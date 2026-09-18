@@ -8,6 +8,7 @@ function showSection(id){
   const titles={dashboard:'Dashboard',upload:'Upload Invoice',reports:'Report',parties:'Party List',settings:'Settings'};
   const reportTitles={'pending-invoice':'Pending Invoice','upload-invoice-report':'Upload Invoice','ai-report':'AI Report'};
   const title=reportTitles[id]||titles[targetId]||'Dashboard';
+  document.body.classList.toggle('party-active',targetId==='parties');
   const pageTitle=document.getElementById('pageTitle');
   if(pageTitle) pageTitle.textContent=title;
   const crumb=document.getElementById('crumbTitle');
