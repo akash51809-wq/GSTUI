@@ -1,7 +1,7 @@
 /* GSTUI modular page loader - stable, cache-safe asset loading. */
 (function(){
   'use strict';
-  const V='20260918-2';
+  const V='20260918-3';
   const modules={
     dashboard:{html:'pages/dashboard/dashboard.html',css:'pages/dashboard/dashboard.css',js:'pages/dashboard/dashboard.js'},
     upload:{html:'pages/upload/upload.html',css:'pages/upload/upload.css',js:'pages/upload/upload.js'},
@@ -31,13 +31,17 @@
   }
   async function loadInto(host,meta,key){
     if(!host||!meta||loaded.has(key))return;
+    // Prevent the unstyled/raw Upload Invoice HTML from flashing before its workspace is built.
+    host.style.visibility='hidden';
     const r=await fetch(asset(meta.html),{cache:'no-store'});
     if(!r.ok)throw new Error('GSTUI module '+key+' failed to load ('+r.status+')');
     host.innerHTML=await r.text();loadCss(meta.css);await loadJs(meta.js);loaded.add(key);
-    host.dispatchEvent(new CustomEvent('gstui:module-mounted',{detail:{name:key}}));
+    host.dispatchEvent(new CustomEvent('gstui:module-mounted',{detail:{name:key},bubbles:true}));
     // app.js is loaded before module HTML; initialize the Upload Invoice workspace only after its HTML exists.
     if(key==='upload' && typeof window.enhanceUploadPage==='function') window.enhanceUploadPage();
     if(key==='upload' && typeof window.buildUploadWorkspace==='function') window.buildUploadWorkspace();
+    // Reveal only after module HTML and page-specific enhancement have finished.
+    requestAnimationFrame(()=>{host.style.visibility='visible'});
   }
   async function mountReportSubpages(){
     const report=document.querySelector('.page-module-host[data-page-module="reports"]');if(!report)return;
