@@ -284,6 +284,14 @@ function buildUploadWorkspace(){
   });
 }
 
+// Modules are mounted asynchronously by module-loader.js. Initialize Upload Invoice when its HTML is ready.
+document.addEventListener('gstui:module-mounted',(event)=>{
+  if(event.detail?.name==='upload'){
+    enhanceUploadPage();
+    buildUploadWorkspace();
+  }
+});
+
 window.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.sidebar-nav > a').forEach(a=>a.addEventListener('click',e=>{
     e.preventDefault(); showSection(a.getAttribute('href').slice(1));
