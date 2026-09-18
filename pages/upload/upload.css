@@ -121,3 +121,8 @@ body.upload-active .topbar{display:none!important} body.upload-active .main{padd
 /* Workflow — final requested typography + READY alignment */
 #upload .workflow-item span{font-size:18px!important;white-space:nowrap!important;overflow:visible!important}
 #upload .workflow-item em{font-size:14px!important;width:52px!important;min-width:52px!important;box-sizing:border-box!important;text-align:center!important;white-space:nowrap!important;justify-self:end!important}
+
+
+/* Workflow — slightly smaller typography */
+#upload .workflow-item span{font-size:16px!important}
+#upload .workflow-item em{font-size:12px!important;width:48px!important;min-width:48px!important}
