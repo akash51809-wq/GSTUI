@@ -72,10 +72,29 @@ app.get('/invoice/:id/view', requireAuth, asyncRoute(async (req, res) => { const
 app.get('/invoice/:id/download', requireAuth, asyncRoute(async (req, res) => { const inv = await Invoice.findById(req.params.id); if (!inv) return res.sendStatus(404); const data = await downloadFile(inv.driveFileId); res.setHeader('Content-Type', 'application/pdf'); res.setHeader('Content-Disposition', `attachment; filename=${inv.originalFileName}`); res.end(data); }));
 app.post('/invoice/:id/email', requireAuth, asyncRoute(async (req, res) => { const inv = await Invoice.findById(req.params.id).populate('partyId'); if (!inv) return res.sendStatus(404); if (!inv.partyId || !inv.partyId.email) return res.status(400).send('Party email नहीं है'); const pdf = await downloadFile(inv.driveFileId); await sendInvoiceEmail(inv.partyId.email, inv, pdf); inv.emailSent = true; inv.emailSentAt = new Date(); inv.emailStatus = 'sent'; await inv.save(); res.redirect('/reports/invoices'); }));
 app.post('/invoice/:id/delete', requireAuth, asyncRoute(async (req, res) => { const ADMIN_PIN = process.env.DELETE_PIN || '1234'; if (req.body.pin !== ADMIN_PIN) return res.status(400).send('गलत PIN दर्ज किया गया है!'); const inv = await Invoice.findById(req.params.id); if (!inv) return res.status(404).send('इनवॉइस नहीं मिला'); if (inv.driveFileId) { try { await deleteFile(inv.driveFileId); } catch (e) { console.error('Drive delete error', e.message); } } await Invoice.findByIdAndDelete(req.params.id); res.redirect('/reports/invoices'); }));
-app.get('/parties', requireAuth, asyncRoute(async (req, res) => { const search = String(req.query.search || '').trim(); const q = search ? { name: new RegExp(search.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\app.get('/parties', requireAuth, asyncRoute(async (req, res) => { const parties = await Party.find().sort({ name: 1 }); res.render('parties', { parties }); }));
-app.post('/parties/update/:id', requireAuth, asyncRoute(async (req, res) => { await Party.findByIdAndUpdate(req.params.id, { email: req.body.email, mobile: req.body.mobile }); res.redirect('/parties'); }));'), 'i') } : {}; const parties = await Party.find(q).sort({ name: 1 }); res.render('parties', { parties, search }); }));
-app.post('/parties/update/:id', requireAuth, asyncRoute(async (req, res) => { await Party.findByIdAndUpdate(req.params.id, { name: req.body.name, gstin: req.body.gstin, email: req.body.email, mobile: req.body.mobile }); res.redirect('/parties'); }));
-app.post('/parties/delete/:id', requireAuth, asyncRoute(async (req, res) => { const ADMIN_PIN = process.env.DELETE_PIN || '1234'; if (req.body.pin !== ADMIN_PIN) return res.status(400).send('गलत PIN दर्ज किया गया है!'); const party = await Party.findById(req.params.id); if (!party) return res.status(404).send('Party नहीं मिली'); await Party.findByIdAndDelete(req.params.id); res.redirect('/parties'); }));
+app.get('/parties', requireAuth, asyncRoute(async (req, res) => {
+  const search = String(req.query.search || '').trim();
+  const q = search ? { name: new RegExp(search.replace(/[.*+?^$\{}()|[\]\\]/g, '\\$&'), 'i') } : {};
+  const parties = await Party.find(q).sort({ name: 1 });
+  res.render('parties', { parties, search });
+}));
+app.post('/parties/update/:id', requireAuth, asyncRoute(async (req, res) => {
+  await Party.findByIdAndUpdate(req.params.id, {
+    name: req.body.name,
+    gstin: req.body.gstin,
+    email: req.body.email,
+    mobile: req.body.mobile
+  });
+  res.redirect('/parties');
+}));
+app.post('/parties/delete/:id', requireAuth, asyncRoute(async (req, res) => {
+  const ADMIN_PIN = process.env.DELETE_PIN || '1234';
+  if (req.body.pin !== ADMIN_PIN) return res.status(400).send('गलत PIN दर्ज किया गया है!');
+  const party = await Party.findById(req.params.id);
+  if (!party) return res.status(404).send('Party नहीं मिली');
+  await Party.findByIdAndDelete(req.params.id);
+  res.redirect('/parties');
+}));
 app.post('/api/parties/save-email-and-send', requireAuth, asyncRoute(async (req, res) => { const { partyId, email, invoiceId } = req.body; if (!partyId || !email || !invoiceId) return res.status(400).json({ error: 'partyId, email और invoiceId ज़रूरी हैं' }); await Party.findByIdAndUpdate(partyId, { email }); const inv = await Invoice.findById(invoiceId); if (!inv) return res.status(404).json({ error: 'Invoice नहीं मिला' }); const pdfBuffer = await downloadFile(inv.driveFileId); await sendInvoiceEmail(email, inv, pdfBuffer); inv.emailSent = true; inv.emailSentAt = new Date(); inv.emailStatus = 'sent'; await inv.save(); res.json({ message: `ईमेल भेज दिया गया ${email}` }); }));
 app.get('/settings/company', requireAuth, (req, res) => res.render('settings-company', { saved: req.query.saved }));
 app.post('/settings/company', requireAuth, asyncRoute(async (req, res) => { await saveEnv({ COMPANY_NAME: req.body.companyName }); res.redirect('/settings/company?saved=1'); }));
