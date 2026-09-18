@@ -1,1 +1,42 @@
-<div class="section-head"><div><div class="breadcrumb">AI INVOICE PROCESSING</div><h2>Upload Invoice</h2><p>Upload PDF invoices and extract details with AI.</p></div></div><div class="upload-card"><div class="dropzone"><div class="upload-ring"><div class="upload-icon">↥</div></div><h3>Drop invoice PDF here</h3><p>Or select files using the button below</p><button class="primary">Choose PDF Files</button><small>Maximum 50 files • 25 MB per file</small></div><div class="process-info"><div class="info-title">AUTOMATED WORKFLOW</div><div>✓ <span>Gemini AI extraction</span></div><div>✓ <span>Buyer / Seller classification</span></div><div>✓ <span>Duplicate invoice detection</span></div><div>✓ <span>Google Drive storage</span></div><div>✓ <span>Automatic email workflow</span></div></div></div>
+<div class="upload-page">
+  <div class="section-head">
+    <div>
+      <div class="breadcrumb">AI INVOICE PROCESSING</div>
+      <h2>Upload Invoice</h2>
+      <p>Upload PDF invoices and extract details with AI.</p>
+    </div>
+    <div class="upload-page-badge"><span>●</span> AI READY</div>
+  </div>
+
+  <div class="upload-card">
+    <div class="dropzone" id="invoiceDropzone">
+      <div class="upload-ring"><div class="upload-icon">↥</div></div>
+      <h3>Drop invoice PDF here</h3>
+      <p>Drag & drop your invoice files here, or select them from your computer.</p>
+      <input id="invoiceFileInput" type="file" accept=".pdf,application/pdf" multiple hidden>
+      <div class="upload-actions">
+        <button class="primary" id="chooseInvoiceBtn" type="button">＋ Choose PDF Files</button>
+        <button class="primary light" id="processInvoiceBtn" type="button">↑ Upload & Process</button>
+      </div>
+      <small>Maximum 50 files • 25 MB per file • PDF only</small>
+      <div class="upload-progress" id="uploadProgress" hidden>
+        <div class="upload-progress-top"><span id="uploadStatus">Ready</span><strong id="uploadPercent">0%</strong></div>
+        <div class="upload-progress-track"><i id="uploadProgressFill"></i></div>
+      </div>
+    </div>
+
+    <div class="process-info">
+      <div class="info-title">AUTOMATED WORKFLOW</div>
+      <div class="workflow-item"><b>01</b><span>Gemini AI extraction</span><em>READY</em></div>
+      <div class="workflow-item"><b>02</b><span>Buyer / Seller classification</span><em>READY</em></div>
+      <div class="workflow-item"><b>03</b><span>Duplicate invoice detection</span><em>READY</em></div>
+      <div class="workflow-item"><b>04</b><span>Google Drive storage</span><em>READY</em></div>
+      <div class="workflow-item"><b>05</b><span>Automatic email workflow</span><em>READY</em></div>
+    </div>
+  </div>
+
+  <div class="upload-files-card" id="uploadFilesCard" hidden>
+    <div class="upload-files-head"><div><strong>Selected Invoices</strong><small id="uploadFileSummary">0 files</small></div><button type="button" id="clearInvoiceBtn">Clear All</button></div>
+    <div class="upload-files-list" id="uploadFilesList"></div>
+  </div>
+</div>
