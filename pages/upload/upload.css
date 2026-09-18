@@ -1,3 +1,4 @@
+body.upload-active .topbar{display:none!important} body.upload-active .main{padding-top:28px!important}
 #upload .upload-page{width:100%;max-width:1180px;margin:0 auto;padding:2px 0 24px}
 #upload .upload-layout{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:22px;align-items:stretch}
 #upload .upload-main-card{min-width:0}
