@@ -4,6 +4,7 @@ function showSection(id){
   const targetId=reportIds.includes(id)?'reports':id;
   const target=document.getElementById(targetId);
   if(target) target.classList.remove('hidden');
+  document.body.classList.toggle('upload-active', targetId === 'upload');
 
   const titles={dashboard:'Dashboard',upload:'Upload Invoice',reports:'Report',parties:'Party List',settings:'Settings'};
   const reportTitles={'pending-invoice':'Pending Invoice','upload-invoice-report':'Upload Invoice','ai-report':'AI Report'};
@@ -62,8 +63,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.submenu a').forEach(a=>a.addEventListener('click',e=>{
     e.preventDefault(); showSection(a.getAttribute('href').slice(1));
   }));
-  enhanceUploadPage();
-  buildUploadWorkspace();
+  document.body.classList.toggle('upload-active', id === 'upload');
   const id=location.hash.replace('#','')||'dashboard';
   showSection(document.getElementById(id)?id:'dashboard');
 });
