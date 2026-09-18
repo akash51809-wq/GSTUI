@@ -1,3 +1,16 @@
-/* Settings page-only styles. */
-.settings-module{width:100%;margin:0;padding:0}
-.settings-mount{width:100%}
+/* Settings page-only styles. All selectors are scoped to .settings-page. */
+.settings-page{width:100%;margin:0;padding:0}
+.settings-page .section-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 18px}
+.settings-page .section-head .breadcrumb{display:block;margin-bottom:5px}
+.settings-page .section-head h2{margin:0;color:#0F172A;font-size:24px;letter-spacing:-.5px}
+.settings-page .section-head p{margin:5px 0 0;color:#64748B;font-size:10px}
+.settings-page .settings-shortcuts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:4px 0 22px}
+.settings-page .settings-shortcut{border:1px solid #E2E8F0;background:linear-gradient(145deg,#fff,#EEF2F6);color:#475569;border-radius:16px;padding:16px 12px;cursor:pointer;text-align:center;font-weight:800;font-size:11px;box-shadow:5px 7px 16px rgba(15,23,42,.08),inset 1px 1px 2px rgba(255,255,255,.95);transition:.18s}
+.settings-page .settings-shortcut:hover,.settings-page .settings-shortcut.active{transform:translateY(-2px);border-color:#BFDBFE;background:#EFF6FF;color:#2563EB;box-shadow:7px 10px 20px rgba(37,99,235,.13),inset 1px 1px 2px rgba(255,255,255,.95)}
+.settings-page .settings-shortcut span{display:block;font-size:20px;margin-bottom:7px}
+.settings-page .settings-panel{display:none}
+.settings-page .settings-panel.active{display:block}
+.settings-page .settings-placeholder{padding:28px;border:1px dashed #CBD5E1;border-radius:16px;background:#F8FAFC;color:#64748B;text-align:center}
+.settings-page .settings-placeholder strong{display:block;color:#0F172A;font-size:15px;margin-bottom:6px}
+@media(max-width:900px){.settings-page .settings-shortcuts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.settings-page .settings-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr))}.settings-page .settings-shortcut:last-child{grid-column:1/-1}}
