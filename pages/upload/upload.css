@@ -82,3 +82,12 @@ body.upload-active .topbar{display:none!important} body.upload-active .main{padd
   #upload .process-track{min-width:520px}
   #upload .invoice-table-wrap{overflow-x:auto}
 }
+
+/* Upload Invoice — readable workflow typography */
+#upload .workflow-head strong{font-size:19px!important;font-weight:900!important;letter-spacing:.7px!important}
+#upload .workflow-head small{font-size:10px!important}
+#upload .workflow-item{padding:14px 5px!important}
+#upload .workflow-item b{font-size:10px!important}
+#upload .workflow-item span{font-size:19px!important;font-weight:700!important;line-height:1.35!important}
+#upload .workflow-item em{font-size:8px!important;padding:5px 7px!important}
+#upload .workflow-foot{font-size:10px!important}
