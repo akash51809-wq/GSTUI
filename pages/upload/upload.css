@@ -59,3 +59,128 @@ body.upload-active .main{padding-top:28px!important}
 @keyframes statusPulse{0%,100%{transform:scale(1);opacity:.75}50%{transform:scale(1.35);opacity:1}}
 @media(max-width:900px){#upload .upload-layout{grid-template-columns:1fr}#upload .workflow-card{min-height:auto}}
 @media(max-width:600px){#upload .upload-page{padding-top:0}#upload .dropzone{min-height:350px;padding:18px 16px 0}#upload .upload-box-title h2{font-size:22px}#upload .dropzone-center{padding-bottom:8px}#upload .upload-actions{flex-direction:column;width:100%}#upload .upload-actions button{width:100%}#upload .upload-process-card{padding:10px 10px 8px!important}.process-head p{display:none!important}}
+
+/* Upload pipeline — horizontal bottom rail */
+#upload .dropzone{position:relative!important;padding-bottom:0!important}
+#upload .dropzone-center{padding-bottom:96px!important}
+#upload .upload-process-card{
+  position:absolute!important;
+  left:18px!important;
+  right:18px!important;
+  bottom:0!important;
+  width:auto!important;
+  margin:0!important;
+  padding:10px 16px 12px!important;
+  border-radius:18px 18px 0 0!important;
+  background:rgba(255,255,255,.96)!important;
+  box-shadow:0 -10px 28px rgba(37,99,235,.10),inset 0 1px 0 rgba(255,255,255,.95)!important;
+  border:1px solid #D7E5F4!important;
+  border-bottom:0!important;
+  backdrop-filter:blur(12px)!important;
+}
+#upload .process-head{display:none!important}
+#upload .process-track{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  align-items:start!important;
+  gap:0!important;
+  min-height:54px!important;
+  padding:0!important;
+}
+#upload .process-line{
+  position:absolute!important;
+  left:10%!important;
+  right:10%!important;
+  top:17px!important;
+  height:4px!important;
+  border-radius:99px!important;
+  background:#DCE8F5!important;
+  overflow:hidden!important;
+  z-index:0!important;
+}
+#upload .process-line:before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:linear-gradient(90deg,#2563EB,#38BDF8,#10B981)!important;
+  transform:scaleX(.08)!important;
+  transform-origin:left center!important;
+  animation:pipelineProgress 5s ease-in-out infinite!important;
+}
+#upload .process-line i{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  border-radius:99px!important;
+  background:linear-gradient(90deg,#2563EB,#38BDF8,#10B981)!important;
+  opacity:.75!important;
+}
+#upload .process-step{
+  position:relative!important;
+  z-index:1!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:5px!important;
+  min-width:0!important;
+}
+#upload .process-step b{
+  width:34px!important;
+  height:34px!important;
+  border-radius:11px!important;
+  display:grid!important;
+  place-items:center!important;
+  box-sizing:border-box!important;
+  background:linear-gradient(145deg,#FFFFFF,#E5F0FD)!important;
+  border:1px solid #D3E3F4!important;
+  color:#2563EB!important;
+  font-size:10px!important;
+  font-weight:900!important;
+  box-shadow:5px 7px 13px rgba(15,23,42,.10),inset 1px 1px 2px #fff!important;
+  transition:transform .3s ease,box-shadow .3s ease,background .3s ease,color .3s ease!important;
+  animation:processNode 2.5s ease-in-out infinite!important;
+}
+#upload .process-step:nth-child(2) b{animation-delay:0s!important}
+#upload .process-step:nth-child(3) b{animation-delay:.5s!important}
+#upload .process-step:nth-child(4) b{animation-delay:1s!important}
+#upload .process-step:nth-child(5) b{animation-delay:1.5s!important}
+#upload .process-step:nth-child(6) b{animation-delay:2s!important}
+#upload .process-step span{
+  display:block!important;
+  color:#475569!important;
+  font-size:9px!important;
+  line-height:1.15!important;
+  font-weight:900!important;
+  white-space:nowrap!important;
+  letter-spacing:-.1px!important;
+}
+#upload .process-step.active b{
+  color:#fff!important;
+  border-color:#2563EB!important;
+  background:linear-gradient(145deg,#38BDF8,#2563EB)!important;
+  box-shadow:0 7px 18px rgba(37,99,235,.28),inset 2px 2px 4px rgba(255,255,255,.3)!important;
+}
+#upload .process-step.active span{color:#2563EB!important}
+@keyframes pipelineProgress{
+  0%,15%{transform:scaleX(.08)}
+  30%,45%{transform:scaleX(.28)}
+  55%,65%{transform:scaleX(.5)}
+  70%,82%{transform:scaleX(.73)}
+  88%,100%{transform:scaleX(1)}
+}
+@keyframes processNode{
+  0%,100%{transform:translateY(0) scale(1)}
+  45%{transform:translateY(-3px) scale(1.04)}
+  60%{transform:translateY(0) scale(1)}
+}
+@media(max-width:600px){
+  #upload .dropzone-center{padding-bottom:82px!important}
+  #upload .upload-process-card{left:8px!important;right:8px!important;padding:9px 6px 10px!important}
+  #upload .process-track{min-height:47px!important}
+  #upload .process-line{left:9%!important;right:9%!important;top:14px!important;height:3px!important}
+  #upload .process-step b{width:29px!important;height:29px!important;border-radius:9px!important;font-size:8px!important}
+  #upload .process-step span{font-size:7px!important}
+}
