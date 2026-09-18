@@ -1,3 +1,22 @@
-/* Party List page-only styles. */
-.parties-module{width:100%;margin:0;padding:0}
-.parties-mount{width:100%}
+/* Party List page — matches GST Invoice Manager theme. */
+#parties{width:100%}
+.party-page{width:100%;padding:0 0 28px}
+.party-page-title{font-size:24px;font-weight:900;letter-spacing:-.5px;color:#0F172A;margin:0 0 18px}
+.party-toolbar{display:flex;align-items:center;margin:0 0 14px}
+.party-search-box{width:330px;height:40px;display:flex;align-items:center;gap:8px;padding:0 12px;border:1px solid #DCE3EC;border-radius:11px;background:linear-gradient(145deg,#fff,#F1F5F9);box-shadow:inset 2px 2px 4px rgba(15,23,42,.04),4px 5px 10px rgba(15,23,42,.05)}
+.party-search-icon{font-size:18px;line-height:1;color:#64748B}
+.party-search-box input{width:100%;height:100%;border:0;outline:0;background:transparent;color:#334155;font-size:11px}
+.party-search-box input::placeholder{color:#94A3B8}
+.party-table-card{width:100%;background:rgba(255,255,255,.97);border:1px solid #E2E8F0;border-radius:18px;padding:0;overflow:hidden;box-shadow:10px 12px 22px rgba(15,23,42,.07),-5px -5px 12px rgba(255,255,255,.9),inset 1px 1px 2px rgba(255,255,255,.95)}
+.party-table-wrap{width:100%;overflow-x:auto}
+.party-table{width:100%;min-width:820px;border-collapse:separate;border-spacing:0}
+.party-table th{background:#F8FAFC;color:#64748B;font-size:9px;font-weight:900;letter-spacing:.45px;text-transform:uppercase;padding:13px 14px;text-align:left;border-bottom:1px solid #E2E8F0;white-space:nowrap}
+.party-table td{padding:14px;border-bottom:1px solid #EEF2F6;color:#475569;font-size:10px;white-space:nowrap;vertical-align:middle}
+.party-table tbody tr:last-child td{border-bottom:0}
+.party-table tbody tr:hover{background:#F8FBFF}
+.party-table td strong{color:#0F172A;font-size:10px}
+.party-action{border:1px solid #DCE3EC;border-radius:9px;padding:7px 13px;font-size:9px;font-weight:800;cursor:pointer;background:linear-gradient(145deg,#fff,#F1F5F9);color:#2563EB;box-shadow:3px 4px 8px rgba(15,23,42,.07);transition:.18s}
+.party-action:hover{transform:translateY(-1px);box-shadow:5px 6px 10px rgba(15,23,42,.1)}
+.party-action.delete{color:#DC2626}
+.party-empty{text-align:center!important;color:#94A3B8!important;padding:30px!important}
+@media(max-width:700px){.party-page-title{font-size:20px}.party-search-box{width:100%;max-width:330px}}
