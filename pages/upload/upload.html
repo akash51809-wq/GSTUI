@@ -1,38 +1,43 @@
 <div class="upload-page">
-  <div class="section-head">
-    <div>
-      <div class="breadcrumb">AI INVOICE PROCESSING</div>
-      <h2>Upload Invoice</h2>
-      <p>Upload PDF invoices and extract details with AI.</p>
-    </div>
-    <div class="upload-page-badge"><span>●</span> AI READY</div>
-  </div>
-
-  <div class="upload-card">
-    <div class="dropzone" id="invoiceDropzone">
-      <div class="upload-ring"><div class="upload-icon">↥</div></div>
-      <h3>Drop invoice PDF here</h3>
-      <p>Drag & drop your invoice files here, or select them from your computer.</p>
-      <input id="invoiceFileInput" type="file" accept=".pdf,application/pdf" multiple hidden>
-      <div class="upload-actions">
-        <button class="primary" id="chooseInvoiceBtn" type="button">＋ Choose PDF Files</button>
-        <button class="primary light" id="processInvoiceBtn" type="button">↑ Upload & Process</button>
+  <div class="upload-layout">
+    <section class="upload-main-card">
+      <div class="upload-title">
+        <h2>Upload Invoice</h2>
+        <p>Upload PDF invoices and extract details with AI.</p>
       </div>
-      <small>Maximum 50 files • 25 MB per file • PDF only</small>
-      <div class="upload-progress" id="uploadProgress" hidden>
-        <div class="upload-progress-top"><span id="uploadStatus">Ready</span><strong id="uploadPercent">0%</strong></div>
-        <div class="upload-progress-track"><i id="uploadProgressFill"></i></div>
-      </div>
-    </div>
 
-    <div class="process-info">
-      <div class="info-title">AUTOMATED WORKFLOW</div>
-      <div class="workflow-item"><b>01</b><span>Gemini AI extraction</span><em>READY</em></div>
-      <div class="workflow-item"><b>02</b><span>Buyer / Seller classification</span><em>READY</em></div>
-      <div class="workflow-item"><b>03</b><span>Duplicate invoice detection</span><em>READY</em></div>
-      <div class="workflow-item"><b>04</b><span>Google Drive storage</span><em>READY</em></div>
-      <div class="workflow-item"><b>05</b><span>Automatic email workflow</span><em>READY</em></div>
-    </div>
+      <div class="dropzone" id="invoiceDropzone">
+        <div class="dropzone-icon"><span>↥</span></div>
+        <h3>Drop invoice PDF here</h3>
+        <p>Drag & drop your invoice files here, or select them from your computer.</p>
+        <input id="invoiceFileInput" type="file" accept=".pdf,application/pdf" multiple hidden>
+        <div class="upload-actions">
+          <button class="primary" id="chooseInvoiceBtn" type="button">＋ Choose PDF Files</button>
+          <button class="primary light" id="processInvoiceBtn" type="button">↑ Upload &amp; Process</button>
+        </div>
+        <small>Maximum 50 files • 25 MB per file • PDF only</small>
+        <div class="upload-progress" id="uploadProgress" hidden>
+          <div class="upload-progress-top"><span id="uploadStatus">Ready</span><strong id="uploadPercent">0%</strong></div>
+          <div class="upload-progress-track"><i id="uploadProgressFill"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="workflow-card">
+      <div class="workflow-glow"></div>
+      <div class="workflow-head">
+        <span class="workflow-icon">✦</span>
+        <div><strong>AUTOMATED WORKFLOW</strong><small>AI invoice processing pipeline</small></div>
+      </div>
+      <div class="workflow-list">
+        <div class="workflow-item"><b>01</b><span>Gemini AI extraction</span><em>READY</em></div>
+        <div class="workflow-item"><b>02</b><span>Buyer / Seller classification</span><em>READY</em></div>
+        <div class="workflow-item"><b>03</b><span>Duplicate invoice detection</span><em>READY</em></div>
+        <div class="workflow-item"><b>04</b><span>Google Drive storage</span><em>READY</em></div>
+        <div class="workflow-item"><b>05</b><span>Automatic email workflow</span><em>READY</em></div>
+      </div>
+      <div class="workflow-foot"><span class="pulse"></span> All workflow services ready</div>
+    </aside>
   </div>
 
   <div class="upload-files-card" id="uploadFilesCard" hidden>
