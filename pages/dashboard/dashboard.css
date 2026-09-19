@@ -160,3 +160,23 @@
 @keyframes shortcutHalo{to{transform:rotate(360deg)}}@keyframes orbitTurn{to{transform:rotate(360deg)}}@keyframes coreBreath{50%{transform:scale(.90);opacity:.35}}
 @media(max-width:1100px){.shortcut-hub{width:min(300px,88%)}.shortcut-hub-panel{min-height:390px}}
 @media(max-width:760px){.shortcut-hub{width:min(285px,94%)}.hub-core{width:96px;height:96px}.hub-shortcut{width:54px;height:54px}.shortcut-hub-panel{min-height:350px}}
+
+
+/* Donut chart style shortcut wheel. */
+.donut-shortcut-panel{justify-content:center}
+.shortcut-donut{width:min(330px,92%);aspect-ratio:1;position:relative;margin:7px auto 2px;border-radius:50%;isolation:isolate}
+.donut-ring{position:absolute;inset:4%;border-radius:50%;background:conic-gradient(#38bdf8 0 16.6%,#f472b6 16.6% 33.2%,#a78bfa 33.2% 49.8%,#cbd5e1 49.8% 66.4%,#c084fc 66.4% 83%,#fb923c 83% 100%);padding:18px;box-shadow:0 20px 32px rgba(0,0,0,.52),inset 4px 4px 8px rgba(255,255,255,.14),inset -6px -7px 10px rgba(0,0,0,.52);animation:donutRotate 18s linear infinite}
+.donut-ring:before{content:"";display:block;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 35% 25%,#354960,#0a1422 68%,#030811 100%);box-shadow:inset 9px 9px 16px rgba(255,255,255,.07),inset -12px -13px 20px rgba(0,0,0,.8)}
+.donut-ring:after{content:"";position:absolute;inset:13%;border-radius:50%;border:1px dashed rgba(255,255,255,.16);animation:donutRotate 10s linear infinite reverse}
+.donut-center{position:absolute;left:50%;top:50%;width:108px;height:108px;transform:translate(-50%,-50%);border-radius:50%;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:radial-gradient(circle at 32% 24%,#52657c,#26384d 27%,#0a1422 72%,#030811);border:2px solid rgba(148,163,184,.25);box-shadow:0 17px 28px rgba(0,0,0,.65),inset 6px 6px 13px rgba(255,255,255,.10),inset -9px -10px 17px rgba(0,0,0,.82)}
+.donut-center:after{content:"";position:absolute;inset:9px;border-radius:50%;border:1px solid rgba(125,211,252,.20);animation:donutPulse 2.6s ease-in-out infinite}
+.donut-center-icon{font-size:22px;color:#7dd3fc;text-shadow:0 0 12px rgba(56,189,248,.8);margin-bottom:4px}.donut-center strong{font-size:9px;letter-spacing:.16em}.donut-center small{font-size:7px;color:#94a3b8;margin-top:3px}
+.donut-action{position:absolute;width:55px;height:55px;border:0;border-radius:50%;z-index:8;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;box-shadow:5px 8px 14px rgba(0,0,0,.42),inset 3px 3px 5px rgba(255,255,255,.27),inset -4px -5px 7px rgba(0,0,0,.38);transition:transform .22s cubic-bezier(.2,.8,.2,1),filter .22s,box-shadow .22s}
+.donut-action:before{content:"";position:absolute;inset:5px;border-radius:50%;border:1px solid rgba(255,255,255,.27);box-shadow:inset 2px 2px 4px rgba(255,255,255,.2),inset -3px -4px 6px rgba(0,0,0,.3)}
+.donut-action span,.donut-action small{position:relative;z-index:2}.donut-action span{font-size:17px;font-weight:900;line-height:1}.donut-action small{font-size:6px;font-weight:900}
+.donut-action:hover{transform:scale(1.18) translateY(-4px);filter:brightness(1.2);box-shadow:7px 11px 18px rgba(0,0,0,.5),0 0 18px currentColor,inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.38)}
+.donut-invoice{left:50%;top:-1%;transform:translateX(-50%);background:linear-gradient(145deg,#38bdf8,#0369a1);color:#7dd3fc}.donut-party{right:3%;top:23%;background:linear-gradient(145deg,#f472b6,#be185d);color:#f9a8d4}.donut-report{right:4%;bottom:13%;background:linear-gradient(145deg,#a78bfa,#6d28d9);color:#c4b5fd}.donut-settings{left:50%;bottom:-1%;transform:translateX(-50%);background:linear-gradient(145deg,#cbd5e1,#475569);color:#e2e8f0}.donut-ai{left:4%;bottom:13%;background:linear-gradient(145deg,#c084fc,#7e22ce);color:#e9d5ff}.donut-pending{left:3%;top:23%;background:linear-gradient(145deg,#fb923c,#c2410c);color:#fdba74}
+.donut-invoice:hover,.donut-settings:hover{transform:translateX(-50%) scale(1.18) translateY(-4px)}
+@keyframes donutRotate{to{transform:rotate(360deg)}}@keyframes donutPulse{50%{transform:scale(.9);opacity:.35}}
+@media(max-width:1100px){.shortcut-donut{width:min(300px,88%)}}
+@media(max-width:760px){.shortcut-donut{width:min(280px,92%)}.donut-center{width:94px;height:94px}.donut-action{width:51px;height:51px}}
