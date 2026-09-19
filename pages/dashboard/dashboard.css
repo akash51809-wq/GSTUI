@@ -68,3 +68,6 @@
  .candle-month{font-size:7px}
  .chart-grid{inset:16px 3px 39px}
 }
+
+/* Hard filter state: visibility is controlled by a class on each candle group. */
+.chart .candle-group.hide-buy .purchase-candle,.chart .candle-group.hide-sale .sale-candle{display:none!important}
