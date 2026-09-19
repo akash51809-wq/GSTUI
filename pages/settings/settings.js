@@ -165,7 +165,7 @@
       const emailSubject=root.querySelector('#email-template-subject');
       const emailCode=root.querySelector('#email-template-code');
       const emailSave=root.querySelector('#email-template-save-btn');
-      root.querySelectorAll('.email-variable-chip').forEach(function(btn){
+      root.querySelectorAll('#template-panel .email-variable-chip').forEach(function(btn){
         btn.addEventListener('click',function(){ insertEmailVariable(btn.dataset.variable || ''); });
       });
       if(emailSave) emailSave.addEventListener('click',saveEmailTemplate);
@@ -200,6 +200,20 @@
 
       if(whatsappSubmit) whatsappSubmit.addEventListener('click',function(){ saveWhatsAppSettings(root); });
       if(whatsappReset) whatsappReset.addEventListener('click',function(){ resetWhatsAppSettings(root); });
+      root.querySelectorAll('#whatsapp-panel .whatsapp-variable-chip').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          const variable=btn.dataset.variable || '';
+          const url=root.querySelector('#whatsapp-api-url');
+          if(url){
+            const start=url.selectionStart || url.value.length;
+            const end=url.selectionEnd || start;
+            url.value=url.value.slice(0,start)+variable+url.value.slice(end);
+            url.focus();
+            url.selectionStart=url.selectionEnd=start+variable.length;
+          }
+        });
+      });
+
       [whatsappType,whatsappUrl].forEach(function(field){
         if(field) field.addEventListener('input',function(){
           const status=root.querySelector('#whatsapp-status');
