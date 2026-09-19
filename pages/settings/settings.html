@@ -39,7 +39,30 @@
     <div class="settings-save-note"><span>✓</span> आपकी company settings इसी browser में automatically save होंगी।</div>
   </div>
 
-  <div id="drive-panel" class="settings-panel"><div class="settings-placeholder"><div class="placeholder-icon">☁</div><strong>G Drive Setting</strong><p>Google Drive connection और storage settings यहाँ configure होंगे।</p></div></div>
+  <div id="drive-panel" class="settings-panel">
+    <div class="settings-panel-title">
+      <div class="panel-icon">☁</div>
+      <div><h2>G Drive Setting</h2><p>Google Drive account connect करके invoice और report files को Drive में सुरक्षित रखें।</p></div>
+    </div>
+    <div class="drive-settings-card">
+      <div class="drive-form-row">
+        <div class="drive-field-info"><div class="drive-field-icon">ID</div><div><h3>Google Client ID</h3><p>Google Cloud OAuth application का Client ID दर्ज करें।</p></div></div>
+        <div class="drive-field-control"><input id="google-client-id" class="drive-input" type="text" placeholder="Enter Google Client ID" autocomplete="off"></div>
+      </div>
+      <div class="drive-form-row">
+        <div class="drive-field-info"><div class="drive-field-icon">🔑</div><div><h3>Google Client Secret</h3><p>OAuth application का Client Secret यहाँ दर्ज करें।</p></div></div>
+        <div class="drive-field-control"><input id="google-client-secret" class="drive-input" type="password" placeholder="Enter Google Client Secret" autocomplete="off"></div>
+      </div>
+      <div class="drive-form-row">
+        <div class="drive-field-info"><div class="drive-field-icon">↗</div><div><h3>Google Redirect URI</h3><p>Google OAuth callback के लिए registered redirect URI दर्ज करें।</p></div></div>
+        <div class="drive-field-control"><input id="google-redirect-uri" class="drive-input" type="url" placeholder="Enter Google Redirect URI" autocomplete="url"></div>
+      </div>
+      <div class="google-connect-row">
+        <button type="button" class="google-connect-btn" id="google-connect-btn"><span class="google-g">G</span> Connect Google Account</button>
+      </div>
+    </div>
+    <div class="drive-status" id="google-drive-status"><span class="drive-status-dot"></span><span>Google Drive account अभी connected नहीं है।</span></div>
+  </div>
   <div id="gmail-panel" class="settings-panel"><div class="settings-placeholder"><div class="placeholder-icon">✉</div><strong>Gmail Setting</strong><p>Gmail connection और sending settings यहाँ configure होंगे।</p></div></div>
   <div id="gemini-panel" class="settings-panel"><div class="settings-placeholder"><div class="placeholder-icon">✦</div><strong>Gemini Setting</strong><p>Gemini API keys और AI configuration यहाँ configure होंगे।</p></div></div>
   <div id="template-panel" class="settings-panel"><div class="settings-placeholder"><div class="placeholder-icon">📝</div><strong>Email Template</strong><p>Invoice email template यहाँ configure होगा।</p></div></div>
