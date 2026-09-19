@@ -1,3 +1,13 @@
 /* Dashboard page-only styles. */
-.dashboard-module{width:100%;margin:0;padding:0}
-.dashboard-mount{width:100%}
+.dashboard-module{width:100%;margin:0;padding:0}.dashboard-mount{width:100%}
+/* Compact 5-card dashboard stats: same card language, with subtle 3D motion. */
+.dashboard-stats{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin:17px 0}.dashboard-stats .stat-card{min-height:124px;padding:15px 16px;position:relative;transform:translateZ(0);transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease}
+.dashboard-stats .stat-card:hover{transform:translateY(-5px) scale(1.015);box-shadow:13px 17px 28px rgba(15,23,42,.13),-5px -5px 12px rgba(255,255,255,.95),inset 1px 1px 2px rgba(255,255,255,.95)}
+.dashboard-stats .stat-card:active{transform:translateY(-1px) scale(.995)}
+.dashboard-stats .stat-icon{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}.dashboard-stats .stat-card:hover .stat-icon{transform:translateY(-2px) rotate(-4deg);box-shadow:7px 9px 14px rgba(15,23,42,.18),inset 1px 1px 3px rgba(255,255,255,.3)}
+.dashboard-stats .total-invoice{background:linear-gradient(145deg,#fff,#eef5ff)}.dashboard-stats .buy-invoice{background:linear-gradient(145deg,#fff,#ecfdf5)}.dashboard-stats .sale-invoice{background:linear-gradient(145deg,#fff,#fff7ed)}.dashboard-stats .pending-invoice{background:linear-gradient(145deg,#fff,#f5f3ff)}.dashboard-stats .total-party{background:linear-gradient(145deg,#fff,#fdf2f8)}
+.dashboard-stats .total-invoice:after,.dashboard-stats .buy-invoice:after,.dashboard-stats .sale-invoice:after,.dashboard-stats .pending-invoice:after,.dashboard-stats .total-party:after{content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;opacity:0;transition:opacity .22s ease;background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.55) 45%,transparent 65%)}
+.dashboard-stats .stat-card:hover:after{opacity:1}
+.dashboard-stats .pending-invoice .stat-icon{background:linear-gradient(145deg,#a78bfa,#7c3aed);color:#fff}.dashboard-stats .total-party .stat-icon{background:linear-gradient(145deg,#f472b6,#db2777);color:#fff}
+@media(max-width:1100px){.dashboard-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.dashboard-stats{grid-template-columns:1fr 1fr;gap:10px}.dashboard-stats .stat-card{min-height:118px;padding:13px}.dashboard-stats .stat-card strong{font-size:19px}}
