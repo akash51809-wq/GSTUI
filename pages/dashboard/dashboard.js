@@ -2,24 +2,28 @@
 (function(){
   'use strict';
   window.GSTUIPageModules = window.GSTUIPageModules || {};
-  window.GSTUIPageModules.dashboard = {
-    mount(root){
-      if(!root) return;
-      root.dataset.moduleMounted='1';
-      const filter = root.querySelector('#invoiceChartMode');
-      const groups = root.querySelectorAll('.candle-group');
-      if(filter){
-        const applyMode = () => {
-          const mode = filter.value;
-          groups.forEach(group => {
-            group.classList.toggle('is-buy', mode === 'buy');
-            group.classList.toggle('is-sale', mode === 'sale');
-          });
-        };
-        filter.addEventListener('change', applyMode);
-        applyMode();
+  function setup(root){
+    if(!root || root.dataset.chartReady==='1') return;
+    const filter=root.querySelector('#invoiceChartMode');
+    const chart=root.querySelector('#invoiceChart');
+    if(!filter || !chart) return;
+    root.dataset.chartReady='1';
+    const applyMode=()=>{
+      chart.dataset.mode=filter.value;
+    };
+    filter.addEventListener('change',applyMode);
+    applyMode();
+  }
+  window.GSTUIPageModules.dashboard={
+    mount(root){ if(root) root.dataset.moduleMounted='1'; setup(root); },
+    unmount(root){
+      if(root) {
+        delete root.dataset.moduleMounted;
+        delete root.dataset.chartReady;
       }
-    },
-    unmount(root){ if(root) delete root.dataset.moduleMounted; }
+    }
   };
+  document.addEventListener('gstui:module-mounted',event=>{
+    if(event.detail && event.detail.name==='dashboard') setup(event.target);
+  });
 })();
