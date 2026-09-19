@@ -2,28 +2,41 @@
 (function(){
   'use strict';
   window.GSTUIPageModules = window.GSTUIPageModules || {};
-  function setup(root){
-    if(!root || root.dataset.chartReady==='1') return;
+
+  function applyChartMode(root){
+    if(!root) return;
     const filter=root.querySelector('#invoiceChartMode');
     const chart=root.querySelector('#invoiceChart');
     if(!filter || !chart) return;
-    root.dataset.chartReady='1';
-    const applyMode=()=>{
-      chart.dataset.mode=filter.value;
-    };
-    filter.addEventListener('change',applyMode);
-    applyMode();
+    chart.dataset.mode=filter.value || 'both';
   }
+
   window.GSTUIPageModules.dashboard={
-    mount(root){ if(root) root.dataset.moduleMounted='1'; setup(root); },
+    mount(root){
+      if(root) {
+        root.dataset.moduleMounted='1';
+        applyChartMode(root);
+      }
+    },
     unmount(root){
       if(root) {
         delete root.dataset.moduleMounted;
-        delete root.dataset.chartReady;
       }
     }
   };
+
+  /* Delegated change handler works even when the dashboard HTML is injected later. */
+  document.addEventListener('change',event=>{
+    const filter=event.target.closest('#invoiceChartMode');
+    if(!filter) return;
+    const root=filter.closest('.page-module-host') || document;
+    const chart=root.querySelector ? root.querySelector('#invoiceChart') : null;
+    if(chart) chart.dataset.mode=filter.value || 'both';
+  });
+
   document.addEventListener('gstui:module-mounted',event=>{
-    if(event.detail && event.detail.name==='dashboard') setup(event.target);
+    if(event.detail && event.detail.name==='dashboard'){
+      applyChartMode(event.target);
+    }
   });
 })();
