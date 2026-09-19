@@ -80,5 +80,49 @@
     </div>
     <div class="gemini-status" id="gemini-status"><span class="gemini-status-dot"></span><span>Gemini API key अभी save नहीं है।</span></div>
   </div>
-  <div id="template-panel" class="settings-panel"><div class="settings-placeholder"><div class="placeholder-icon">📝</div><strong>Email Template</strong><p>Invoice email template यहाँ configure होगा।</p></div></div>
+  <div id="template-panel" class="settings-panel">
+    <div class="settings-panel-title">
+      <div class="panel-icon">📝</div>
+      <div><h2>Email Template</h2><p>Invoice email के लिए stylish HTML template और subject यहाँ तैयार करें।</p></div>
+    </div>
+    <div class="email-template-card">
+      <div class="email-subject-row">
+        <div class="email-template-label">
+          <div class="email-template-icon">✉</div>
+          <div><h3>Email Subject</h3><p>Email भेजते समय दिखाई देने वाला subject लिखें।</p></div>
+        </div>
+        <div class="email-subject-control">
+          <input id="email-template-subject" class="email-subject-input" type="text" placeholder="e.g. Your Invoice from {{company_name}}" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="email-code-section">
+        <div class="email-code-heading">
+          <div class="email-template-icon code-icon">&lt;/&gt;</div>
+          <div><h3>HTML Template Code</h3><p>Email का पूरा HTML code यहाँ लिखें। Inline CSS और email-safe HTML इस्तेमाल करें।</p></div>
+        </div>
+        <textarea id="email-template-code" class="email-template-code" spellcheck="false" placeholder="Paste or write your email HTML code here..."></textarea>
+      </div>
+
+      <div class="email-variables-section">
+        <div class="email-code-heading">
+          <div class="email-template-icon variable-icon">{ }</div>
+          <div><h3>Available Variables</h3><p>इन variables को HTML code या Email Subject में सीधे इस्तेमाल कर सकते हैं।</p></div>
+        </div>
+        <div class="email-variable-list">
+          <button type="button" class="email-variable-chip" data-variable="{{company_name}}">{{company_name}}</button>
+          <button type="button" class="email-variable-chip" data-variable="{{party_name}}">{{party_name}}</button>
+          <button type="button" class="email-variable-chip" data-variable="{{invoice_number}}">{{invoice_number}}</button>
+          <button type="button" class="email-variable-chip" data-variable="{{invoice_date}}">{{invoice_date}}</button>
+          <button type="button" class="email-variable-chip" data-variable="{{invoice_total}}">{{invoice_total}}</button>
+          <button type="button" class="email-variable-chip" data-variable="{{invoice_link}}">{{invoice_link}}</button>
+        </div>
+      </div>
+
+      <div class="email-template-actions">
+        <span class="email-template-status" id="email-template-status"><span class="email-status-dot"></span><span>Template अभी save नहीं है।</span></span>
+        <button type="button" class="email-template-save-btn" id="email-template-save-btn"><span>✓</span> Save Email Template</button>
+      </div>
+    </div>
+  </div>
 </div>
