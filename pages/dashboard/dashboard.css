@@ -11,3 +11,30 @@
 .dashboard-stats .pending-invoice .stat-icon{background:linear-gradient(145deg,#a78bfa,#7c3aed);color:#fff}.dashboard-stats .total-party .stat-icon{background:linear-gradient(145deg,#f472b6,#db2777);color:#fff}
 @media(max-width:1100px){.dashboard-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.dashboard-stats{grid-template-columns:1fr 1fr;gap:10px}.dashboard-stats .stat-card{min-height:118px;padding:13px}.dashboard-stats .stat-card strong{font-size:19px}}
+
+/* Invoice activity chart: dual purchase/sale candles + compact 3D filter. */
+.chart-panel .panel-head{align-items:center}
+.chart-filters{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.chart-filters select{height:34px;border:1px solid #dbe4ef;border-radius:10px;padding:0 10px;background:linear-gradient(145deg,#fff,#eef4fb);color:#334155;font-weight:700;font-size:11px;box-shadow:4px 5px 9px rgba(15,23,42,.10),inset 1px 1px 2px rgba(255,255,255,.95);outline:none;cursor:pointer;transition:transform .16s ease,box-shadow .16s ease}
+.chart-filters select:hover{transform:translateY(-2px);box-shadow:5px 7px 12px rgba(15,23,42,.14),inset 1px 1px 2px rgba(255,255,255,.95)}
+.chart-filters .chart-mode-filter{min-width:102px;background:linear-gradient(145deg,#e0f2fe,#bae6fd);border-color:#7dd3fc;color:#075985}
+.chart-filters select:focus{box-shadow:0 0 0 3px rgba(14,165,233,.12),4px 5px 9px rgba(15,23,42,.10)}
+.chart{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;height:100%;padding:0 8px}
+.candle-group{height:100%;flex:1;display:flex;align-items:flex-end;justify-content:center;gap:3px;min-width:0}
+.candle-group i{display:block;width:9px;max-width:42%;min-height:8px;border-radius:4px 4px 2px 2px;box-shadow:3px 5px 7px rgba(15,23,42,.16),inset 1px 1px 2px rgba(255,255,255,.45);transform-origin:bottom;animation:candleRise .55s ease both;transition:height .22s ease,transform .18s ease,opacity .18s ease}
+.candle-group i:hover{transform:translateY(-3px) scaleX(1.12)}
+.purchase-candle{background:linear-gradient(180deg,#34d399,#16a34a)}
+.sale-candle{background:linear-gradient(180deg,#fb923c,#ea580c)}
+.candle-group.is-buy .sale-candle,.candle-group.is-sale .purchase-candle{display:none}
+.chart-panel:has(.chart-mode-filter option[value="both"]:checked) .chart-mode-filter{}
+@keyframes candleRise{from{transform:scaleY(.25);opacity:.35}to{transform:scaleY(1);opacity:1}}
+.chart-legend{display:flex;gap:10px}
+@media(max-width:760px){
+  .chart-filters{gap:5px}
+  .chart-filters select{height:31px;font-size:10px;padding:0 7px}
+  .chart-filters .chart-mode-filter{min-width:88px}
+  .chart{gap:3px;padding:0 2px}
+  .candle-group{gap:2px}
+  .candle-group i{width:7px}
+  .months{font-size:9px;gap:2px}
+}
