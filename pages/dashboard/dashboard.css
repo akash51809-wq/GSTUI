@@ -110,3 +110,20 @@
 .shortcut-launch{animation:shortcutLaunch .34s cubic-bezier(.2,.8,.2,1)}@keyframes shortcutLaunch{0%{transform:scale(.92);opacity:.15;filter:blur(4px)}65%{transform:scale(1.015);opacity:1}100%{transform:scale(1);opacity:1;filter:blur(0)}}
 @media(max-width:1100px){.shortcut-hub-panel{min-height:390px}.shortcut-hub{width:min(300px,88%)}}
 @media(max-width:760px){.shortcut-hub-panel{min-height:350px}.shortcut-hub{width:min(290px,94%)}.hub-core{width:100px;height:100px}.hub-shortcut{width:58px;height:58px}}
+
+
+/* Single premium 3D circular shortcut dial. */
+.shortcut-hub-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100%;padding:16px;background:linear-gradient(145deg,#07111f,#0d1a2b 55%,#14243a);border-radius:24px;overflow:hidden}
+.shortcut-hub-panel:before{display:none}
+.shortcut-hub-head{width:100%;margin-bottom:2px}.shortcut-hub-head h3{font-size:15px}.shortcut-hub-head p{font-size:9px}
+.shortcut-hub{width:min(350px,94%);aspect-ratio:1;margin:2px auto 0;position:relative;border-radius:50%;background:radial-gradient(circle at 34% 25%,#40536b 0,#1b2b40 23%,#0b1727 58%,#050b13 100%);border:1px solid rgba(148,163,184,.3);box-shadow:18px 22px 34px rgba(0,0,0,.48),inset 10px 10px 18px rgba(255,255,255,.07),inset -14px -16px 22px rgba(0,0,0,.72),0 0 0 10px rgba(56,189,248,.025);overflow:visible}
+.shortcut-hub:before{content:"";position:absolute;inset:9%;border-radius:50%;border:1px solid rgba(125,211,252,.18);box-shadow:inset 0 0 20px rgba(56,189,248,.05);pointer-events:none}
+.shortcut-hub:after{content:"";position:absolute;inset:18%;border-radius:50%;border:1px solid rgba(255,255,255,.06);pointer-events:none}
+.shortcut-orbit{display:none}
+.hub-core{width:118px;height:118px;box-shadow:0 18px 30px rgba(0,0,0,.6),inset 7px 7px 14px rgba(255,255,255,.09),inset -9px -11px 16px rgba(0,0,0,.8),0 0 26px rgba(56,189,248,.12)}
+.hub-shortcut{width:64px;height:64px;box-shadow:0 10px 18px rgba(0,0,0,.42),inset 3px 3px 5px rgba(255,255,255,.25),inset -4px -5px 8px rgba(0,0,0,.35)}
+.shortcut-invoice{left:50%;top:-1%;transform:translateX(-50%)}.shortcut-party{right:2%;top:24%}.shortcut-report{right:4%;bottom:14%}.shortcut-settings{left:50%;bottom:-1%;transform:translateX(-50%)}.shortcut-ai{left:4%;bottom:14%}.shortcut-pending{left:2%;top:24%}
+.shortcut-hub-foot{width:100%;margin-top:5px;background:transparent;border:0;padding:5px;font-size:8px;justify-content:center;gap:7px}
+.hub-shortcut:hover{transform:scale(1.16) translateY(-5px);filter:brightness(1.18)}
+.shortcut-invoice:hover,.shortcut-settings:hover{transform:translateX(-50%) scale(1.16) translateY(-5px)}
+@media(max-width:760px){.shortcut-hub{width:min(300px,92%)}.hub-core{width:100px;height:100px}.hub-shortcut{width:58px;height:58px}}
