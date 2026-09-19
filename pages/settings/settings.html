@@ -64,6 +64,21 @@
     <div class="drive-status" id="google-drive-status"><span class="drive-status-dot"></span><span>Google Drive account अभी connected नहीं है।</span></div>
   </div>
   <div id="gmail-panel" class="settings-panel"><div class="settings-placeholder"><div class="placeholder-icon">✉</div><strong>Gmail Setting</strong><p>Gmail connection और sending settings यहाँ configure होंगे।</p></div></div>
-  <div id="gemini-panel" class="settings-panel"><div class="settings-placeholder"><div class="placeholder-icon">✦</div><strong>Gemini Setting</strong><p>Gemini API keys और AI configuration यहाँ configure होंगे।</p></div></div>
+  <div id="gemini-panel" class="settings-panel">
+    <div class="settings-panel-title">
+      <div class="panel-icon">✦</div>
+      <div><h2>Gemini Setting</h2><p>Gemini API key जोड़कर AI आधारित invoice analysis और reports के लिए configuration करें।</p></div>
+    </div>
+    <div class="gemini-settings-card">
+      <div class="gemini-form-row">
+        <div class="gemini-field-info"><div class="gemini-field-icon">✦</div><div><h3>Gemini API Key</h3><p>अपनी Google Gemini API key यहाँ दर्ज करें।</p></div></div>
+        <div class="gemini-field-control"><input id="gemini-api-key" class="gemini-input" type="password" placeholder="Enter Gemini API Key" autocomplete="off"></div>
+      </div>
+      <div class="gemini-save-row">
+        <button type="button" class="gemini-save-btn" id="gemini-save-btn"><span>✓</span> Save Gemini Key</button>
+      </div>
+    </div>
+    <div class="gemini-status" id="gemini-status"><span class="gemini-status-dot"></span><span>Gemini API key अभी save नहीं है।</span></div>
+  </div>
   <div id="template-panel" class="settings-panel"><div class="settings-placeholder"><div class="placeholder-icon">📝</div><strong>Email Template</strong><p>Invoice email template यहाँ configure होगा।</p></div></div>
 </div>
