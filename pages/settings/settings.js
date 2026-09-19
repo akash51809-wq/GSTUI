@@ -37,6 +37,49 @@
     });
   };
 
+
+  function saveEmailTemplate(){
+    try{
+      const subject=document.getElementById('email-template-subject')?.value || '';
+      const code=document.getElementById('email-template-code')?.value || '';
+      localStorage.setItem('gstui_email_template_subject',subject);
+      localStorage.setItem('gstui_email_template_code',code);
+      const status=document.getElementById('email-template-status');
+      if(status){
+        status.classList.add('saved');
+        status.innerHTML='<span class="email-status-dot"></span><span>Email Template successfully saved.</span>';
+      }
+    }catch(e){}
+  }
+
+  function loadEmailTemplate(){
+    try{
+      const subject=localStorage.getItem('gstui_email_template_subject');
+      const code=localStorage.getItem('gstui_email_template_code');
+      const subjectInput=document.getElementById('email-template-subject');
+      const codeInput=document.getElementById('email-template-code');
+      if(subjectInput && subject !== null) subjectInput.value=subject;
+      if(codeInput && code !== null) codeInput.value=code;
+      if(subject !== null || code !== null){
+        const status=document.getElementById('email-template-status');
+        if(status){
+          status.classList.add('saved');
+          status.innerHTML='<span class="email-status-dot"></span><span>Saved Email Template loaded.</span>';
+        }
+      }
+    }catch(e){}
+  }
+
+  function insertEmailVariable(variable){
+    const field=document.getElementById('email-template-code');
+    if(!field) return;
+    const start=field.selectionStart || 0;
+    const end=field.selectionEnd || 0;
+    field.value=field.value.slice(0,start)+variable+field.value.slice(end);
+    field.focus();
+    field.selectionStart=field.selectionEnd=start+variable.length;
+  }
+
   window.GSTUIPageModules.settings = {
     mount(root){
       if(!root) return;
@@ -64,6 +107,21 @@
       });
 
       loadCompanySettings();
+
+      const emailSubject=root.querySelector('#email-template-subject');
+      const emailCode=root.querySelector('#email-template-code');
+      const emailSave=root.querySelector('#email-template-save-btn');
+      root.querySelectorAll('.email-variable-chip').forEach(function(btn){
+        btn.addEventListener('click',function(){ insertEmailVariable(btn.dataset.variable || ''); });
+      });
+      if(emailSave) emailSave.addEventListener('click',saveEmailTemplate);
+      if(emailSubject) emailSubject.addEventListener('input',function(){
+        const status=root.querySelector('#email-template-status'); if(status){status.classList.remove('saved');status.innerHTML='<span class="email-status-dot"></span><span>Unsaved changes.</span>';}
+      });
+      if(emailCode) emailCode.addEventListener('input',function(){
+        const status=root.querySelector('#email-template-status'); if(status){status.classList.remove('saved');status.innerHTML='<span class="email-status-dot"></span><span>Unsaved changes.</span>';}
+      });
+      loadEmailTemplate();
     },
     unmount(root){ if(root) delete root.dataset.moduleMounted; }
   };
