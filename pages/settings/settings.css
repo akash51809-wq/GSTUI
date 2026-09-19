@@ -1,15 +1,23 @@
 /* Settings page */
 .settings-module{width:100%;margin:0;padding:0 0 28px;font-family:inherit;color:var(--text,#172033)}
-.settings-shortcuts{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 18px;padding:0}
+.settings-shortcuts{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 22px;padding:0}
 .settings-shortcut{position:relative;width:50px;height:50px;border:1px solid rgba(148,163,184,.45);border-radius:14px;background:linear-gradient(145deg,#f8fbff,#dfe8f2);box-shadow:4px 5px 9px rgba(15,23,42,.13),inset 1px 1px 0 rgba(255,255,255,.7);cursor:pointer;display:grid;place-items:center;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease}
 .settings-shortcut span{font-size:20px;line-height:1;filter:drop-shadow(1px 2px 1px rgba(0,0,0,.14))}
 .settings-shortcut:hover{transform:translateY(-2px);box-shadow:5px 7px 12px rgba(15,23,42,.17);border-color:#38bdf8}
 .settings-shortcut:active{transform:translateY(1px);box-shadow:inset 3px 3px 6px rgba(15,23,42,.15)}
 .settings-shortcut.active{background:linear-gradient(145deg,#00abe4,#008fbe);border-color:#0085b1;box-shadow:4px 6px 12px rgba(0,139,190,.27),inset 1px 1px 0 rgba(255,255,255,.22)}
 .settings-shortcut.active span{filter:brightness(0) invert(1) drop-shadow(1px 2px 1px rgba(0,0,0,.18))}
-.setting-label{position:absolute;left:50%;top:calc(100% + 8px);transform:translate(-50%,-4px);white-space:nowrap;padding:6px 9px;border-radius:7px;background:#172033;color:#fff;font-size:11px;font-weight:700;opacity:0;pointer-events:none;z-index:20;box-shadow:0 6px 12px rgba(0,0,0,.18);transition:.16s ease}
-.setting-label:before{content:"";position:absolute;top:-4px;left:50%;width:7px;height:7px;background:#172033;transform:translateX(-50%) rotate(45deg)}
-.settings-shortcut:hover .setting-label{opacity:1;transform:translate(-50%,0)}
+
+/* Hover name card */
+.setting-label{position:absolute;left:50%;top:calc(100% + 9px);transform:translate(-50%,-5px);white-space:nowrap;min-width:112px;padding:8px 13px;border-radius:10px;background:linear-gradient(145deg,#ffffff,#e8f3fa);border:1px solid #b9d9e8;color:#075985;font-size:12px;font-weight:800;text-align:center;opacity:0;visibility:hidden;pointer-events:none;z-index:50;box-shadow:0 7px 16px rgba(15,23,42,.16),inset 1px 1px 0 rgba(255,255,255,.9);transition:opacity .16s ease,transform .16s ease,visibility .16s ease}
+.setting-label:before{content:"";position:absolute;top:-5px;left:50%;width:9px;height:9px;background:#f8fcfe;border-left:1px solid #b9d9e8;border-top:1px solid #b9d9e8;transform:translateX(-50%) rotate(45deg)}
+.settings-shortcut:hover .setting-label{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.settings-shortcut:nth-child(1):hover .setting-label{background:linear-gradient(145deg,#e8faff,#ccefff);border-color:#7dd3fc;color:#0369a1}
+.settings-shortcut:nth-child(2):hover .setting-label{background:linear-gradient(145deg,#effdf5,#d7f8e6);border-color:#86efac;color:#15803d}
+.settings-shortcut:nth-child(3):hover .setting-label{background:linear-gradient(145deg,#fff7ed,#ffedd5);border-color:#fdba74;color:#c2410c}
+.settings-shortcut:nth-child(4):hover .setting-label{background:linear-gradient(145deg,#f5f3ff,#e9e3ff);border-color:#c4b5fd;color:#6d28d9}
+.settings-shortcut:nth-child(5):hover .setting-label{background:linear-gradient(145deg,#fff1f2,#ffe4e6);border-color:#fda4af;color:#be123c}
+
 .settings-panel{display:none;animation:settingsFade .22s ease}
 .settings-panel.active{display:block}
 @keyframes settingsFade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
