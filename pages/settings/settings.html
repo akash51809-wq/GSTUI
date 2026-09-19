@@ -29,7 +29,7 @@
       </div>
       <div class="setting-row">
         <div class="setting-info"><div class="setting-icon">▣</div><div><h3>Company Logo</h3><p>Invoice header और branding के लिए logo upload करें।</p></div></div>
-        <div class="logo-control"><div class="logo-preview" id="company-logo-preview"><span>LOGO</span></div><label class="logo-upload-btn" for="company-logo-input">↑ Upload Logo</label><input id="company-logo-input" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden></div>
+        <div class="logo-control"><div class="logo-preview" id="company-logo-preview"><span>LOGO</span></div><div class="logo-upload-stack"><label class="logo-upload-btn" for="company-logo-input">↑ Upload Logo</label><span id="company-logo-name" class="logo-file-name">No logo selected</span></div><input id="company-logo-input" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden></div>
       </div>
       <div class="setting-row">
         <div class="setting-info"><div class="setting-icon">✉</div><div><h3>Send Auto Email</h3><p>Automatic email sending को enable या disable करें।</p></div></div>
@@ -63,7 +63,26 @@
     </div>
     <div class="drive-status" id="google-drive-status"><span class="drive-status-dot"></span><span>Google Drive account अभी connected नहीं है।</span></div>
   </div>
-  <div id="gmail-panel" class="settings-panel"><div class="settings-placeholder"><div class="placeholder-icon">✉</div><strong>Gmail Setting</strong><p>Gmail connection और sending settings यहाँ configure होंगे।</p></div></div>
+  <div id="gmail-panel" class="settings-panel">
+  <div class="settings-panel-title">
+    <div class="panel-icon">✉</div>
+    <div><h2>Gmail Setting</h2><p>Invoice email भेजने के लिए Gmail sender configuration तैयार करें।</p></div>
+  </div>
+  <div class="gmail-settings-card">
+    <div class="gmail-form-row">
+      <div class="gmail-field-info"><div class="gmail-field-icon">✉</div><div><h3>Sender Email</h3><p>वह Gmail address जिससे invoice email भेजे जाएंगे।</p></div></div>
+      <div class="gmail-field-control"><input id="gmail-sender-email" class="gmail-input" type="email" placeholder="yourname@gmail.com" autocomplete="email"></div>
+    </div>
+    <div class="gmail-form-row">
+      <div class="gmail-field-info"><div class="gmail-field-icon">✓</div><div><h3>Connection Status</h3><p>OAuth/Gmail API connection backend जोड़ने के लिए ready है।</p></div></div>
+      <div class="gmail-status-pill"><span></span> Not Connected</div>
+    </div>
+    <div class="gmail-action-row">
+      <span class="gmail-note">Gmail API connection अगला backend step होगा।</span>
+      <button type="button" class="gmail-connect-btn" id="gmail-connect-btn"><span>G</span> Connect Gmail</button>
+    </div>
+  </div>
+</div>
   <div id="gemini-panel" class="settings-panel">
     <div class="settings-panel-title">
       <div class="panel-icon">✦</div>
