@@ -73,99 +73,10 @@
 .chart .candle-group.hide-buy .purchase-candle,.chart .candle-group.hide-sale .sale-candle{display:none!important}
 
 
-/* Final premium circular shortcut control. */
+/* 3D Smart Shortcuts wheel — beveled segmented reference style. */
 .shortcut-hub-panel{
-  min-height:100%;padding:16px 18px 12px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;position:relative;overflow:hidden;
-  border-radius:22px;background:linear-gradient(145deg,#06101d,#0b1728 52%,#13243a);
-  border:1px solid rgba(125,211,252,.14);
-  box-shadow:16px 20px 34px rgba(15,23,42,.20),inset 1px 1px 2px rgba(255,255,255,.08),inset -3px -4px 8px rgba(0,0,0,.38);
-}
-.shortcut-hub-panel:before{
-  content:"";position:absolute;width:420px;height:420px;border-radius:50%;
-  background:conic-gradient(from 0deg,transparent 0 68%,rgba(56,189,248,.11) 74%,transparent 81% 100%);
-  animation:shortcutHalo 16s linear infinite;pointer-events:none;
-}
-.shortcut-hub-head,.shortcut-hub-foot{position:relative;z-index:10;width:100%;display:flex;align-items:center;justify-content:space-between}
-.shortcut-hub-head h3{margin:2px 0;color:#f8fafc;font-size:15px}
-.shortcut-hub-head p{margin:0;color:#94a3b8;font-size:9px}
-.shortcut-hub-head .panel-kicker{color:#38bdf8;font-size:8px;letter-spacing:.18em}
-.shortcut-hub-fy{font-size:8px;font-weight:800;color:#cbd5e1;padding:6px 8px;border-radius:8px;background:#101e31;box-shadow:3px 4px 8px rgba(0,0,0,.4),inset 1px 1px 2px rgba(255,255,255,.08)}
-.shortcut-hub{
-  width:min(330px,92%);aspect-ratio:1;position:relative;margin:5px auto 1px;
-  border-radius:50%;isolation:isolate;
-  background:
-    radial-gradient(circle at 35% 23%,rgba(148,163,184,.42) 0,rgba(51,65,85,.18) 20%,transparent 36%),
-    radial-gradient(circle at 50% 50%,#1b2b40 0,#0b1727 58%,#030811 100%);
-  border:2px solid rgba(148,163,184,.24);
-  box-shadow:
-    0 22px 34px rgba(0,0,0,.55),
-    inset 9px 9px 16px rgba(255,255,255,.08),
-    inset -13px -15px 22px rgba(0,0,0,.82),
-    0 0 0 7px rgba(56,189,248,.025);
-}
-.shortcut-hub:before{
-  content:"";position:absolute;inset:7%;border-radius:50%;
-  border:1px solid rgba(125,211,252,.18);
-  box-shadow:inset 0 0 18px rgba(56,189,248,.08),0 0 12px rgba(56,189,248,.04);
-}
-.shortcut-hub:after{
-  content:"";position:absolute;inset:15%;border-radius:50%;
-  border:1px solid rgba(255,255,255,.055);box-shadow:0 0 0 5px rgba(0,0,0,.06);
-}
-.shortcut-orbit{position:absolute;border-radius:50%;pointer-events:none;z-index:1}
-.orbit-a{inset:11%;border:1px dashed rgba(56,189,248,.14);animation:orbitTurn 12s linear infinite}
-.orbit-b{inset:23%;border:1px solid rgba(167,139,250,.09);animation:orbitTurn 9s linear infinite reverse}
-.hub-core{
-  position:absolute;left:50%;top:50%;width:108px;height:108px;transform:translate(-50%,-50%);
-  border-radius:50%;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  color:#fff;background:radial-gradient(circle at 32% 24%,#52657c 0,#26384d 25%,#0a1422 70%,#040a12 100%);
-  border:2px solid rgba(148,163,184,.22);
-  box-shadow:0 17px 28px rgba(0,0,0,.62),inset 6px 6px 13px rgba(255,255,255,.10),inset -9px -10px 17px rgba(0,0,0,.82),0 0 24px rgba(56,189,248,.10);
-  transition:transform .28s ease,box-shadow .28s ease;
-}
-.hub-core:before{content:"";position:absolute;inset:7px;border-radius:50%;border:1px solid rgba(125,211,252,.20)}
-.hub-core:after{content:"";position:absolute;inset:14px;border-radius:50%;border:1px solid rgba(255,255,255,.05);animation:coreBreath 2.8s ease-in-out infinite}
-.hub-core-icon{font-size:22px;color:#7dd3fc;text-shadow:0 0 12px rgba(56,189,248,.8);margin-bottom:4px}
-.hub-core strong{font-size:9px;letter-spacing:.17em}.hub-core small{font-size:7px;color:#94a3b8;margin-top:3px}
-.hub-shortcut{
-  position:absolute;width:58px;height:58px;border:0;border-radius:50%;z-index:8;cursor:pointer;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#fff;
-  transition:transform .22s cubic-bezier(.2,.8,.2,1),filter .22s ease,box-shadow .22s ease;
-  outline:none;
-}
-.hub-shortcut:before{content:"";position:absolute;inset:5px;border-radius:50%;border:1px solid rgba(255,255,255,.28);box-shadow:inset 2px 2px 4px rgba(255,255,255,.25),inset -3px -4px 6px rgba(0,0,0,.34)}
-.hub-shortcut:after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid transparent;transition:border-color .2s,box-shadow .2s}
-.hub-shortcut span,.hub-shortcut small{position:relative;z-index:2}.hub-shortcut span{font-size:18px;font-weight:900;line-height:1}.hub-shortcut small{font-size:6.5px;font-weight:900;letter-spacing:.04em}
-.hub-shortcut:hover{transform:translateY(-5px) scale(1.16);filter:brightness(1.18)}
-.hub-shortcut:hover:after{border-color:rgba(255,255,255,.28);box-shadow:0 0 16px currentColor}
-.hub-shortcut:active{transform:translateY(-1px) scale(.96)}
-.shortcut-invoice{left:50%;top:1%;transform:translateX(-50%);background:linear-gradient(145deg,#38bdf8,#0369a1);box-shadow:7px 11px 17px rgba(2,132,199,.34),inset 3px 3px 5px rgba(255,255,255,.30),inset -4px -5px 7px rgba(0,0,0,.34)}
-.shortcut-party{right:7%;top:26%;background:linear-gradient(145deg,#f472b6,#be185d);box-shadow:7px 11px 17px rgba(190,24,93,.30),inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.34)}
-.shortcut-report{right:9%;bottom:16%;background:linear-gradient(145deg,#a78bfa,#6d28d9);box-shadow:7px 11px 17px rgba(109,40,217,.30),inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.34)}
-.shortcut-settings{left:50%;bottom:1%;transform:translateX(-50%);background:linear-gradient(145deg,#cbd5e1,#475569);box-shadow:7px 11px 17px rgba(15,23,42,.42),inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.42)}
-.shortcut-ai{left:9%;bottom:16%;background:linear-gradient(145deg,#c084fc,#7e22ce);box-shadow:7px 11px 17px rgba(126,34,206,.30),inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.34)}
-.shortcut-pending{left:7%;top:26%;background:linear-gradient(145deg,#fb923c,#c2410c);box-shadow:7px 11px 17px rgba(194,65,12,.30),inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.34)}
-.shortcut-invoice:hover,.shortcut-settings:hover{transform:translateX(-50%) translateY(-5px) scale(1.16)}
-.shortcut-hub-foot{margin-top:2px;padding:6px 8px;color:#64748b;font-size:8px;border:0;background:transparent;justify-content:center;gap:6px}.shortcut-hub-foot i{color:#38bdf8}
-.shortcut-hub-panel:has(.hub-shortcut:hover) .hub-core{transform:translate(-50%,-50%) scale(1.04);box-shadow:0 20px 32px rgba(0,0,0,.66),inset 6px 6px 13px rgba(255,255,255,.10),inset -9px -10px 17px rgba(0,0,0,.82),0 0 30px rgba(56,189,248,.16)}
-.shortcut-hub-panel:has(.shortcut-invoice:hover) .hub-core{box-shadow:0 20px 32px rgba(0,0,0,.66),0 0 28px rgba(56,189,248,.25)}
-.shortcut-hub-panel:has(.shortcut-party:hover) .hub-core{box-shadow:0 20px 32px rgba(0,0,0,.66),0 0 28px rgba(236,72,153,.22)}
-.shortcut-hub-panel:has(.shortcut-report:hover) .hub-core{box-shadow:0 20px 32px rgba(0,0,0,.66),0 0 28px rgba(139,92,246,.24)}
-.shortcut-hub-panel:has(.shortcut-settings:hover) .hub-core{box-shadow:0 20px 32px rgba(0,0,0,.66),0 0 28px rgba(148,163,184,.22)}
-.shortcut-hub-panel:has(.shortcut-ai:hover) .hub-core{box-shadow:0 20px 32px rgba(0,0,0,.66),0 0 28px rgba(192,132,252,.24)}
-.shortcut-hub-panel:has(.shortcut-pending:hover) .hub-core{box-shadow:0 20px 32px rgba(0,0,0,.66),0 0 28px rgba(251,146,60,.24)}
-.shortcut-launch{animation:shortcutLaunch .38s cubic-bezier(.2,.8,.2,1)}
-@keyframes shortcutLaunch{0%{opacity:0;transform:scale(.94) translateY(10px);filter:blur(5px)}60%{opacity:1;transform:scale(1.015) translateY(-2px);filter:blur(0)}100%{opacity:1;transform:none}}
-@keyframes shortcutHalo{to{transform:rotate(360deg)}}@keyframes orbitTurn{to{transform:rotate(360deg)}}@keyframes coreBreath{50%{transform:scale(.90);opacity:.35}}
-@media(max-width:1100px){.shortcut-hub{width:min(300px,88%)}.shortcut-hub-panel{min-height:390px}}
-@media(max-width:760px){.shortcut-hub{width:min(285px,94%)}.hub-core{width:96px;height:96px}.hub-shortcut{width:54px;height:54px}.shortcut-hub-panel{min-height:350px}}
-
-
-/* Reference-style Smart Shortcuts segmented wheel. */
-.donut-shortcut-panel{
   min-height:100%;
-  padding:16px 16px 12px;
+  padding:15px 14px 12px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -173,34 +84,92 @@
   position:relative;
   overflow:hidden;
   border-radius:22px;
-  background:#fff;
-  border:1px solid #e7edf4;
-  box-shadow:0 12px 28px rgba(15,23,42,.08),0 3px 8px rgba(15,23,42,.035);
+  background:
+    radial-gradient(circle at 50% 45%,rgba(255,255,255,.98) 0,rgba(255,255,255,.92) 48%,rgba(242,246,251,.98) 100%);
+  border:1px solid #e3eaf2;
+  box-shadow:0 18px 34px rgba(15,23,42,.10),0 4px 10px rgba(15,23,42,.04),inset 1px 1px 0 #fff;
 }
 .donut-shortcut-panel:before{
-  content:"";position:absolute;width:310px;height:310px;border-radius:50%;
-  background:radial-gradient(circle,rgba(59,130,246,.045),transparent 68%);
+  content:"";
+  position:absolute;
+  width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle,rgba(59,130,246,.075),transparent 67%);
   pointer-events:none;
 }
-.shortcut-hub-head{position:relative;z-index:5;width:100%;display:block;text-align:left;margin-bottom:1px}
-.shortcut-hub-head h3{margin:3px 0 1px;color:#0f172a;font-size:16px;font-weight:800}
-.shortcut-hub-head p{margin:0;color:#64748b;font-size:9px;font-weight:500}
-.shortcut-hub-head .panel-kicker{color:#64748b;font-size:8px;letter-spacing:.2em;font-weight:800}
+.shortcut-hub-head{
+  position:relative;z-index:5;width:100%;display:block;text-align:left;
+  margin-bottom:0;
+}
+.shortcut-hub-head h3{margin:3px 0 1px;color:#172033;font-size:16px;font-weight:800;letter-spacing:-.02em}
+.shortcut-hub-head p{margin:0;color:#718096;font-size:9px;font-weight:600}
+.shortcut-hub-head .panel-kicker{color:#6b7789;font-size:8px;letter-spacing:.2em;font-weight:900}
 
-.shortcut-donut{width:min(330px,96%);aspect-ratio:1;position:relative;margin:4px auto 0;display:grid;place-items:center}
-.shortcut-wheel{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 8px 10px rgba(15,23,42,.08))}
-.wheel-segment{cursor:pointer;outline:none;transform-box:fill-box;transform-origin:center;transition:filter .2s ease,transform .2s cubic-bezier(.2,.8,.2,1)}
-.wheel-segment path{stroke:#fff;stroke-width:4;stroke-linejoin:round}
-.wheel-segment circle{pointer-events:none}
-.wheel-icon{fill:#fff;font-size:19px;font-weight:900;font-family:Inter,Arial,sans-serif;paint-order:stroke;stroke:rgba(15,23,42,.18);stroke-width:1}
-.wheel-label{fill:#fff;font-size:8px;font-weight:800;font-family:Inter,Arial,sans-serif;letter-spacing:.01em}
-.wheel-segment:hover,.wheel-segment:focus-visible{transform:scale(1.035);filter:drop-shadow(0 8px 9px rgba(15,23,42,.20)) brightness(1.07)}
-.wheel-segment:active{transform:scale(.99)}
-.wheel-hole{fill:#fff;filter:drop-shadow(0 5px 7px rgba(15,23,42,.12))}
-.wheel-hole-highlight{fill:none;stroke:#f4f7fa;stroke-width:3}
-@media(max-width:1100px){.shortcut-donut{width:min(305px,92%)}}
+.shortcut-donut{
+  width:min(344px,100%);aspect-ratio:1;position:relative;
+  margin:1px auto 0;display:grid;place-items:center;
+}
+.shortcut-wheel{
+  width:100%;height:100%;display:block;overflow:visible;
+  filter:drop-shadow(0 13px 13px rgba(15,23,42,.12));
+}
+.wheel-segment{
+  cursor:pointer;outline:none;
+  transform-box:fill-box;transform-origin:center;
+  transition:transform .2s cubic-bezier(.2,.8,.2,1),filter .2s ease;
+}
+.wheel-segment .wheel-face{
+  stroke:rgba(255,255,255,.96);
+  stroke-width:4;
+  stroke-linejoin:round;
+}
+.wheel-depth{
+  transform:translateY(5px);
+  opacity:.95;
+  stroke:rgba(15,23,42,.12);
+  stroke-width:3;
+  stroke-linejoin:round;
+}
+.wheel-gloss{
+  stroke:rgba(255,255,255,.48);
+  stroke-width:3;
+  stroke-linecap:round;
+  pointer-events:none;
+}
+.wheel-icon{
+  fill:#fff;font-size:21px;font-weight:900;
+  font-family:Inter,Arial,sans-serif;
+  paint-order:stroke;
+  stroke:rgba(15,23,42,.20);stroke-width:1;
+  pointer-events:none;
+}
+.wheel-label{
+  fill:#fff;font-size:8px;font-weight:900;
+  font-family:Inter,Arial,sans-serif;
+  letter-spacing:.01em;
+  paint-order:stroke;
+  stroke:rgba(15,23,42,.16);stroke-width:.7;
+  pointer-events:none;
+}
+.wheel-segment:hover,.wheel-segment:focus-visible{
+  transform:scale(1.035);
+  filter:drop-shadow(0 11px 9px rgba(15,23,42,.24)) brightness(1.06);
+}
+.wheel-segment:active{transform:scale(.995)}
+.wheel-hole-shadow{
+  fill:#cbd5e1;
+  filter:drop-shadow(0 7px 7px rgba(15,23,42,.18));
+}
+.wheel-hole{
+  stroke:#fff;
+  stroke-width:3;
+  filter:drop-shadow(0 4px 5px rgba(15,23,42,.10));
+}
+.wheel-hole-highlight{
+  fill:none;stroke:#fff;stroke-width:2;opacity:.9;
+}
+@media(max-width:1100px){.shortcut-donut{width:min(315px,96%)}}
 @media(max-width:760px){
-  .donut-shortcut-panel{padding:14px 10px}
-  .shortcut-donut{width:min(285px,94%)}
-  .wheel-icon{font-size:17px}.wheel-label{font-size:7px}
+  .donut-shortcut-panel{padding:13px 10px}
+  .shortcut-donut{width:min(292px,96%)}
+  .wheel-icon{font-size:18px}.wheel-label{font-size:7px}
 }
