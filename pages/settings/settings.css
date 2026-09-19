@@ -154,3 +154,50 @@
 .gmail-note{font-size:12px;color:#64748b}.gmail-connect-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:170px;height:44px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(145deg,#fb7185,#e11d48 58%,#be123c);color:#fff;font-size:13px;font-weight:850;cursor:pointer;box-shadow:0 5px 0 #9f1239,0 9px 16px rgba(225,29,72,.23),inset 0 2px 2px rgba(255,255,255,.35);transition:.16s}
 .gmail-connect-btn span{font-weight:900}.gmail-connect-btn:hover{transform:translateY(-2px);box-shadow:0 7px 0 #9f1239,0 13px 20px rgba(225,29,72,.3),inset 0 2px 2px rgba(255,255,255,.4)}.gmail-connect-btn:active{transform:translateY(3px);box-shadow:0 2px 0 #9f1239,0 5px 9px rgba(225,29,72,.18)}
 @media(max-width:700px){.gmail-form-row{align-items:flex-start;flex-direction:column}.gmail-field-info,.gmail-field-control{width:100%;min-width:0}.gmail-action-row{align-items:stretch;flex-direction:column}.gmail-connect-btn{width:100%}}
+
+
+/* WhatsApp settings */
+.whatsapp-shortcut span{display:grid;place-items:center}
+.whatsapp-shortcut-icon svg,.whatsapp-panel-icon svg{display:block}
+.whatsapp-shortcut:hover::after{background:#dcfce7;border-color:#86efac;color:#15803d}
+.whatsapp-shortcut.active{background:linear-gradient(145deg,#4ade80,#16a34a 60%,#15803d);border-color:#16a34a}
+.whatsapp-shortcut.active span{filter:brightness(0) invert(1) drop-shadow(1px 2px 1px rgba(0,0,0,.18))}
+.whatsapp-panel-icon{background:linear-gradient(145deg,#dcfce7,#bbf7d0);color:#16a34a;box-shadow:inset 2px 2px 5px rgba(255,255,255,.9),inset -2px -2px 5px rgba(21,128,61,.12),3px 4px 8px rgba(15,23,42,.1)}
+.whatsapp-settings-card{overflow:hidden;border:1px solid #dce5ef;border-radius:20px;background:linear-gradient(145deg,#fff,#f3f7fb);box-shadow:10px 12px 28px rgba(15,23,42,.09),-7px -7px 18px rgba(255,255,255,.95)}
+.whatsapp-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid #e3e9f1}
+.whatsapp-field{padding:20px 24px;min-width:0}
+.whatsapp-field:first-child{border-right:1px solid #e3e9f1}
+.whatsapp-field-heading{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.whatsapp-field-icon{flex:0 0 42px;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(145deg,#dcfce7,#bbf7d0);color:#16a34a;font-size:19px;font-weight:900;box-shadow:inset 2px 2px 5px rgba(255,255,255,.9),inset -2px -2px 5px rgba(21,128,61,.1),3px 4px 8px rgba(15,23,42,.1)}
+.whatsapp-field-heading h3{margin:0;font-size:16px;font-weight:800}
+.whatsapp-field-heading p{margin:5px 0 0;font-size:13px;line-height:1.4;color:#718096}
+.whatsapp-input{width:100%;height:46px;box-sizing:border-box;padding:0 14px;border:1px solid #ccd8e5;border-radius:12px;background:#fff;outline:none;font-size:14px;font-weight:650;color:#172033;box-shadow:inset 2px 2px 6px rgba(15,23,42,.05),0 2px 4px rgba(15,23,42,.04);transition:.18s}
+.whatsapp-input:focus{border-color:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.12),inset 2px 2px 5px rgba(15,23,42,.04)}
+.whatsapp-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 24px;background:linear-gradient(180deg,#f8fff9,#eef9f1);border-top:1px solid #dff1e3}
+.whatsapp-action-buttons{display:flex;align-items:center;gap:10px}
+.whatsapp-submit-btn,.whatsapp-reset-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:125px;height:44px;padding:0 18px;border:0;border-radius:12px;color:#fff;font-size:13px;font-weight:850;cursor:pointer;transition:transform .16s ease,box-shadow .16s ease}
+.whatsapp-submit-btn{background:linear-gradient(145deg,#4ade80,#16a34a 58%,#15803d);box-shadow:0 5px 0 #166534,0 9px 16px rgba(22,163,74,.24),inset 0 2px 2px rgba(255,255,255,.38),inset 0 -2px 4px rgba(21,128,61,.3)}
+.whatsapp-reset-btn{background:linear-gradient(145deg,#94a3b8,#64748b 58%,#475569);box-shadow:0 5px 0 #334155,0 9px 16px rgba(71,85,105,.22),inset 0 2px 2px rgba(255,255,255,.35),inset 0 -2px 4px rgba(51,65,85,.3)}
+.whatsapp-submit-btn span,.whatsapp-reset-btn span{display:grid;place-items:center;width:22px;height:22px;border-radius:7px;background:rgba(255,255,255,.2);box-shadow:inset 1px 1px 2px rgba(255,255,255,.35)}
+.whatsapp-submit-btn:hover,.whatsapp-reset-btn:hover{transform:translateY(-2px)}
+.whatsapp-submit-btn:hover{box-shadow:0 7px 0 #166534,0 13px 20px rgba(22,163,74,.3),inset 0 2px 2px rgba(255,255,255,.4),inset 0 -2px 4px rgba(21,128,61,.3)}
+.whatsapp-reset-btn:hover{box-shadow:0 7px 0 #334155,0 13px 20px rgba(71,85,105,.28),inset 0 2px 2px rgba(255,255,255,.4),inset 0 -2px 4px rgba(51,65,85,.3)}
+.whatsapp-submit-btn:active,.whatsapp-reset-btn:active{transform:translateY(3px)}
+.whatsapp-submit-btn:active{box-shadow:0 2px 0 #166534,0 5px 9px rgba(22,163,74,.18),inset 0 2px 4px rgba(21,128,61,.3)}
+.whatsapp-reset-btn:active{box-shadow:0 2px 0 #334155,0 5px 9px rgba(71,85,105,.18),inset 0 2px 4px rgba(51,65,85,.3)}
+.whatsapp-status{display:flex;align-items:center;gap:8px;font-size:13px;color:#64748b}
+.whatsapp-status-dot{width:9px;height:9px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.12)}
+.whatsapp-status.saved .whatsapp-status-dot{background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.14)}
+.whatsapp-variables-section{padding:22px 24px;border:1px solid #dce5ef;border-radius:20px;background:linear-gradient(145deg,#fff,#f3f7fb);box-shadow:10px 12px 28px rgba(15,23,42,.08),-7px -7px 18px rgba(255,255,255,.95);margin-top:14px}
+.whatsapp-variable-icon{background:linear-gradient(145deg,#dcfce7,#bbf7d0);color:#16a34a}
+.whatsapp-variable-list{margin-top:14px}
+.whatsapp-variable-chip{border-color:#86efac;background:linear-gradient(145deg,#fff,#ecfdf5);color:#15803d}
+.whatsapp-variable-chip:hover{box-shadow:4px 6px 10px rgba(22,163,74,.16),inset 1px 1px 2px rgba(255,255,255,.95)}
+@media(max-width:700px){
+  .whatsapp-form-grid{grid-template-columns:1fr}
+  .whatsapp-field:first-child{border-right:0;border-bottom:1px solid #e3e9f1}
+  .whatsapp-actions{align-items:stretch;flex-direction:column}
+  .whatsapp-action-buttons{width:100%}
+  .whatsapp-submit-btn,.whatsapp-reset-btn{flex:1}
+  .whatsapp-variables-section{padding:20px 16px}
+}
