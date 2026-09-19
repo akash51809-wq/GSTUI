@@ -201,3 +201,9 @@
   .whatsapp-submit-btn,.whatsapp-reset-btn{flex:1}
   .whatsapp-variables-section{padding:20px 16px}
 }
+
+/* WhatsApp field proportions */
+.whatsapp-form-grid{grid-template-columns:minmax(145px,0.62fr) minmax(0,1.38fr)}
+.whatsapp-field:first-child{padding-right:18px}
+.whatsapp-field:last-child{padding-left:22px}
+@media(max-width:700px){.whatsapp-form-grid{grid-template-columns:1fr}.whatsapp-field:first-child{padding-right:24px}.whatsapp-field:last-child{padding-left:24px}}
