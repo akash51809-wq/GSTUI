@@ -1,7 +1,7 @@
 /* GSTUI modular page loader - stable, cache-safe asset loading. */
 (function(){
 'use strict';
-const V='20260919-2';
+const V='20260919-3';
 const modules={dashboard:{html:'pages/dashboard/dashboard.html',css:'pages/dashboard/dashboard.css',js:'pages/dashboard/dashboard.js'},upload:{html:'pages/upload/upload.html',css:'pages/upload/upload.css',js:'pages/upload/upload.js'},reports:{html:'pages/report/report.html',css:'pages/report/report.css',js:'pages/report/report.js'},parties:{html:'pages/parties/parties.html',css:'pages/parties/parties.css',js:'pages/parties/parties.js'},settings:{html:'pages/settings/settings.html',css:'pages/settings/settings.css',js:'pages/settings/settings.js'}};
 const reportSubpages={'pending-invoice':{html:'pages/report/pending-invoice.html',css:'pages/report/pending-invoice.css',js:'pages/report/pending-invoice.js'},'upload-invoice-report':{html:'pages/report/upload-invoice-report.html',css:'pages/report/upload-invoice.css',js:'pages/report/upload-invoice-report.js'},'ai-report':{html:'pages/report/ai-report.html',css:'pages/report/ai-report.css',js:'pages/report/ai-report.js'}};
 const loaded=new Set();
