@@ -136,14 +136,14 @@
   pointer-events:none;
 }
 .wheel-icon{
-  fill:#fff;font-size:21px;font-weight:900;
+  fill:#fff;font-size:27px;font-weight:900;
   font-family:Inter,Arial,sans-serif;
   paint-order:stroke;
   stroke:rgba(15,23,42,.20);stroke-width:1;
   pointer-events:none;
 }
 .wheel-label{
-  fill:#fff;font-size:8px;font-weight:900;
+  fill:#fff;font-size:13px;font-weight:900;
   font-family:Inter,Arial,sans-serif;
   letter-spacing:.01em;
   paint-order:stroke;
@@ -171,5 +171,5 @@
 @media(max-width:760px){
   .donut-shortcut-panel{padding:13px 10px}
   .shortcut-donut{width:min(292px,96%)}
-  .wheel-icon{font-size:18px}.wheel-label{font-size:7px}
+  .wheel-icon{font-size:23px}.wheel-label{font-size:10px}
 }
