@@ -83,6 +83,54 @@
     field.selectionStart=field.selectionEnd=start+variable.length;
   }
 
+  function saveWhatsAppSettings(root){
+    try{
+      const requestType=root.querySelector('#whatsapp-request-type')?.value || 'POST';
+      const apiUrl=root.querySelector('#whatsapp-api-url')?.value || '';
+      localStorage.setItem('gstui_whatsapp_request_type',requestType);
+      localStorage.setItem('gstui_whatsapp_api_url',apiUrl);
+      const status=root.querySelector('#whatsapp-status');
+      if(status){
+        status.classList.add('saved');
+        status.innerHTML='<span class="whatsapp-status-dot"></span><span>WhatsApp API settings successfully saved.</span>';
+      }
+    }catch(e){}
+  }
+
+  function loadWhatsAppSettings(root){
+    try{
+      const requestType=localStorage.getItem('gstui_whatsapp_request_type');
+      const apiUrl=localStorage.getItem('gstui_whatsapp_api_url');
+      const type=root.querySelector('#whatsapp-request-type');
+      const url=root.querySelector('#whatsapp-api-url');
+      if(type && requestType) type.value=requestType;
+      if(url && apiUrl !== null) url.value=apiUrl;
+      if(requestType || apiUrl !== null){
+        const status=root.querySelector('#whatsapp-status');
+        if(status){
+          status.classList.add('saved');
+          status.innerHTML='<span class="whatsapp-status-dot"></span><span>Saved WhatsApp API settings loaded.</span>';
+        }
+      }
+    }catch(e){}
+  }
+
+  function resetWhatsAppSettings(root){
+    try{
+      localStorage.removeItem('gstui_whatsapp_request_type');
+      localStorage.removeItem('gstui_whatsapp_api_url');
+    }catch(e){}
+    const type=root.querySelector('#whatsapp-request-type');
+    const url=root.querySelector('#whatsapp-api-url');
+    if(type) type.value='POST';
+    if(url) url.value='';
+    const status=root.querySelector('#whatsapp-status');
+    if(status){
+      status.classList.remove('saved');
+      status.innerHTML='<span class="whatsapp-status-dot"></span><span>WhatsApp API settings are not saved.</span>';
+    }
+  }
+
   window.GSTUIPageModules.settings = {
     mount(root){
       if(!root) return;
@@ -142,6 +190,26 @@
       if(emailCode) emailCode.addEventListener('input',function(){
         const status=root.querySelector('#email-template-status'); if(status){status.classList.remove('saved');status.innerHTML='<span class="email-status-dot"></span><span>Unsaved changes.</span>';}
       });
+
+      const whatsappSubmit=root.querySelector('#whatsapp-submit-btn');
+      const whatsappReset=root.querySelector('#whatsapp-reset-btn');
+      const whatsappType=root.querySelector('#whatsapp-request-type');
+      const whatsappUrl=root.querySelector('#whatsapp-api-url');
+
+      loadWhatsAppSettings(root);
+
+      if(whatsappSubmit) whatsappSubmit.addEventListener('click',function(){ saveWhatsAppSettings(root); });
+      if(whatsappReset) whatsappReset.addEventListener('click',function(){ resetWhatsAppSettings(root); });
+      [whatsappType,whatsappUrl].forEach(function(field){
+        if(field) field.addEventListener('input',function(){
+          const status=root.querySelector('#whatsapp-status');
+          if(status){
+            status.classList.remove('saved');
+            status.innerHTML='<span class="whatsapp-status-dot"></span><span>Unsaved changes.</span>';
+          }
+        });
+      });
+
       loadEmailTemplate();
     },
     unmount(root){ if(root) delete root.dataset.moduleMounted; }
