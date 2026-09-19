@@ -38,3 +38,13 @@
   .candle-group i{width:7px}
   .months{font-size:9px;gap:2px}
 }
+
+.chart .purchase-candle{background:linear-gradient(180deg,#34d399 0%,#16a34a 100%) !important}
+.chart .sale-candle{background:linear-gradient(180deg,#fb923c 0%,#ea580c 100%) !important}
+.chart-legend{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:9px;font-size:10px;font-weight:700;color:#64748b}
+.chart-legend span{display:inline-flex;align-items:center;gap:5px}
+.chart-legend .legend-dot{display:inline-block;width:9px;height:9px;border-radius:50%;box-shadow:2px 2px 4px rgba(15,23,42,.16),inset 1px 1px 2px rgba(255,255,255,.45)}
+.chart-legend .purchase-dot{background:linear-gradient(145deg,#34d399,#16a34a)}
+.chart-legend .sale-dot{background:linear-gradient(145deg,#fb923c,#ea580c)}
+.chart[data-mode="buy"] .sale-candle,.chart[data-mode="sale"] .purchase-candle{display:none !important}
+@media(max-width:760px){.chart-legend{font-size:9px;gap:11px;margin-top:7px}.chart-legend .legend-dot{width:8px;height:8px}}
