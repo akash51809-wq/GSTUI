@@ -162,10 +162,10 @@
 @media(max-width:760px){.shortcut-hub{width:min(285px,94%)}.hub-core{width:96px;height:96px}.hub-shortcut{width:54px;height:54px}.shortcut-hub-panel{min-height:350px}}
 
 
-/* Clean light Smart Shortcuts donut wheel. */
+/* Reference-style Smart Shortcuts segmented wheel. */
 .donut-shortcut-panel{
   min-height:100%;
-  padding:18px 18px 14px;
+  padding:16px 16px 12px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -174,114 +174,33 @@
   overflow:hidden;
   border-radius:22px;
   background:#fff;
-  border:1px solid #e8edf4;
-  box-shadow:0 14px 30px rgba(15,23,42,.08),0 3px 8px rgba(15,23,42,.04);
+  border:1px solid #e7edf4;
+  box-shadow:0 12px 28px rgba(15,23,42,.08),0 3px 8px rgba(15,23,42,.035);
 }
 .donut-shortcut-panel:before{
-  content:"";position:absolute;width:280px;height:280px;border-radius:50%;
-  background:radial-gradient(circle,rgba(59,130,246,.055),transparent 68%);
+  content:"";position:absolute;width:310px;height:310px;border-radius:50%;
+  background:radial-gradient(circle,rgba(59,130,246,.045),transparent 68%);
   pointer-events:none;
 }
-.shortcut-hub-head{position:relative;z-index:5;width:100%;display:block;text-align:left;margin-bottom:3px}
+.shortcut-hub-head{position:relative;z-index:5;width:100%;display:block;text-align:left;margin-bottom:1px}
 .shortcut-hub-head h3{margin:3px 0 1px;color:#0f172a;font-size:16px;font-weight:800}
 .shortcut-hub-head p{margin:0;color:#64748b;font-size:9px;font-weight:500}
 .shortcut-hub-head .panel-kicker{color:#64748b;font-size:8px;letter-spacing:.2em;font-weight:800}
 
-.shortcut-donut{
-  width:min(326px,94%);
-  aspect-ratio:1;
-  position:relative;
-  margin:8px auto 0;
-  border-radius:50%;
-  isolation:isolate;
-}
-.donut-ring{
-  position:absolute;
-  inset:1%;
-  border-radius:50%;
-  background:conic-gradient(
-    #22a7f0 0 16.666%,
-    #ef5b88 16.666% 33.333%,
-    #8b5cf6 33.333% 50%,
-    #475569 50% 66.666%,
-    #9b5de5 66.666% 83.333%,
-    #f59a45 83.333% 100%
-  );
-  box-shadow:0 18px 25px rgba(15,23,42,.18),inset 7px 7px 12px rgba(255,255,255,.52),inset -9px -10px 15px rgba(15,23,42,.22);
-}
-.donut-ring:before{
-  content:"";
-  position:absolute;
-  inset:24px;
-  border-radius:50%;
-  background:#fff;
-  box-shadow:inset 4px 4px 10px rgba(15,23,42,.08),0 4px 10px rgba(15,23,42,.08);
-}
-.donut-ring:after{
-  content:"";
-  position:absolute;
-  inset:1%;
-  border-radius:50%;
-  background:repeating-conic-gradient(from 0deg,transparent 0 59.35deg,rgba(255,255,255,.95) 59.35deg 60deg);
-  -webkit-mask:radial-gradient(circle,transparent 0 72%,#000 72.5% 100%);
-  mask:radial-gradient(circle,transparent 0 72%,#000 72.5% 100%);
-  pointer-events:none;
-}
-.donut-center{
-  position:absolute;
-  left:50%;top:50%;
-  width:104px;height:104px;
-  transform:translate(-50%,-50%);
-  border-radius:50%;
-  z-index:4;
-  background:#fff;
-  border:1px solid #eef2f7;
-  box-shadow:0 9px 18px rgba(15,23,42,.12),inset 2px 2px 6px rgba(255,255,255,.95),inset -4px -4px 8px rgba(15,23,42,.05);
-}
-.donut-action{
-  position:absolute;
-  width:78px;height:78px;
-  border:0;
-  border-radius:50%;
-  z-index:8;
-  color:#fff;
-  cursor:pointer;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:3px;
-  padding:0;
-  text-shadow:0 1px 2px rgba(15,23,42,.24);
-  box-shadow:6px 9px 15px rgba(15,23,42,.18),inset 4px 4px 7px rgba(255,255,255,.38),inset -5px -6px 8px rgba(15,23,42,.20);
-  transition:transform .2s cubic-bezier(.2,.8,.2,1),filter .2s,box-shadow .2s;
-}
-.donut-action:before{
-  content:"";position:absolute;inset:6px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.42);
-  box-shadow:inset 2px 2px 4px rgba(255,255,255,.22),inset -3px -4px 5px rgba(15,23,42,.15);
-}
-.donut-action .donut-icon,.donut-action small{position:relative;z-index:2}
-.donut-action .donut-icon{font-size:20px;font-weight:900;line-height:1}
-.donut-action small{font-size:7px;font-weight:800;white-space:nowrap}
-.donut-action:hover{
-  transform:scale(1.1) translateY(-3px);
-  filter:brightness(1.08);
-  box-shadow:8px 13px 20px rgba(15,23,42,.23),0 0 16px currentColor,inset 4px 4px 7px rgba(255,255,255,.42),inset -5px -6px 8px rgba(15,23,42,.20);
-}
-.donut-action:active{transform:scale(.97)}
-.donut-invoice{left:50%;top:4%;transform:translateX(-50%);background:linear-gradient(145deg,#35baf5,#128bd0);color:#e0f5ff}
-.donut-party{right:6.5%;top:25%;background:linear-gradient(145deg,#f36d9a,#d93f70);color:#ffe4ec}
-.donut-report{right:6.5%;bottom:15%;background:linear-gradient(145deg,#a27af8,#7041d7);color:#f0eaff}
-.donut-settings{left:50%;bottom:4%;transform:translateX(-50%);background:linear-gradient(145deg,#64748b,#334155);color:#f1f5f9}
-.donut-ai{left:6.5%;bottom:15%;background:linear-gradient(145deg,#b06bea,#8538c9);color:#f5e9ff}
-.donut-inventory{left:6.5%;top:25%;background:linear-gradient(145deg,#ffb15d,#ed7a21);color:#fff3e4}
-.donut-invoice:hover,.donut-settings:hover{transform:translateX(-50%) scale(1.1) translateY(-3px)}
-@media(max-width:1100px){.shortcut-donut{width:min(300px,90%)}}
+.shortcut-donut{width:min(330px,96%);aspect-ratio:1;position:relative;margin:4px auto 0;display:grid;place-items:center}
+.shortcut-wheel{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 8px 10px rgba(15,23,42,.08))}
+.wheel-segment{cursor:pointer;outline:none;transform-box:fill-box;transform-origin:center;transition:filter .2s ease,transform .2s cubic-bezier(.2,.8,.2,1)}
+.wheel-segment path{stroke:#fff;stroke-width:4;stroke-linejoin:round}
+.wheel-segment circle{pointer-events:none}
+.wheel-icon{fill:#fff;font-size:19px;font-weight:900;font-family:Inter,Arial,sans-serif;paint-order:stroke;stroke:rgba(15,23,42,.18);stroke-width:1}
+.wheel-label{fill:#fff;font-size:8px;font-weight:800;font-family:Inter,Arial,sans-serif;letter-spacing:.01em}
+.wheel-segment:hover,.wheel-segment:focus-visible{transform:scale(1.035);filter:drop-shadow(0 8px 9px rgba(15,23,42,.20)) brightness(1.07)}
+.wheel-segment:active{transform:scale(.99)}
+.wheel-hole{fill:#fff;filter:drop-shadow(0 5px 7px rgba(15,23,42,.12))}
+.wheel-hole-highlight{fill:none;stroke:#f4f7fa;stroke-width:3}
+@media(max-width:1100px){.shortcut-donut{width:min(305px,92%)}}
 @media(max-width:760px){
-  .donut-shortcut-panel{padding:15px 12px}
-  .shortcut-donut{width:min(278px,92%)}
-  .donut-center{width:90px;height:90px}
-  .donut-action{width:66px;height:66px}
-  .donut-action .donut-icon{font-size:18px}
+  .donut-shortcut-panel{padding:14px 10px}
+  .shortcut-donut{width:min(285px,94%)}
+  .wheel-icon{font-size:17px}.wheel-label{font-size:7px}
 }
