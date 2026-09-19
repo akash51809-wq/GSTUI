@@ -26,26 +26,52 @@
     </div>
   </div>
 
-  <div class="shortcut-donut" aria-label="Smart shortcuts">
-    <div class="donut-ring" aria-hidden="true"></div>
-    <button class="donut-action donut-invoice" title="Invoice" aria-label="Invoice" onclick="window.launchDashboardShortcut('upload',this)">
-      <span class="donut-icon">₹✓</span><small>Invoice</small>
-    </button>
-    <button class="donut-action donut-party" title="Total Party" aria-label="Total Party" onclick="window.launchDashboardShortcut('parties',this)">
-      <span class="donut-icon">♙</span><small>Total Party</small>
-    </button>
-    <button class="donut-action donut-report" title="Report" aria-label="Report" onclick="window.launchDashboardShortcut('reports',this)">
-      <span class="donut-icon">☷</span><small>Report</small>
-    </button>
-    <button class="donut-action donut-settings" title="Settings" aria-label="Settings" onclick="window.launchDashboardShortcut('settings',this)">
-      <span class="donut-icon">⚙</span><small>Settings</small>
-    </button>
-    <button class="donut-action donut-ai" title="AI Assistant" aria-label="AI Assistant" onclick="window.launchDashboardShortcut('ai-report',this)">
-      <span class="donut-icon">✦</span><small>AI Assistant</small>
-    </button>
-    <button class="donut-action donut-inventory" title="Inventory" aria-label="Inventory" onclick="window.launchDashboardShortcut('upload',this)">
-      <span class="donut-icon">▣</span><small>Inventory</small>
-    </button>
-    <div class="donut-center" aria-hidden="true"></div>
+  <div class="shortcut-donut" aria-label="Smart Shortcuts">
+    <svg class="shortcut-wheel" viewBox="0 0 360 360" role="group" aria-label="Smart Shortcuts">
+      <defs>
+        <filter id="wheelShadow" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#64748b" flood-opacity=".22"/>
+        </filter>
+        <linearGradient id="segBlue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#42c4f5"/><stop offset="1" stop-color="#168bd0"/></linearGradient>
+        <linearGradient id="segPink" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8759f"/><stop offset="1" stop-color="#d43c70"/></linearGradient>
+        <linearGradient id="segPurple" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#aa83f8"/><stop offset="1" stop-color="#7141d6"/></linearGradient>
+        <linearGradient id="segSlate" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#718196"/><stop offset="1" stop-color="#35475b"/></linearGradient>
+        <linearGradient id="segViolet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bd78ed"/><stop offset="1" stop-color="#8640c5"/></linearGradient>
+        <linearGradient id="segOrange" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb660"/><stop offset="1" stop-color="#ed7920"/></linearGradient>
+      </defs>
+
+      <g class="wheel-segment wheel-invoice" tabindex="0" role="button" aria-label="Invoice" onclick="window.launchDashboardShortcut('upload',this)">
+        <path d="M 185.2 30.1 A 150 150 0 0 1 307.2 100.5 L 249.5 136.5 A 82 82 0 0 0 182.9 98.0 Z" fill="url(#segBlue)" filter="url(#wheelShadow)"/>
+        <circle cx="180" cy="69" r="18" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.55)"/>
+        <text x="180" y="66" class="wheel-icon" text-anchor="middle">₹✓</text><text x="180" y="82" class="wheel-label" text-anchor="middle">Invoice</text>
+      </g>
+      <g class="wheel-segment wheel-party" tabindex="0" role="button" aria-label="Total Party" onclick="window.launchDashboardShortcut('parties',this)">
+        <path d="M 312.4 109.6 A 150 150 0 0 1 312.4 250.4 L 252.4 218.5 A 82 82 0 0 0 252.4 141.5 Z" fill="url(#segPink)" filter="url(#wheelShadow)"/>
+        <circle cx="285" cy="130" r="18" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.55)"/>
+        <text x="285" y="127" class="wheel-icon" text-anchor="middle">♙</text><text x="285" y="143" class="wheel-label" text-anchor="middle">Total Party</text>
+      </g>
+      <g class="wheel-segment wheel-report" tabindex="0" role="button" aria-label="Report" onclick="window.launchDashboardShortcut('reports',this)">
+        <path d="M 307.2 259.5 A 150 150 0 0 1 185.2 329.9 L 182.9 262.0 A 82 82 0 0 0 249.5 223.5 Z" fill="url(#segPurple)" filter="url(#wheelShadow)"/>
+        <circle cx="285" cy="230" r="18" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.55)"/>
+        <text x="285" y="227" class="wheel-icon" text-anchor="middle">☷</text><text x="285" y="243" class="wheel-label" text-anchor="middle">Report</text>
+      </g>
+      <g class="wheel-segment wheel-settings" tabindex="0" role="button" aria-label="Settings" onclick="window.launchDashboardShortcut('settings',this)">
+        <path d="M 174.8 329.9 A 150 150 0 0 1 52.8 259.5 L 110.5 223.5 A 82 82 0 0 0 177.1 262.0 Z" fill="url(#segSlate)" filter="url(#wheelShadow)"/>
+        <circle cx="180" cy="291" r="18" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.55)"/>
+        <text x="180" y="288" class="wheel-icon" text-anchor="middle">⚙</text><text x="180" y="304" class="wheel-label" text-anchor="middle">Settings</text>
+      </g>
+      <g class="wheel-segment wheel-ai" tabindex="0" role="button" aria-label="AI Assistant" onclick="window.launchDashboardShortcut('ai-report',this)">
+        <path d="M 47.6 250.4 A 150 150 0 0 1 47.6 109.6 L 107.6 141.5 A 82 82 0 0 0 107.6 218.5 Z" fill="url(#segViolet)" filter="url(#wheelShadow)"/>
+        <circle cx="75" cy="230" r="18" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.55)"/>
+        <text x="75" y="227" class="wheel-icon" text-anchor="middle">✦</text><text x="75" y="243" class="wheel-label" text-anchor="middle">AI Assistant</text>
+      </g>
+      <g class="wheel-segment wheel-inventory" tabindex="0" role="button" aria-label="Inventory" onclick="window.launchDashboardShortcut('upload',this)">
+        <path d="M 52.8 100.5 A 150 150 0 0 1 174.8 30.1 L 177.1 98.0 A 82 82 0 0 0 110.5 136.5 Z" fill="url(#segOrange)" filter="url(#wheelShadow)"/>
+        <circle cx="75" cy="130" r="18" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.55)"/>
+        <text x="75" y="127" class="wheel-icon" text-anchor="middle">▣</text><text x="75" y="143" class="wheel-label" text-anchor="middle">Inventory</text>
+      </g>
+      <circle class="wheel-hole" cx="180" cy="180" r="80"/>
+      <circle class="wheel-hole-highlight" cx="180" cy="180" r="76"/>
+    </svg>
   </div>
 </aside>></div>
