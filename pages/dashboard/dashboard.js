@@ -26,6 +26,27 @@
     });
   };
 
+  window.launchDashboardShortcut=function(target,button){
+    if(button){
+      document.querySelectorAll('.hub-shortcut.launching').forEach(b=>b.classList.remove('launching'));
+      button.classList.add('launching');
+      button.animate([{transform:'scale(1)'},{transform:'scale(1.28)'},{transform:'scale(.96)'},{transform:'scale(1.08)'}],{duration:360,easing:'cubic-bezier(.2,.8,.2,1)'});
+    }
+    setTimeout(function(){
+      if(typeof window.showSection==='function') window.showSection(target);
+      requestAnimationFrame(function(){
+        const id=target==='pending-invoice'||target==='upload-invoice-report'||target==='ai-report'?'reports':target;
+        const page=document.getElementById(id);
+        if(page){
+          page.classList.remove('shortcut-launch');
+          void page.offsetWidth;
+          page.classList.add('shortcut-launch');
+          setTimeout(()=>page.classList.remove('shortcut-launch'),420);
+        }
+      });
+    },220);
+  };
+
   window.GSTUIPageModules.dashboard={
     mount(root){
       if(root){
