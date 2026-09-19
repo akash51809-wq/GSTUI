@@ -20,65 +20,65 @@
   <div id="company-panel" class="settings-panel active">
     <div class="settings-panel-title">
       <div class="panel-icon">🏢</div>
-      <div><h2>Company Setting</h2><p>Invoice और email में इस्तेमाल होने वाली company information सेट करें।</p></div>
+      <div><h2>Company Setting</h2><p>Configure company information used in invoices and emails.</p></div>
     </div>
     <div class="company-settings-card">
       <div class="setting-row company-name-row">
-        <div class="setting-info"><div class="setting-icon">✎</div><div><h3>Company Name</h3><p>अपनी company या business का नाम दर्ज करें।</p></div></div>
+        <div class="setting-info"><div class="setting-icon">✎</div><div><h3>Company Name</h3><p>Enter your company or business name.</p></div></div>
         <div class="setting-control setting-name-control"><input id="company-name-input" class="company-input" type="text" placeholder="Enter Company Name" autocomplete="organization"></div>
       </div>
       <div class="setting-row">
-        <div class="setting-info"><div class="setting-icon">▣</div><div><h3>Company Logo</h3><p>Invoice header और branding के लिए logo upload करें।</p></div></div>
+        <div class="setting-info"><div class="setting-icon">▣</div><div><h3>Company Logo</h3><p>Upload a logo for the invoice header and branding.</p></div></div>
         <div class="logo-control"><div class="logo-preview" id="company-logo-preview"><span>LOGO</span></div><div class="logo-upload-stack"><label class="logo-upload-btn" for="company-logo-input">↑ Upload Logo</label><span id="company-logo-name" class="logo-file-name">No logo selected</span></div><input id="company-logo-input" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden></div>
       </div>
       <div class="setting-row">
-        <div class="setting-info"><div class="setting-icon">✉</div><div><h3>Send Auto Email</h3><p>Automatic email sending को enable या disable करें।</p></div></div>
+        <div class="setting-info"><div class="setting-icon">✉</div><div><h3>Send Auto Email</h3><p>Enable or disable automatic email sending.</p></div></div>
         <label class="three-toggle" title="Send Auto Email"><input id="auto-email-toggle" type="checkbox"><span class="three-toggle-track"><span class="three-toggle-knob"></span><span class="toggle-text on">ON</span><span class="toggle-text off">OFF</span></span></label>
       </div>
     </div>
-    <div class="settings-save-note"><span>✓</span> आपकी company settings इसी browser में automatically save होंगी।</div>
+    <div class="settings-save-note"><span>✓</span> Your company settings will be saved automatically in this browser.</div>
   </div>
 
   <div id="drive-panel" class="settings-panel">
     <div class="settings-panel-title">
       <div class="panel-icon">☁</div>
-      <div><h2>G Drive Setting</h2><p>Google Drive account connect करके invoice और report files को Drive में सुरक्षित रखें।</p></div>
+      <div><h2>G Drive Setting</h2><p>Connect Google Drive to securely store invoice and report files.</p></div>
     </div>
     <div class="drive-settings-card">
       <div class="drive-form-row">
-        <div class="drive-field-info"><div class="drive-field-icon">ID</div><div><h3>Google Client ID</h3><p>Google Cloud OAuth application का Client ID दर्ज करें।</p></div></div>
+        <div class="drive-field-info"><div class="drive-field-icon">ID</div><div><h3>Google Client ID</h3><p>Enter the Client ID of your Google Cloud OAuth application.</p></div></div>
         <div class="drive-field-control"><input id="google-client-id" class="drive-input" type="text" placeholder="Enter Google Client ID" autocomplete="off"></div>
       </div>
       <div class="drive-form-row">
-        <div class="drive-field-info"><div class="drive-field-icon">🔑</div><div><h3>Google Client Secret</h3><p>OAuth application का Client Secret यहाँ दर्ज करें।</p></div></div>
+        <div class="drive-field-info"><div class="drive-field-icon">🔑</div><div><h3>Google Client Secret</h3><p>Enter the Client Secret of your OAuth application.</p></div></div>
         <div class="drive-field-control"><input id="google-client-secret" class="drive-input" type="password" placeholder="Enter Google Client Secret" autocomplete="off"></div>
       </div>
       <div class="drive-form-row">
-        <div class="drive-field-info"><div class="drive-field-icon">↗</div><div><h3>Google Redirect URI</h3><p>Google OAuth callback के लिए registered redirect URI दर्ज करें।</p></div></div>
+        <div class="drive-field-info"><div class="drive-field-icon">↗</div><div><h3>Google Redirect URI</h3><p>Enter the registered redirect URI for the Google OAuth callback.</p></div></div>
         <div class="drive-field-control"><input id="google-redirect-uri" class="drive-input" type="url" placeholder="Enter Google Redirect URI" autocomplete="url"></div>
       </div>
       <div class="google-connect-row">
         <button type="button" class="google-connect-btn" id="google-connect-btn"><span class="google-g">G</span> Connect Google Account</button>
       </div>
     </div>
-    <div class="drive-status" id="google-drive-status"><span class="drive-status-dot"></span><span>Google Drive account अभी connected नहीं है।</span></div>
+    <div class="drive-status" id="google-drive-status"><span class="drive-status-dot"></span><span>Google Drive account is not connected.</span></div>
   </div>
   <div id="gmail-panel" class="settings-panel">
   <div class="settings-panel-title">
     <div class="panel-icon">✉</div>
-    <div><h2>Gmail Setting</h2><p>Invoice email भेजने के लिए Gmail sender configuration तैयार करें।</p></div>
+    <div><h2>Gmail Setting</h2><p>Configure the Gmail sender for invoice emails.</p></div>
   </div>
   <div class="gmail-settings-card">
     <div class="gmail-form-row">
-      <div class="gmail-field-info"><div class="gmail-field-icon">✉</div><div><h3>Sender Email</h3><p>वह Gmail address जिससे invoice email भेजे जाएंगे।</p></div></div>
+      <div class="gmail-field-info"><div class="gmail-field-icon">✉</div><div><h3>Sender Email</h3><p>Enter the Gmail address used to send invoice emails.</p></div></div>
       <div class="gmail-field-control"><input id="gmail-sender-email" class="gmail-input" type="email" placeholder="yourname@gmail.com" autocomplete="email"></div>
     </div>
     <div class="gmail-form-row">
-      <div class="gmail-field-info"><div class="gmail-field-icon">✓</div><div><h3>Connection Status</h3><p>OAuth/Gmail API connection backend जोड़ने के लिए ready है।</p></div></div>
+      <div class="gmail-field-info"><div class="gmail-field-icon">✓</div><div><h3>Connection Status</h3><p>OAuth/Gmail API connection is ready for backend integration.</p></div></div>
       <div class="gmail-status-pill"><span></span> Not Connected</div>
     </div>
     <div class="gmail-action-row">
-      <span class="gmail-note">Gmail API connection अगला backend step होगा।</span>
+      <span class="gmail-note">Gmail API connection will be the next backend step.</span>
       <button type="button" class="gmail-connect-btn" id="gmail-connect-btn"><span>G</span> Connect Gmail</button>
     </div>
   </div>
@@ -86,29 +86,29 @@
   <div id="gemini-panel" class="settings-panel">
     <div class="settings-panel-title">
       <div class="panel-icon">✦</div>
-      <div><h2>Gemini Setting</h2><p>Gemini API key जोड़कर AI आधारित invoice analysis और reports के लिए configuration करें।</p></div>
+      <div><h2>Gemini Setting</h2><p>Configure AI invoice analysis and reports with a Gemini API key.</p></div>
     </div>
     <div class="gemini-settings-card">
       <div class="gemini-form-row">
-        <div class="gemini-field-info"><div class="gemini-field-icon">✦</div><div><h3>Gemini API Key</h3><p>अपनी Google Gemini API key यहाँ दर्ज करें।</p></div></div>
+        <div class="gemini-field-info"><div class="gemini-field-icon">✦</div><div><h3>Gemini API Key</h3><p>Enter your Google Gemini API key.</p></div></div>
         <div class="gemini-field-control"><input id="gemini-api-key" class="gemini-input" type="password" placeholder="Enter Gemini API Key" autocomplete="off"></div>
       </div>
       <div class="gemini-save-row">
         <button type="button" class="gemini-save-btn" id="gemini-save-btn"><span>✓</span> Save Gemini Key</button>
       </div>
     </div>
-    <div class="gemini-status" id="gemini-status"><span class="gemini-status-dot"></span><span>Gemini API key अभी save नहीं है।</span></div>
+    <div class="gemini-status" id="gemini-status"><span class="gemini-status-dot"></span><span>Gemini API key is not saved.</span></div>
   </div>
   <div id="template-panel" class="settings-panel">
     <div class="settings-panel-title">
       <div class="panel-icon">📝</div>
-      <div><h2>Email Template</h2><p>Invoice email के लिए stylish HTML template और subject यहाँ तैयार करें।</p></div>
+      <div><h2>Email Template</h2><p>Create the HTML template and subject for invoice emails.</p></div>
     </div>
     <div class="email-template-card">
       <div class="email-subject-row">
         <div class="email-template-label">
           <div class="email-template-icon">✉</div>
-          <div><h3>Email Subject</h3><p>Email भेजते समय दिखाई देने वाला subject लिखें।</p></div>
+          <div><h3>Email Subject</h3><p>Enter the subject shown when sending the email.</p></div>
         </div>
         <div class="email-subject-control">
           <input id="email-template-subject" class="email-subject-input" type="text" placeholder="e.g. Your Invoice from {{company_name}}" autocomplete="off">
@@ -118,7 +118,7 @@
       <div class="email-code-section">
         <div class="email-code-heading">
           <div class="email-template-icon code-icon">&lt;/&gt;</div>
-          <div><h3>HTML Template Code</h3><p>Email का पूरा HTML code यहाँ लिखें। Inline CSS और email-safe HTML इस्तेमाल करें।</p></div>
+          <div><h3>HTML Template Code</h3><p>Enter the complete HTML code here. Use inline CSS and email-safe HTML.</p></div>
         </div>
         <textarea id="email-template-code" class="email-template-code" spellcheck="false" placeholder="Paste or write your email HTML code here..."></textarea>
       </div>
@@ -126,7 +126,7 @@
       <div class="email-variables-section">
         <div class="email-code-heading">
           <div class="email-template-icon variable-icon">{ }</div>
-          <div><h3>Available Variables</h3><p>इन variables को HTML code या Email Subject में सीधे इस्तेमाल कर सकते हैं।</p></div>
+          <div><h3>Available Variables</h3><p>Use these variables directly in the HTML code or email subject.</p></div>
         </div>
         <div class="email-variable-list">
           <button type="button" class="email-variable-chip" data-variable="{{company_name}}">{{company_name}}</button>
@@ -139,7 +139,7 @@
       </div>
 
       <div class="email-template-actions">
-        <span class="email-template-status" id="email-template-status"><span class="email-status-dot"></span><span>Template अभी save नहीं है।</span></span>
+        <span class="email-template-status" id="email-template-status"><span class="email-status-dot"></span><span>Template is not saved.</span></span>
         <button type="button" class="email-template-save-btn" id="email-template-save-btn"><span>✓</span> Save Email Template</button>
       </div>
     </div>
