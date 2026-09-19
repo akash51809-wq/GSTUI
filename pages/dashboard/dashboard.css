@@ -73,57 +73,90 @@
 .chart .candle-group.hide-buy .purchase-candle,.chart .candle-group.hide-sale .sale-candle{display:none!important}
 
 
-/* Premium 3D circular shortcut hub. */
+/* Final premium circular shortcut control. */
 .shortcut-hub-panel{
-  min-height:100%;position:relative;overflow:hidden;border-radius:22px;
-  padding:18px 16px 14px;background:
-  radial-gradient(circle at 50% 38%,rgba(37,99,235,.16),transparent 36%),
-  linear-gradient(145deg,#08111f 0%,#0b1728 48%,#111d31 100%);
-  border:1px solid rgba(148,163,184,.16);
-  box-shadow:16px 20px 34px rgba(15,23,42,.18),inset 1px 1px 2px rgba(255,255,255,.08),inset -2px -3px 7px rgba(0,0,0,.35);
+  min-height:100%;padding:16px 18px 12px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;position:relative;overflow:hidden;
+  border-radius:22px;background:linear-gradient(145deg,#06101d,#0b1728 52%,#13243a);
+  border:1px solid rgba(125,211,252,.14);
+  box-shadow:16px 20px 34px rgba(15,23,42,.20),inset 1px 1px 2px rgba(255,255,255,.08),inset -3px -4px 8px rgba(0,0,0,.38);
 }
-.shortcut-hub-panel:before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 0deg,transparent 0 72%,rgba(56,189,248,.09) 78%,transparent 84% 100%);animation:hubSpin 14s linear infinite;pointer-events:none}
-.shortcut-hub-head,.shortcut-hub-foot{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between}
-.shortcut-hub-head h3{margin:2px 0 2px;color:#f8fafc;font-size:16px}.shortcut-hub-head p{margin:0;color:#94a3b8;font-size:10px}
-.shortcut-hub-head .panel-kicker{color:#38bdf8;font-size:9px;letter-spacing:.16em}
-.shortcut-hub-fy{font-size:9px;font-weight:800;color:#cbd5e1;padding:7px 9px;border-radius:9px;background:linear-gradient(145deg,#17263b,#091321);box-shadow:3px 4px 8px rgba(0,0,0,.35),inset 1px 1px 2px rgba(255,255,255,.08)}
-.shortcut-hub{position:relative;width:min(330px,92%);aspect-ratio:1;margin:4px auto 0}
-.shortcut-orbit{position:absolute;inset:11%;border:1px dashed rgba(125,211,252,.18);border-radius:50%;animation:hubOrbit 10s linear infinite}
-.shortcut-orbit.orbit-b{inset:22%;border-color:rgba(167,139,250,.15);animation-direction:reverse;animation-duration:8s}
-.hub-core{position:absolute;left:50%;top:50%;width:112px;height:112px;transform:translate(-50%,-50%);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:radial-gradient(circle at 34% 28%,#334155 0,#18263a 30%,#07101d 72%);border:1px solid rgba(148,163,184,.3);box-shadow:0 16px 26px rgba(0,0,0,.48),inset 7px 7px 14px rgba(255,255,255,.07),inset -8px -10px 15px rgba(0,0,0,.7),0 0 0 7px rgba(56,189,248,.035);z-index:4;transition:transform .35s ease,box-shadow .35s ease}
-.hub-core:after{content:"";position:absolute;inset:7px;border-radius:50%;border:1px solid rgba(56,189,248,.18);animation:corePulse 2.8s ease-in-out infinite}
-.hub-core-icon{font-size:25px;line-height:1;color:#7dd3fc;text-shadow:0 0 12px rgba(56,189,248,.65);margin-bottom:5px}.hub-core strong{font-size:10px;letter-spacing:.15em}.hub-core small{font-size:8px;color:#94a3b8;margin-top:4px}
-.hub-shortcut{position:absolute;width:62px;height:62px;border:0;border-radius:50%;cursor:pointer;z-index:6;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,filter .22s ease}
-.hub-shortcut:before{content:"";position:absolute;inset:5px;border-radius:50%;border:1px solid rgba(255,255,255,.18);box-shadow:inset 2px 2px 4px rgba(255,255,255,.2),inset -3px -4px 6px rgba(0,0,0,.28)}
-.hub-shortcut span{font-size:20px;font-weight:900;line-height:1;position:relative}.hub-shortcut small{font-size:7px;font-weight:800;letter-spacing:.04em;position:relative}
-.hub-shortcut:hover{transform:scale(1.17) translateY(-4px);filter:brightness(1.13);z-index:9}
-.hub-shortcut:hover small{font-size:8px}.hub-shortcut:active{transform:scale(.96)}
-.shortcut-invoice{left:50%;top:1%;transform:translateX(-50%);background:linear-gradient(145deg,#38bdf8,#0369a1);box-shadow:7px 10px 17px rgba(2,132,199,.32),inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.28)}
-.shortcut-party{right:5%;top:25%;background:linear-gradient(145deg,#f472b6,#be185d);box-shadow:7px 10px 17px rgba(190,24,93,.3),inset 3px 3px 5px rgba(255,255,255,.25),inset -4px -5px 7px rgba(0,0,0,.3)}
-.shortcut-report{right:8%;bottom:17%;background:linear-gradient(145deg,#a78bfa,#6d28d9);box-shadow:7px 10px 17px rgba(109,40,217,.3),inset 3px 3px 5px rgba(255,255,255,.25),inset -4px -5px 7px rgba(0,0,0,.3)}
-.shortcut-settings{left:50%;bottom:1%;transform:translateX(-50%);background:linear-gradient(145deg,#94a3b8,#334155);box-shadow:7px 10px 17px rgba(15,23,42,.42),inset 3px 3px 5px rgba(255,255,255,.24),inset -4px -5px 7px rgba(0,0,0,.4)}
-.shortcut-ai{left:8%;bottom:17%;background:linear-gradient(145deg,#c084fc,#7e22ce);box-shadow:7px 10px 17px rgba(126,34,206,.3),inset 3px 3px 5px rgba(255,255,255,.25),inset -4px -5px 7px rgba(0,0,0,.3)}
-.shortcut-pending{left:5%;top:25%;background:linear-gradient(145deg,#fb923c,#c2410c);box-shadow:7px 10px 17px rgba(194,65,12,.3),inset 3px 3px 5px rgba(255,255,255,.25),inset -4px -5px 7px rgba(0,0,0,.3)}
-.shortcut-hub-foot{margin-top:-1px;padding:8px 9px;border-radius:11px;background:rgba(2,6,23,.35);border:1px solid rgba(148,163,184,.09);color:#64748b;font-size:9px}.shortcut-hub-foot i{color:#38bdf8}
-.shortcut-hub-panel:has(.hub-shortcut:hover) .hub-core{transform:translate(-50%,-50%) scale(1.035);box-shadow:0 19px 30px rgba(0,0,0,.52),inset 7px 7px 14px rgba(255,255,255,.07),inset -8px -10px 15px rgba(0,0,0,.7),0 0 24px rgba(56,189,248,.11)}
-@keyframes hubSpin{to{transform:rotate(360deg)}}@keyframes hubOrbit{to{transform:rotate(360deg)}}@keyframes corePulse{50%{opacity:.35;transform:scale(.92)}}
-.shortcut-launch{animation:shortcutLaunch .34s cubic-bezier(.2,.8,.2,1)}@keyframes shortcutLaunch{0%{transform:scale(.92);opacity:.15;filter:blur(4px)}65%{transform:scale(1.015);opacity:1}100%{transform:scale(1);opacity:1;filter:blur(0)}}
-@media(max-width:1100px){.shortcut-hub-panel{min-height:390px}.shortcut-hub{width:min(300px,88%)}}
-@media(max-width:760px){.shortcut-hub-panel{min-height:350px}.shortcut-hub{width:min(290px,94%)}.hub-core{width:100px;height:100px}.hub-shortcut{width:58px;height:58px}}
-
-
-/* Single premium 3D circular shortcut dial. */
-.shortcut-hub-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100%;padding:16px;background:linear-gradient(145deg,#07111f,#0d1a2b 55%,#14243a);border-radius:24px;overflow:hidden}
-.shortcut-hub-panel:before{display:none}
-.shortcut-hub-head{width:100%;margin-bottom:2px}.shortcut-hub-head h3{font-size:15px}.shortcut-hub-head p{font-size:9px}
-.shortcut-hub{width:min(350px,94%);aspect-ratio:1;margin:2px auto 0;position:relative;border-radius:50%;background:radial-gradient(circle at 34% 25%,#40536b 0,#1b2b40 23%,#0b1727 58%,#050b13 100%);border:1px solid rgba(148,163,184,.3);box-shadow:18px 22px 34px rgba(0,0,0,.48),inset 10px 10px 18px rgba(255,255,255,.07),inset -14px -16px 22px rgba(0,0,0,.72),0 0 0 10px rgba(56,189,248,.025);overflow:visible}
-.shortcut-hub:before{content:"";position:absolute;inset:9%;border-radius:50%;border:1px solid rgba(125,211,252,.18);box-shadow:inset 0 0 20px rgba(56,189,248,.05);pointer-events:none}
-.shortcut-hub:after{content:"";position:absolute;inset:18%;border-radius:50%;border:1px solid rgba(255,255,255,.06);pointer-events:none}
-.shortcut-orbit{display:none}
-.hub-core{width:118px;height:118px;box-shadow:0 18px 30px rgba(0,0,0,.6),inset 7px 7px 14px rgba(255,255,255,.09),inset -9px -11px 16px rgba(0,0,0,.8),0 0 26px rgba(56,189,248,.12)}
-.hub-shortcut{width:64px;height:64px;box-shadow:0 10px 18px rgba(0,0,0,.42),inset 3px 3px 5px rgba(255,255,255,.25),inset -4px -5px 8px rgba(0,0,0,.35)}
-.shortcut-invoice{left:50%;top:-1%;transform:translateX(-50%)}.shortcut-party{right:2%;top:24%}.shortcut-report{right:4%;bottom:14%}.shortcut-settings{left:50%;bottom:-1%;transform:translateX(-50%)}.shortcut-ai{left:4%;bottom:14%}.shortcut-pending{left:2%;top:24%}
-.shortcut-hub-foot{width:100%;margin-top:5px;background:transparent;border:0;padding:5px;font-size:8px;justify-content:center;gap:7px}
-.hub-shortcut:hover{transform:scale(1.16) translateY(-5px);filter:brightness(1.18)}
-.shortcut-invoice:hover,.shortcut-settings:hover{transform:translateX(-50%) scale(1.16) translateY(-5px)}
-@media(max-width:760px){.shortcut-hub{width:min(300px,92%)}.hub-core{width:100px;height:100px}.hub-shortcut{width:58px;height:58px}}
+.shortcut-hub-panel:before{
+  content:"";position:absolute;width:420px;height:420px;border-radius:50%;
+  background:conic-gradient(from 0deg,transparent 0 68%,rgba(56,189,248,.11) 74%,transparent 81% 100%);
+  animation:shortcutHalo 16s linear infinite;pointer-events:none;
+}
+.shortcut-hub-head,.shortcut-hub-foot{position:relative;z-index:10;width:100%;display:flex;align-items:center;justify-content:space-between}
+.shortcut-hub-head h3{margin:2px 0;color:#f8fafc;font-size:15px}
+.shortcut-hub-head p{margin:0;color:#94a3b8;font-size:9px}
+.shortcut-hub-head .panel-kicker{color:#38bdf8;font-size:8px;letter-spacing:.18em}
+.shortcut-hub-fy{font-size:8px;font-weight:800;color:#cbd5e1;padding:6px 8px;border-radius:8px;background:#101e31;box-shadow:3px 4px 8px rgba(0,0,0,.4),inset 1px 1px 2px rgba(255,255,255,.08)}
+.shortcut-hub{
+  width:min(330px,92%);aspect-ratio:1;position:relative;margin:5px auto 1px;
+  border-radius:50%;isolation:isolate;
+  background:
+    radial-gradient(circle at 35% 23%,rgba(148,163,184,.42) 0,rgba(51,65,85,.18) 20%,transparent 36%),
+    radial-gradient(circle at 50% 50%,#1b2b40 0,#0b1727 58%,#030811 100%);
+  border:2px solid rgba(148,163,184,.24);
+  box-shadow:
+    0 22px 34px rgba(0,0,0,.55),
+    inset 9px 9px 16px rgba(255,255,255,.08),
+    inset -13px -15px 22px rgba(0,0,0,.82),
+    0 0 0 7px rgba(56,189,248,.025);
+}
+.shortcut-hub:before{
+  content:"";position:absolute;inset:7%;border-radius:50%;
+  border:1px solid rgba(125,211,252,.18);
+  box-shadow:inset 0 0 18px rgba(56,189,248,.08),0 0 12px rgba(56,189,248,.04);
+}
+.shortcut-hub:after{
+  content:"";position:absolute;inset:15%;border-radius:50%;
+  border:1px solid rgba(255,255,255,.055);box-shadow:0 0 0 5px rgba(0,0,0,.06);
+}
+.shortcut-orbit{position:absolute;border-radius:50%;pointer-events:none;z-index:1}
+.orbit-a{inset:11%;border:1px dashed rgba(56,189,248,.14);animation:orbitTurn 12s linear infinite}
+.orbit-b{inset:23%;border:1px solid rgba(167,139,250,.09);animation:orbitTurn 9s linear infinite reverse}
+.hub-core{
+  position:absolute;left:50%;top:50%;width:108px;height:108px;transform:translate(-50%,-50%);
+  border-radius:50%;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:#fff;background:radial-gradient(circle at 32% 24%,#52657c 0,#26384d 25%,#0a1422 70%,#040a12 100%);
+  border:2px solid rgba(148,163,184,.22);
+  box-shadow:0 17px 28px rgba(0,0,0,.62),inset 6px 6px 13px rgba(255,255,255,.10),inset -9px -10px 17px rgba(0,0,0,.82),0 0 24px rgba(56,189,248,.10);
+  transition:transform .28s ease,box-shadow .28s ease;
+}
+.hub-core:before{content:"";position:absolute;inset:7px;border-radius:50%;border:1px solid rgba(125,211,252,.20)}
+.hub-core:after{content:"";position:absolute;inset:14px;border-radius:50%;border:1px solid rgba(255,255,255,.05);animation:coreBreath 2.8s ease-in-out infinite}
+.hub-core-icon{font-size:22px;color:#7dd3fc;text-shadow:0 0 12px rgba(56,189,248,.8);margin-bottom:4px}
+.hub-core strong{font-size:9px;letter-spacing:.17em}.hub-core small{font-size:7px;color:#94a3b8;margin-top:3px}
+.hub-shortcut{
+  position:absolute;width:58px;height:58px;border:0;border-radius:50%;z-index:8;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#fff;
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),filter .22s ease,box-shadow .22s ease;
+  outline:none;
+}
+.hub-shortcut:before{content:"";position:absolute;inset:5px;border-radius:50%;border:1px solid rgba(255,255,255,.28);box-shadow:inset 2px 2px 4px rgba(255,255,255,.25),inset -3px -4px 6px rgba(0,0,0,.34)}
+.hub-shortcut:after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.hub-shortcut span,.hub-shortcut small{position:relative;z-index:2}.hub-shortcut span{font-size:18px;font-weight:900;line-height:1}.hub-shortcut small{font-size:6.5px;font-weight:900;letter-spacing:.04em}
+.hub-shortcut:hover{transform:translateY(-5px) scale(1.16);filter:brightness(1.18)}
+.hub-shortcut:hover:after{border-color:rgba(255,255,255,.28);box-shadow:0 0 16px currentColor}
+.hub-shortcut:active{transform:translateY(-1px) scale(.96)}
+.shortcut-invoice{left:50%;top:1%;transform:translateX(-50%);background:linear-gradient(145deg,#38bdf8,#0369a1);box-shadow:7px 11px 17px rgba(2,132,199,.34),inset 3px 3px 5px rgba(255,255,255,.30),inset -4px -5px 7px rgba(0,0,0,.34)}
+.shortcut-party{right:7%;top:26%;background:linear-gradient(145deg,#f472b6,#be185d);box-shadow:7px 11px 17px rgba(190,24,93,.30),inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.34)}
+.shortcut-report{right:9%;bottom:16%;background:linear-gradient(145deg,#a78bfa,#6d28d9);box-shadow:7px 11px 17px rgba(109,40,217,.30),inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.34)}
+.shortcut-settings{left:50%;bottom:1%;transform:translateX(-50%);background:linear-gradient(145deg,#cbd5e1,#475569);box-shadow:7px 11px 17px rgba(15,23,42,.42),inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.42)}
+.shortcut-ai{left:9%;bottom:16%;background:linear-gradient(145deg,#c084fc,#7e22ce);box-shadow:7px 11px 17px rgba(126,34,206,.30),inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.34)}
+.shortcut-pending{left:7%;top:26%;background:linear-gradient(145deg,#fb923c,#c2410c);box-shadow:7px 11px 17px rgba(194,65,12,.30),inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.34)}
+.shortcut-invoice:hover,.shortcut-settings:hover{transform:translateX(-50%) translateY(-5px) scale(1.16)}
+.shortcut-hub-foot{margin-top:2px;padding:6px 8px;color:#64748b;font-size:8px;border:0;background:transparent;justify-content:center;gap:6px}.shortcut-hub-foot i{color:#38bdf8}
+.shortcut-hub-panel:has(.hub-shortcut:hover) .hub-core{transform:translate(-50%,-50%) scale(1.04);box-shadow:0 20px 32px rgba(0,0,0,.66),inset 6px 6px 13px rgba(255,255,255,.10),inset -9px -10px 17px rgba(0,0,0,.82),0 0 30px rgba(56,189,248,.16)}
+.shortcut-hub-panel:has(.shortcut-invoice:hover) .hub-core{box-shadow:0 20px 32px rgba(0,0,0,.66),0 0 28px rgba(56,189,248,.25)}
+.shortcut-hub-panel:has(.shortcut-party:hover) .hub-core{box-shadow:0 20px 32px rgba(0,0,0,.66),0 0 28px rgba(236,72,153,.22)}
+.shortcut-hub-panel:has(.shortcut-report:hover) .hub-core{box-shadow:0 20px 32px rgba(0,0,0,.66),0 0 28px rgba(139,92,246,.24)}
+.shortcut-hub-panel:has(.shortcut-settings:hover) .hub-core{box-shadow:0 20px 32px rgba(0,0,0,.66),0 0 28px rgba(148,163,184,.22)}
+.shortcut-hub-panel:has(.shortcut-ai:hover) .hub-core{box-shadow:0 20px 32px rgba(0,0,0,.66),0 0 28px rgba(192,132,252,.24)}
+.shortcut-hub-panel:has(.shortcut-pending:hover) .hub-core{box-shadow:0 20px 32px rgba(0,0,0,.66),0 0 28px rgba(251,146,60,.24)}
+.shortcut-launch{animation:shortcutLaunch .38s cubic-bezier(.2,.8,.2,1)}
+@keyframes shortcutLaunch{0%{opacity:0;transform:scale(.94) translateY(10px);filter:blur(5px)}60%{opacity:1;transform:scale(1.015) translateY(-2px);filter:blur(0)}100%{opacity:1;transform:none}}
+@keyframes shortcutHalo{to{transform:rotate(360deg)}}@keyframes orbitTurn{to{transform:rotate(360deg)}}@keyframes coreBreath{50%{transform:scale(.90);opacity:.35}}
+@media(max-width:1100px){.shortcut-hub{width:min(300px,88%)}.shortcut-hub-panel{min-height:390px}}
+@media(max-width:760px){.shortcut-hub{width:min(285px,94%)}.hub-core{width:96px;height:96px}.hub-shortcut{width:54px;height:54px}.shortcut-hub-panel{min-height:350px}}
