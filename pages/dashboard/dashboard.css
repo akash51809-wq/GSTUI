@@ -71,3 +71,42 @@
 
 /* Hard filter state: visibility is controlled by a class on each candle group. */
 .chart .candle-group.hide-buy .purchase-candle,.chart .candle-group.hide-sale .sale-candle{display:none!important}
+
+
+/* Premium 3D circular shortcut hub. */
+.shortcut-hub-panel{
+  min-height:100%;position:relative;overflow:hidden;border-radius:22px;
+  padding:18px 16px 14px;background:
+  radial-gradient(circle at 50% 38%,rgba(37,99,235,.16),transparent 36%),
+  linear-gradient(145deg,#08111f 0%,#0b1728 48%,#111d31 100%);
+  border:1px solid rgba(148,163,184,.16);
+  box-shadow:16px 20px 34px rgba(15,23,42,.18),inset 1px 1px 2px rgba(255,255,255,.08),inset -2px -3px 7px rgba(0,0,0,.35);
+}
+.shortcut-hub-panel:before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 0deg,transparent 0 72%,rgba(56,189,248,.09) 78%,transparent 84% 100%);animation:hubSpin 14s linear infinite;pointer-events:none}
+.shortcut-hub-head,.shortcut-hub-foot{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between}
+.shortcut-hub-head h3{margin:2px 0 2px;color:#f8fafc;font-size:16px}.shortcut-hub-head p{margin:0;color:#94a3b8;font-size:10px}
+.shortcut-hub-head .panel-kicker{color:#38bdf8;font-size:9px;letter-spacing:.16em}
+.shortcut-hub-fy{font-size:9px;font-weight:800;color:#cbd5e1;padding:7px 9px;border-radius:9px;background:linear-gradient(145deg,#17263b,#091321);box-shadow:3px 4px 8px rgba(0,0,0,.35),inset 1px 1px 2px rgba(255,255,255,.08)}
+.shortcut-hub{position:relative;width:min(330px,92%);aspect-ratio:1;margin:4px auto 0}
+.shortcut-orbit{position:absolute;inset:11%;border:1px dashed rgba(125,211,252,.18);border-radius:50%;animation:hubOrbit 10s linear infinite}
+.shortcut-orbit.orbit-b{inset:22%;border-color:rgba(167,139,250,.15);animation-direction:reverse;animation-duration:8s}
+.hub-core{position:absolute;left:50%;top:50%;width:112px;height:112px;transform:translate(-50%,-50%);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:radial-gradient(circle at 34% 28%,#334155 0,#18263a 30%,#07101d 72%);border:1px solid rgba(148,163,184,.3);box-shadow:0 16px 26px rgba(0,0,0,.48),inset 7px 7px 14px rgba(255,255,255,.07),inset -8px -10px 15px rgba(0,0,0,.7),0 0 0 7px rgba(56,189,248,.035);z-index:4;transition:transform .35s ease,box-shadow .35s ease}
+.hub-core:after{content:"";position:absolute;inset:7px;border-radius:50%;border:1px solid rgba(56,189,248,.18);animation:corePulse 2.8s ease-in-out infinite}
+.hub-core-icon{font-size:25px;line-height:1;color:#7dd3fc;text-shadow:0 0 12px rgba(56,189,248,.65);margin-bottom:5px}.hub-core strong{font-size:10px;letter-spacing:.15em}.hub-core small{font-size:8px;color:#94a3b8;margin-top:4px}
+.hub-shortcut{position:absolute;width:62px;height:62px;border:0;border-radius:50%;cursor:pointer;z-index:6;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,filter .22s ease}
+.hub-shortcut:before{content:"";position:absolute;inset:5px;border-radius:50%;border:1px solid rgba(255,255,255,.18);box-shadow:inset 2px 2px 4px rgba(255,255,255,.2),inset -3px -4px 6px rgba(0,0,0,.28)}
+.hub-shortcut span{font-size:20px;font-weight:900;line-height:1;position:relative}.hub-shortcut small{font-size:7px;font-weight:800;letter-spacing:.04em;position:relative}
+.hub-shortcut:hover{transform:scale(1.17) translateY(-4px);filter:brightness(1.13);z-index:9}
+.hub-shortcut:hover small{font-size:8px}.hub-shortcut:active{transform:scale(.96)}
+.shortcut-invoice{left:50%;top:1%;transform:translateX(-50%);background:linear-gradient(145deg,#38bdf8,#0369a1);box-shadow:7px 10px 17px rgba(2,132,199,.32),inset 3px 3px 5px rgba(255,255,255,.28),inset -4px -5px 7px rgba(0,0,0,.28)}
+.shortcut-party{right:5%;top:25%;background:linear-gradient(145deg,#f472b6,#be185d);box-shadow:7px 10px 17px rgba(190,24,93,.3),inset 3px 3px 5px rgba(255,255,255,.25),inset -4px -5px 7px rgba(0,0,0,.3)}
+.shortcut-report{right:8%;bottom:17%;background:linear-gradient(145deg,#a78bfa,#6d28d9);box-shadow:7px 10px 17px rgba(109,40,217,.3),inset 3px 3px 5px rgba(255,255,255,.25),inset -4px -5px 7px rgba(0,0,0,.3)}
+.shortcut-settings{left:50%;bottom:1%;transform:translateX(-50%);background:linear-gradient(145deg,#94a3b8,#334155);box-shadow:7px 10px 17px rgba(15,23,42,.42),inset 3px 3px 5px rgba(255,255,255,.24),inset -4px -5px 7px rgba(0,0,0,.4)}
+.shortcut-ai{left:8%;bottom:17%;background:linear-gradient(145deg,#c084fc,#7e22ce);box-shadow:7px 10px 17px rgba(126,34,206,.3),inset 3px 3px 5px rgba(255,255,255,.25),inset -4px -5px 7px rgba(0,0,0,.3)}
+.shortcut-pending{left:5%;top:25%;background:linear-gradient(145deg,#fb923c,#c2410c);box-shadow:7px 10px 17px rgba(194,65,12,.3),inset 3px 3px 5px rgba(255,255,255,.25),inset -4px -5px 7px rgba(0,0,0,.3)}
+.shortcut-hub-foot{margin-top:-1px;padding:8px 9px;border-radius:11px;background:rgba(2,6,23,.35);border:1px solid rgba(148,163,184,.09);color:#64748b;font-size:9px}.shortcut-hub-foot i{color:#38bdf8}
+.shortcut-hub-panel:has(.hub-shortcut:hover) .hub-core{transform:translate(-50%,-50%) scale(1.035);box-shadow:0 19px 30px rgba(0,0,0,.52),inset 7px 7px 14px rgba(255,255,255,.07),inset -8px -10px 15px rgba(0,0,0,.7),0 0 24px rgba(56,189,248,.11)}
+@keyframes hubSpin{to{transform:rotate(360deg)}}@keyframes hubOrbit{to{transform:rotate(360deg)}}@keyframes corePulse{50%{opacity:.35;transform:scale(.92)}}
+.shortcut-launch{animation:shortcutLaunch .34s cubic-bezier(.2,.8,.2,1)}@keyframes shortcutLaunch{0%{transform:scale(.92);opacity:.15;filter:blur(4px)}65%{transform:scale(1.015);opacity:1}100%{transform:scale(1);opacity:1;filter:blur(0)}}
+@media(max-width:1100px){.shortcut-hub-panel{min-height:390px}.shortcut-hub{width:min(300px,88%)}}
+@media(max-width:760px){.shortcut-hub-panel{min-height:350px}.shortcut-hub{width:min(290px,94%)}.hub-core{width:100px;height:100px}.hub-shortcut{width:58px;height:58px}}
