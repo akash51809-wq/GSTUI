@@ -23,6 +23,9 @@
       const logo = localStorage.getItem('gstui_company_logo');
       const preview = document.getElementById('company-logo-preview');
       if(logo && preview) preview.innerHTML = '<img src="' + logo + '" alt="Company Logo">';
+      const logoName = document.getElementById('company-logo-name');
+      const savedLogoName = localStorage.getItem('gstui_company_logo_name');
+      if(logoName) logoName.textContent = savedLogoName || (logo ? 'Saved logo' : 'No logo selected');
     }catch(e){}
   }
 
@@ -100,7 +103,10 @@
         reader.onload = function(e){
           try{
             localStorage.setItem('gstui_company_logo', e.target.result);
+            localStorage.setItem('gstui_company_logo_name', file.name);
             if(preview) preview.innerHTML = '<img src="' + e.target.result + '" alt="Company Logo">';
+            const logoName = document.getElementById('company-logo-name');
+            if(logoName) logoName.textContent = file.name;
           }catch(err){}
         };
         reader.readAsDataURL(file);
@@ -118,6 +124,21 @@
       if(emailSubject) emailSubject.addEventListener('input',function(){
         const status=root.querySelector('#email-template-status'); if(status){status.classList.remove('saved');status.innerHTML='<span class="email-status-dot"></span><span>Unsaved changes.</span>';}
       });
+      const gmailInput=root.querySelector('#gmail-sender-email');
+      const gmailConnect=root.querySelector('#gmail-connect-btn');
+      if(gmailInput){
+        try{ gmailInput.value=localStorage.getItem('gstui_gmail_sender') || ''; }catch(e){}
+        gmailInput.addEventListener('input',function(){
+          try{ localStorage.setItem('gstui_gmail_sender', gmailInput.value); }catch(e){}
+        });
+      }
+      if(gmailConnect){
+        gmailConnect.addEventListener('click',function(){
+          const note=root.querySelector('.gmail-note');
+          if(note) note.textContent='Gmail OAuth connection backend के लिए ready है।';
+        });
+      }
+
       if(emailCode) emailCode.addEventListener('input',function(){
         const status=root.querySelector('#email-template-status'); if(status){status.classList.remove('saved');status.innerHTML='<span class="email-status-dot"></span><span>Unsaved changes.</span>';}
       });
